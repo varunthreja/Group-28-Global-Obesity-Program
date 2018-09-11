@@ -1,8 +1,10 @@
 <?php
-define('DB_HOST','SSID');
-define('DB_USER','jgarbell');
-define('DB_PWD','W4_h1m\T');
-define('DB_CHARSET', 'utf8');
-define('DB_TABLENAME', 'user_detail');
-
-
+define('DB_HOST','localhost');
+define('DB_USER','root');
+//TYPE YOUR MYSQL DATABASE PASSWORD IN THE DOUBLE QUOTES BELOW!!!!
+//If you haven't changed your MySQL db password just leave this as is
+define('DB_PWD',"");
+//TYPE THE NAME OF YOUR MYSQL DATABASE
+//Keep DB_TABLENAME the same though
+define('DB_TABLENAME', '');
+?>
