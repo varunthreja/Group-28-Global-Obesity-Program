@@ -156,7 +156,8 @@
      if (isset($_COOKIE)){
      $username=$_COOKIE['username'];
     
-     $connect=new mysqli('localhost','root','','scrappertest');
+     //$connect=new mysqli('localhost','root','','scrappertest');
+     $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
      $sql="select * from users where username='{$username}'" ;
      $result=$connect->query($sql);
     
