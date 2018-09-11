@@ -63,7 +63,7 @@ function execute($sql){
 
     $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
     $result = $conn->query($sql);
-    return $result
+    return $result;
 }
 
 
