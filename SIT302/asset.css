@@ -1,0 +1,99 @@
+.header{
+  width:50%;
+  height:500px;
+  margin:0 auto;
+  border-radius:10px;
+  border-bottom:2px solid ;
+  text-align:center;
+  line-height:100px;
+  overflow: hidden;
+}
+.nav{
+	flex:0 0 10%;
+	
+}
+
+.navbar{
+	border-bottom:3px solid #3E2723;
+	background-color:#3E2723;
+	
+}
+
+.showBox{
+
+
+  width: 100%;
+
+ }
+.main{
+  width:100%;
+  height:;
+  margin:20px auto;
+  border:2px solid ;
+  overflow:hidden;
+  display: flex;
+
+}
+.footer{
+  width:100%;
+  height:;
+  border:2px solid;
+  margin-bottom:-100px;
+  text-align:left;
+  background-color: #EEEEEE;
+   margin-top:20px;
+   overflow: auto;
+  
+}
+
+.fa-instagram:before {
+  content: "\f16d";
+}
+
+.pagination{
+	
+	display: flex;
+	justify-content: center;
+	
+}
+
+a{
+	color: white;
+}
+
+
+
+/*.collapseNav{
+	width: 70px;
+	height: 30px;
+	position: fixed;
+	text-align: center;
+	z-index: 999;
+
+}*/
+
+  
+
+#navigation{
+	list-style: none;
+	border: 1px solid;
+	width: 200px;
+	position: fixed;
+	left: 0;
+	top:50%;
+	transform: translateY(-50%); 
+	border-radius: 10px;
+	background-color: #FF9100;
+	color: white;
+} 
+
+.button_line{
+	width: 100%;
+}
+
+
+
+
+
+
+
