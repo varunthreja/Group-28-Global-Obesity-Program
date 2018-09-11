@@ -19,7 +19,8 @@ if($act==="reg"){
 }
 
 function update(){
-        $connect=new mysqli('127.0.0.1', 'root', '', 'scrappertest');
+		$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+        //$connect=new mysqli('127.0.0.1', 'root', '', 'scrappertest');
 		$userID=$_POST["userID"];
         $sql="update users set confirmed='1' where userID='{$userID}' ";
         
@@ -45,7 +46,8 @@ function update(){
 // }
 
 function reg(){
-    $conn = new mysqli('127.0.0.1', 'root', '', 'scrappertest');
+	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    //$conn = new mysqli('127.0.0.1', 'root', '', 'scrappertest');
 	//apply  htmlentities function
     $username=htmlentities($_POST['username']);
 	$password=htmlentities($_POST['password']);
@@ -86,8 +88,9 @@ function login(){
 	// //Random String of salt used for everyone
     $salt = 'salt1024';
     $password = md5($salt.$password);
-      
-    $conn=new mysqli('127.0.0.1', 'root', '', 'scrappertest');
+     
+ 	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    //$conn=new mysqli('127.0.0.1', 'root', '', 'scrappertest');
 	$sql="SELECT * FROM users WHERE username='{$username}' and password='{$password}'";
 	print_r($sql);
     $stmt=$conn->query($sql);
@@ -127,17 +130,25 @@ function login(){
 }
 
 function check(){
-	 $connect=oxci_connectci_connect(DB_USER,DB_PWD,DB_HOST) ;
+	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+	//$connect=oxci_connectci_connect(DB_USER,DB_PWD,DB_HOST) ;
 	
-    if (!$connect) {
-    echo "error, couldn't connect to ".DB_HOST." database.";
-    exit;	
-}
+    // if (!$connect) {
+    // echo "error, couldn't connect to ".DB_HOST." database.";
+    // exit;	
+    if (!$conn) {
+	    echo "Error, couldn't connect to ".DB_TABLENAME." database.";
+	    exit;	
+	}
     $username=$_POST["username"];
     $sql="select * from users where username='{$username}'";
-    $stmt=oci_parse($connect,$sql);
-    $result=oci_execute($stmt);
-	$row=oci_fetch_array($stmt);
+ //    $stmt=oci_parse($connect,$sql);
+ //    $result=oci_execute($stmt);
+	// $row=oci_fetch_array($stmt);
+
+    $a = $conn->query($sql);
+    $row = oci_fetch_array($a);
+
     if($row){
         echo 1;
     }
