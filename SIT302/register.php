@@ -222,72 +222,72 @@
 
 
 	function check(value,type){
-		var url="checkinfo.php";
-		var data={"text":value,"type":type};
-		
-		
-		
-		var success=function(respond){
-			
-			if(respond==10){
-				
-				document.getElementById("userSuggestion").innerHTML="";
-				document.getElementById("button").disabled=false;
-			}
-			else if(respond==11){
-				
-				document.getElementById("userSuggestion").innerHTML="more than 5 less than 11";
-				document.getElementById("button").disabled=true;
-			}
-			else if(respond==12){
-				document.getElementById("userSuggestion").innerHTML="letter spaces - only";
-				document.getElementById("button").disabled=true;
-			}
-			else if(respond==20){
-				
-				document.getElementById("userSuggestion").innerHTML="";
-				document.getElementById("button").disabled=false;
-			}
-			else if(respond==21){
-				
-				document.getElementById("userSuggestion").innerHTML="more than 5 less than 11";
-				document.getElementById("button").disabled=true;
-			}
-			else if(respond==22){
-				document.getElementById("userSuggestion").innerHTML="letters numbers spaces - only";
-				document.getElementById("button").disabled=true;
-			}
-			else if(respond==30){
-				
-				document.getElementById("userSuggestion").innerHTML="";
-				document.getElementById("button").disabled=false;
-			}
-			else if(respond==31){
-				
-				document.getElementById("userSuggestion").innerHTML="more than 5 less than 30";
-				document.getElementById("button").disabled=true;
-			}
-			else if(respond==32){
-				document.getElementById("userSuggestion").innerHTML="letters numbers spaces - only";
-				document.getElementById("button").disabled=true;
-			}
-			else if(respond==40){
-				
-				document.getElementById("userSuggestion").innerHTML="";
-				document.getElementById("button").disabled=false;
-			}
-			else if(respond==41){
-				
-				document.getElementById("userSuggestion").innerHTML="more than 2 less than 20";
-				document.getElementById("button").disabled=true;
-			}
-			else if(respond==42){
-				document.getElementById("userSuggestion").innerHTML="letters and spaces only";
-				document.getElementById("button").disabled=true;
-			}
-		}
-		$.post(url,data,success,"json");
-	}
+    var url="checkinfo.php";
+    var data={"text":value,"type":type};
+    
+    
+    
+    var success=function(respond){
+      
+      if(respond==10){
+        
+        document.getElementById("userSuggestion").innerHTML="";
+        document.getElementById("button").disabled=false;
+      }
+      else if(respond==11){
+        
+        document.getElementById("userSuggestion").innerHTML="The username needs to be at least 5 characters but not more than 11";
+        document.getElementById("button").disabled=true;
+      }
+      else if(respond==12){
+        document.getElementById("userSuggestion").innerHTML="Only letters and spaces are allowed for the username";
+        document.getElementById("button").disabled=true;
+      }
+      else if(respond==20){
+        
+        document.getElementById("userSuggestion").innerHTML="";
+        document.getElementById("button").disabled=false;
+      }
+      else if(respond==21){
+        
+        document.getElementById("userSuggestion").innerHTML="The password needs to be at least 5 characters but not more than 11";
+        document.getElementById("button").disabled=true;
+      }
+      else if(respond==22){
+        document.getElementById("userSuggestion").innerHTML="Only alphanumeric characters are allowed for the password";
+        document.getElementById("button").disabled=true;
+      }
+      else if(respond==30){
+        
+        document.getElementById("userSuggestion").innerHTML="";
+        document.getElementById("button").disabled=false;
+      }
+      else if(respond==31){
+        
+        document.getElementById("userSuggestion").innerHTML="The organisation needs to be at least 2 characters but not more than 30";
+        document.getElementById("button").disabled=true;
+      }
+      else if(respond==32){
+        document.getElementById("userSuggestion").innerHTML="Only alphanumeric characters, spaces and dashes are allowed for the organisation";
+        document.getElementById("button").disabled=true;
+      }
+      else if(respond==40){
+        
+        document.getElementById("userSuggestion").innerHTML="";
+        document.getElementById("button").disabled=false;
+      }
+      else if(respond==41){
+        
+        document.getElementById("userSuggestion").innerHTML="The position needs to be at least 2 characters but not more than 30";
+        document.getElementById("button").disabled=true;
+      }
+      else if(respond==42){
+        document.getElementById("userSuggestion").innerHTML="Only letters and spaces are allowed for the position";
+        document.getElementById("button").disabled=true;
+      }
+    }
+    $.post(url,data,success,"json");
+  }
 
 		
 
