@@ -161,7 +161,12 @@ body{
 		
 		$connect->close();
 		*/
-		$conn = new mysqli('localhost','root','','scrappertest');
+
+
+
+
+		//$conn = new mysqli('localhost','root','','scrappertest');
+		$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 		$sql = "SELECT * FROM users";
 		$result = $conn->query($sql);
 
