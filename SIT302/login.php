@@ -39,6 +39,7 @@
 		  bottom:0;
 		  margin:auto;
 		  padding:10px;
+		  background:#ffffff;
 		 }
 
 		.submit{
