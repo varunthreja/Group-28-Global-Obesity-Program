@@ -64,26 +64,24 @@
    <div class="registerTable">
   
   
-	 <form method="post" action="doAction.php?act=login" id="loginForm" > 
+		<form method="post" action="doAction.php?act=login" id="loginForm" > 
   
                             
-                                <input type="text" name="username" id="1" placeholder="user name" onblur="get(this.value)" class="text" required >
-								<p></p>
-                                <input type="password" name="password" class="text" placeholder="password" id="123" onblur="show(this.value)"  required>
-								<p></p>
-                            
-							    <div class="submit">
-                                <button type="submit" id="loginButton">log in</button>
-							     </div> 
+			<input type="text" name="username" id="1" placeholder="user name" onblur="get(this.value)" class="text" required >
+			<p></p>
+			<input type="password" name="password" class="text" placeholder="password" id="123" onblur="show(this.value)"  required>
+			<p></p>
+		
+			<div class="submit">
+				<button type="submit" id="loginButton">log in</button>
+			</div> 		
+			<div id="loginSuggestion" class="error">
+			 
+			</div>
 							
 							
-							<div id="loginSuggestion" class="error">
-							 
-							</div>
-							
-							
-     </form>
-     </div>
+    </form>
+    </div>
     
 	                       
     
@@ -116,6 +114,8 @@
 			 else if(respond==3){
 				 suggestion.innerHTML="";
 				 window.location="admin.php";
+			 }else if(respond==4){
+				 suggestion.innerHTML="User not confirmed"
 			 }
 	
 		 };
