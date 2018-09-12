@@ -116,7 +116,7 @@
 				$sql="select * from foodDetails";
 				$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 				$results=$conn->query($sql);
-				$table="<script>";
+				
 
 				echo '<tr><td><select name="foodName" id="foodName">';
 
@@ -126,7 +126,7 @@
 
 				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSizee"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
 
-				$table+='</script>';
+				
 			?>
 		</tbody>
 	</table>
@@ -219,6 +219,20 @@ function check(value,type){
     $.post(url,data,success,"json");
   }
 
+	function search_size_brand(sql){
+    var url="doAction.php?act=search";
+    var data={'sql':sql};
+    var success=function (respond){
+      if(respond){
+        specificBrand=respond.split("+")[0];
+        specificBrand=respond.split("+")[1];
+        document.getElementById("specificBrand").innerHTML=specificBrand;
+        document.getElementById("specificSize").innerHTML=specificSize; 
+      }
+    }
+    $.post(url,data,success,'json');
+
+}
 </script>
 
 </body>
