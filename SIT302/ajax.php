@@ -14,7 +14,7 @@ if (isset($_POST['search'])) {
  
 //Search query.
  
-   $Query = "SELECT foodName FROM foodDetails WHERE Name LIKE '%$Name%' LIMIT 5";
+   $Query = "SELECT foodName FROM foodDetails WHERE foodName LIKE '%$Name%' LIMIT 5";
  
 //Query execution
  
@@ -40,13 +40,13 @@ if (isset($_POST['search'])) {
  
         By passing fetched result as parameter. -->
  
-   <li onclick='fill("<?php echo $Result['Name']; ?>")'>
+   <li onclick='fill("<?php echo $Result['foodName']; ?>")'>
  
    <a>
  
    <!-- Assigning searched result in "Search box" in "search.php" file. -->
  
-       <?php echo $Result['Name']; ?>
+       <?php echo $Result['foodName']; ?>
  
    </li></a>
  

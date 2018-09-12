@@ -111,7 +111,7 @@
 <div id="page">
     <div id="header">
       <div>
-        <a href="index.php"><img src="images/GlobalObesityLogo.png" alt="Logo" /></a>
+        <a href="index.php"><img src="images/image_GlobalObesity.jpg" alt="Logo" /></a>
       </div>
             
       <ul> 
