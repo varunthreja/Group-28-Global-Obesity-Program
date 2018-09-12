@@ -39,7 +39,7 @@
 			
 		}
 		else if($type == 5){
-			checkNumber()
+			checkNumber();
 		}
 		
 		
@@ -83,7 +83,7 @@
 
       
         
-        if (strlen($text)>5&&strlen($text)<11)
+        if (strlen($text)>5&&strlen($text)<20)
         {
         echo 10;
 		
@@ -106,35 +106,19 @@
 }
 
 function checkPassword($text){
+	$regex = '/^[\w\s ]+$/';
 
-      
-
-       $regex = '/^[\w\s ]+$/';
-
-      if (preg_match($regex,$text)) 
-       {   
-
-      
-        
-        if (strlen($text)>5&&strlen($text)<11)
-        {
-        echo 20;
-		
+	if (preg_match('/^[\w\s ]+$/',$text)){       
+		if (strlen($text)>5&&strlen($text)<32){
+			echo 20;
 		}
-        else{
-			
-	    echo 21;		
-			
+		else{
+			echo 21;		
 		}
-	   
-	   
-     }  
-      	 
-   else
-       { 
-       echo  22; 
-        
-       } 
+	}  
+	else{ 
+		echo  22; 
+	} 
 
 }
 function checkOrganisiation($text){
@@ -148,7 +132,7 @@ function checkOrganisiation($text){
 
       
         
-        if (strlen($text)>2&&strlen($text)<30)
+        if (strlen($text)>2&&strlen($text)<200)
         {
         echo 30;
 		
@@ -180,7 +164,7 @@ function checkPosition($text){
 
       
         
-        if (strlen($text)>2&&strlen($text)<20)
+        if (strlen($text)>2&&strlen($text)<50)
         {
         echo 40;
 		
