@@ -100,7 +100,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="registerTable"> 
+	<div class="registerTable" onKeyPress="return "> 
 		<form method="post" action="doAction.php?act=login" id="loginForm" > 
 			<table>
 				<tr><h1>Login to your Account</h1></tr>
@@ -121,51 +121,56 @@
 
 <script>
      
-	 var form=document.getElementById("loginForm");
-	 var username;
-	 var password;
-	 var suggestion=document.getElementById("loginSuggestion");
-	 // var a=document.getElementById("123");
-	 // a.focus();
-	  form.addEventListener("submit",function(e){
-		 
-		
-		 
-		 url="doAction.php?act=login";
-		 data={"username":username,"password":password};
-		 var success=function(respond){
-			 if(respond==1){
-				 suggestion.innerHTML="";
-				 window.location="index.php";
-			 }
-			 else if(respond==2){
-				  suggestion.innerHTML="password was incorrect";
-			 }
-			 else if(respond==3){
-				 suggestion.innerHTML="";
-				 window.location="admin.php";
-			 }else if(respond==4){
-				 suggestion.innerHTML="User not confirmed"
-			 }
+	var form=document.getElementById("loginForm");
+	var username;
+	var password;
+	var suggestion=document.getElementById("loginSuggestion");
+	// var a=document.getElementById("123");
+	// a.focus();
+	form.addEventListener("submit",function(e){
+		url="doAction.php?act=login";
+		data={"username":username,"password":password};
+		var success=function(respond){
+		if(respond==1){
+			suggestion.innerHTML="";
+			window.location="index.php";
+		}else if(respond==2){
+			suggestion.innerHTML="password was incorrect";
+		}else if(respond==3){
+			suggestion.innerHTML="";
+			window.location="admin.php";
+		}else if(respond==4){
+			suggestion.innerHTML="User not confirmed"
+		}
+
+	};
+	$.post(url,data,success,"json");
+	e.preventDefault();
+	})
 	
-		 };
-		 $.post(url,data,success,"json");
-		
-		 
-		 e.preventDefault();
-		 
-	 })
-	 
-	 function show(a){
-		 password=a;
-		 
-	 }
-	 
-	 function get(a){
-		 username=a;
-		 
-	 }
+	var input = document.getElementById("123");
+
+	// Execute a function when the user releases a key on the keyboard
+	input.addEventListener("keyup", function(event) {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Number 13 is the "Enter" key on the keyboard
+		if (event.keyCode === 13) {
+		// Trigger the button element with a click
+			document.getElementById("loginButton").click();
+		}
+	});
 	
+	function show(a){
+	password=a;
+
+	}
+
+	function get(a){
+	username=a;
+
+	}
+
 </script>
 </body>
 
