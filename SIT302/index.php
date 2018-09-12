@@ -5,9 +5,12 @@
 <php>
 <head>
 	<meta charset="UTF-8" />
-    <title>Global Obesity Program</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+	<title>Global Obesity Program</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
 	<link rel="stylesheet" href="asset.css">
 </head>
 <body onload="alert_cookie()">
@@ -34,7 +37,9 @@
 
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+					<input id="search" type="text" class="form-control" placeholder="Search">
+				   <div id="display"></div>
+
 				</div>
 				<button type="submit" class="btn btn-default">submit</button>
 			</form>

@@ -80,7 +80,7 @@
 <div id="page">
 	<div id="header">
 		<div>
-			<a href="index.php"><img src="images/GlobalObesityLogo.png" alt="Logo" /></a>
+			<a href="index.php"><img src="images/image_GlobalObesity.jpg" alt="Logo" /></a>
 		</div>
 			
 		<ul> 
@@ -91,6 +91,11 @@
 				} 
 			?>
 			<li><a href="about.php"><span>About Us</span></a></li>
+			<?php
+				if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
+					echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+				}
+			?>
 		</ul>
 		
 	</div>
