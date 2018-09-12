@@ -173,8 +173,7 @@
 		echo '<tr><td>'.$row["foodName"].'</td></tr>';
 	};
 
-    $table="<script>";
-      $table+='</script>';
+   
   ?>
   </tbody>
 </table>
