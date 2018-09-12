@@ -38,9 +38,38 @@
 			
 			
 		}
+		else if($type == 5){
+			checkNumber()
+		}
 		
 		
 	}
+
+	function checkNumber($text){
+
+	$text = trim($text);
+	$regex = '/^[0-9]{10}$/';
+	if(strlen($text) == 0){
+		echo 52;
+	}
+	else{
+		if (preg_match($regex,$text)) 
+		{   
+			echo 50;
+
+		}  
+		 
+		else
+		{ 
+			echo  51; 
+
+		} 
+
+	}
+
+	
+
+}
 	
 	 
   function checkName($text){
