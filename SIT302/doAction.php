@@ -19,8 +19,7 @@ if($act==="reg"){
 }
 
 function update(){
-		$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-        //$connect=new mysqli('127.0.0.1', 'root', '', 'scrappertest');
+        $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 		$userID=$_POST["userID"];
         $sql="update users set confirmed='1' where userID='{$userID}' ";
         
@@ -46,8 +45,7 @@ function update(){
 // }
 
 function reg(){
-	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-    //$conn = new mysqli('127.0.0.1', 'root', '', 'scrappertest');
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 	//apply  htmlentities function
     $username=htmlentities($_POST['username']);
 	$password=htmlentities($_POST['password']);
@@ -67,13 +65,11 @@ function reg(){
     // $password = md5($salt.$user_password);
     
     //$email=htmlentities($_POST['email']);
-    $result="INSERT INTO users VALUES (12,'{$username}','{$password}','{$name}','{$organisiation}','{$organisiationAddress}','{$position}','{$email}',$contactNumber, 0, 0)";
+    $result="INSERT INTO users (username, password, name, organisation, organisationAddress, position, email, contactNumber) VALUES ('{$username}','{$password}','{$name}','{$organisiation}','{$organisiationAddress}','{$position}','{$email}',$contactNumber)";
 	echo $result;
 	# $conn->exec($result);
     if (mysqli_query($conn, $result)) {
-		setcookie("username", $username, time()+3600);
-        //$_COOKIE['email']=$email;
-        echo "<script>window.location='index.php'</script>";
+	    echo "<script>window.location='login.php'</script>";
 	} else {
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
@@ -88,15 +84,13 @@ function login(){
 	// //Random String of salt used for everyone
     $salt = 'salt1024';
     $password = md5($salt.$password);
-     
- 	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-    //$conn=new mysqli('127.0.0.1', 'root', '', 'scrappertest');
-	$sql="SELECT * FROM users WHERE username='{$username}' and password='{$password}'";
-	print_r($sql);
+      
+    $conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+	$sql="SELECT * FROM users where username='{$username}' and password='{$password}'";
     $stmt=$conn->query($sql);
-    $row = $stmt->fetch_assoc();
+	$results=mysqli_fetch_array($stmt);
     
-    if($row){
+    if($results["username"]){
        /* 
         $_COOKIE['username']=$username;
         $connect=oci_connect(DB_USER,DB_PWD,DB_HOST);
@@ -109,18 +103,17 @@ function login(){
         $_COOKIE['email']=$email[0];
         
         */
-		
 		if($username=="admin"){
 			setcookie("username", $username, time()+3600);
+			session_start();
 			echo 3;
-		}
-		
-		else {
-		
-        setcookie("username", $username, time()+3600);
-		
-        echo 1;
-	}	
+		}elseif ($results["confirmed"]==0){
+			echo 4;
+		}else {
+			setcookie("username", $username, time()+3600);
+			session_start();
+			echo 1;
+		}	
         
     }else{
        echo 2;
@@ -130,25 +123,17 @@ function login(){
 }
 
 function check(){
-	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-	//$connect=oxci_connectci_connect(DB_USER,DB_PWD,DB_HOST) ;
+	 $connect=oxci_connectci_connect(DB_USER,DB_PWD,DB_HOST) ;
 	
-    // if (!$connect) {
-    // echo "error, couldn't connect to ".DB_HOST." database.";
-    // exit;	
-    if (!$conn) {
-	    echo "Error, couldn't connect to ".DB_TABLENAME." database.";
-	    exit;	
-	}
+    if (!$connect) {
+    echo "error, couldn't connect to ".DB_HOST." database.";
+    exit;	
+}
     $username=$_POST["username"];
     $sql="select * from users where username='{$username}'";
- //    $stmt=oci_parse($connect,$sql);
- //    $result=oci_execute($stmt);
-	// $row=oci_fetch_array($stmt);
-
-    $a = $conn->query($sql);
-    $row = oci_fetch_array($a);
-
+    $stmt=oci_parse($connect,$sql);
+    $result=oci_execute($stmt);
+	$row=oci_fetch_array($stmt);
     if($row){
         echo 1;
     }
