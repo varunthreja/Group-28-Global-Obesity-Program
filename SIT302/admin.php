@@ -92,7 +92,7 @@ body{
 	
     if (isset($_COOKIE["username"])){
        echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="#" ><span ></span>'.$_COOKIE["username"].'</a></li>
-            <li><a href="javascript:userOut()">Log out</a></li></ul>';
+            <li><a href="logout.php">Log out</a></li></ul>';
       }
     else{
 		
