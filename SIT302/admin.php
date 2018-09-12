@@ -1,6 +1,12 @@
 <?php 
- require_once "include.php" 
- 
+	require_once "include.php";
+	if (isset($_COOKIE['username']) and $_COOKIE['username']=='Admin'){
+		echo "Hello world";
+		
+	}else{
+		echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
+		exit;
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,7 +81,6 @@
 		<tr>
 			<th>User Id</th>
 			<th>User Name</th>
-			<th>Password</th>
 			<th>Name</th>
 			<th>organisiation</th>
 			<th>organisiationAddress</th>
@@ -96,7 +101,7 @@
 			if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
-					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["password"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$row["confirmed"].'</td></tr>';
+					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$row["confirmed"].'</td></tr>';
 				}
 			} else {
 				echo "0 results";
