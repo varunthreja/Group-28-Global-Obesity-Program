@@ -100,11 +100,13 @@
 	</div>
 	<div class="registerTable"> 
 		<form method="post" action="doAction.php?act=login" id="loginForm" > 
-			<input type="text" name="username" id="1" placeholder="user name" onblur="get(this.value)" class="text" required >
-			<p></p>
-			<input type="password" name="password" class="text" placeholder="password" id="123" onblur="show(this.value)"  required>
-			<p></p>
-		
+			<table>
+				<tr><h1>Login to your Account</h1></tr>
+				<tr><input type="text" name="username" id="1" placeholder="Username" onblur="get(this.value)" class="text" required ></tr>
+				<p></p>
+				<tr><input type="password" name="password" class="text" placeholder="Password" id="123" onblur="show(this.value)"  required></tr>
+				<p></p>
+			</table>
 			<div class="submit">
 				<button type="submit" id="loginButton">log in</button>
 			</div> 		
