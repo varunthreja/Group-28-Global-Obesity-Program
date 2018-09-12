@@ -1,7 +1,6 @@
 <?php 
- require_once "include.php";
-
 	require_once "include.php";
+
 	if (!isset($_COOKIE['username'])){
 		echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
 		exit;
@@ -51,48 +50,30 @@
 </head>
 <body>
 
-
-  
-    <!--  <ul class="nav nav-pills">
-    <li><a href="#">Log in</a></li>
-    <li><a href="#">Log out</a></li>
-  </ul> -->
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid"> 
-    <div class="navbar-header">
-        <a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
-    <a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
-    </div>
-  <div id="user" >
-<?php  
-
-  
-    if (isset($_COOKIE["username"])){
-       echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li>
-            <li><a href="logout.php" style="color:white">Log out</a></li></ul>';
-      }
-    else{
-    
-      echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li>
-            <li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-    }   
- 
-?>
-
-
-</div>
+	<div class="container-fluid"> 
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
+			<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
+		</div>
+		<div id="user" >
+			<?php  
+				if (isset($_COOKIE["username"])){
+				   echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+				}else{
+					echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+				}   
+			?>
+		</div>
+		<form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+			<button type="submit" class="btn btn-default">submit</button>
+		</form>
 
 
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">submit</button>
-    </form>
-
-
-    </div>
+	</div>
 </nav>
 
 <div id="page">
@@ -118,7 +99,6 @@
                         <h1>My account</h1>
                         <p class="lead">Change your personal details or your password here.</p>
                         <p class="text-muted">* field is compulsory.</p>
-<!-- change password -->
                         <h3>Change password</h3>
 
                         
@@ -166,8 +146,7 @@
      //$connect=new mysqli('localhost','root','','scrappertest');
      $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
      $sql="select * from users where username='{$username}'" ;
-     $result=$connect->query($sql);
-    
+     $result=$conn->query($sql);
      while($row=$result->fetch_assoc()){
                 $name=$row["name"];
                 $organisation=$row["organisation"];
