@@ -51,62 +51,47 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid"> 
-    <div class="navbar-header">
-        <a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
-		<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
-    </div>
-	<div id="user" >
-<?php  
-
-	
-    if (isset($_COOKIE["username"])){
-       echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li>
-            <li><a href="logout.php" style="color:white">Log out</a></li></ul>';
-      }
-    else{
-		
-      echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li>
-            <li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-    }   
- 
-?>
-
-
-</div>
-
-
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">submit</button>
-    </form>
-
-
-    </div>
+	<div class="container-fluid"> 
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
+			<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
+		</div>
+		<div id="user" >
+			<?php  
+				if (isset($_COOKIE["username"])){
+					echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+				}
+				else{
+					echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+				}   
+			?>
+		</div>
+		<form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+			<button type="submit" class="btn btn-default">submit</button>
+		</form>
+	</div>
 </nav>
 
 <div id="page">
-    <div id="header">
-      <div>
-        <a href="index.php"><img src="images/GlobalObesityLogo.png" alt="Logo" /></a>
-      </div>
-            
-      <ul> 
-        <li><a href="index.php"><span>Home</span></a></li>
-        <?php  
-			if(isset($_COOKIE["username"])){
-				echo '<li><a href="account_setting.php"><span>My Account</span></a></li>
-				<li class="current"><a href="product_detail.php"><span>Products</span></a></li>
-                <li><a href="price_analysis.php"><span>Price Analysis</span></a></li>
-                <li><a href="product_information.php"><span>Products</span></a></li>';
-			} 
-		?>
-                <li><a href="about.php"><span>About Us</span></a></li>
-      </ul>
-            
-    </div>
+	<div id="header">
+		<div>
+			<a href="index.php"><img src="images/GlobalObesityLogo.png" alt="Logo" /></a>
+		</div>
+			
+		<ul> 
+			<li><a href="index.php"><span>Home</span></a></li>
+			<?php  
+				if(isset($_COOKIE["username"])){
+					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li class="current"><a href="product_detail.php"><span>Products</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+				} 
+			?>
+			<li><a href="about.php"><span>About Us</span></a></li>
+		</ul>
+		
+	</div>
         
 <div class="main" id="showBox" >
 
@@ -127,16 +112,14 @@
 		<tbody id="table">
 			<?php 
 				$sql="select * from foodDetails";
-				$connect=oci_connect(DB_USER,DB_PWD,DB_HOST);
-				echo $_server["request_url"];
-				$stmt=oci_parse($connect,$sql);
-				oci_execute($stmt);
+				$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+				$results=$conn->query($sql);
 				$table="<script>";
 
 				echo '<tr><td><select name="foodName" id="foodName">';
 
-				while($row=oci_fetch_array($stmt)){
-					echo '<option value="'.$row[1].'">'.$row[1].'</option>';
+				while($row=$results->fetch_assoc()){
+					echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
 				}
 
 				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSizee"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
