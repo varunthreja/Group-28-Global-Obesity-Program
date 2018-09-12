@@ -1,6 +1,6 @@
 <?php 
 	require_once "include.php";
-	if (isset($_COOKIE['username']) and $_COOKIE['username']=='Admin'){
+	if (isset($_COOKIE['username']) and ($_COOKIE['username']=='Admin' or $_COOKIE['username']=='admin')){
 		echo "Hello world";
 		
 	}else{
