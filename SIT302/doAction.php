@@ -58,13 +58,6 @@ function reg(){
 	$contactNumber=htmlentities($_POST['contactNumber']);
 	$name=htmlentities($_POST['realname']);
 
-    // //Random String of salt used for everyone
-    // $salt = 'salt1024';
-    
-    # Hash password
-    // $password = md5($salt.$user_password);
-    
-    //$email=htmlentities($_POST['email']);
     $result="INSERT INTO users (username, password, name, organisation, organisationAddress, position, email, contactNumber) VALUES ('{$username}','{$password}','{$name}','{$organisiation}','{$organisiationAddress}','{$position}','{$email}',$contactNumber)";
 	echo $result;
 	# $conn->exec($result);
