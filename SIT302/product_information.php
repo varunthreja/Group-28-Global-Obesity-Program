@@ -110,13 +110,15 @@
             
       <ul> 
         <li><a href="index.php"><span>Home</span></a></li>
-        <?php  if(isset($_COOKIE["username"])){
-                    echo '<li><a href="account_setting.php"><span>My Account</span></a></li>';
-                } ?>
-                <li><a href="product_detail.php"><span>Product input</span></a></li>
-                <li><a href="price_analysis.php"><span>Price Analysis</span></a></li>
-                <li><a href="product_information.php"><span>Products</span></a></li>
-                <li><a href="about.php"><span>About Us</span></a></li>
+        <?php  
+			if(isset($_COOKIE["username"])){
+				echo '<li><a href="account_setting.php"><span>My Account</span></a></li>';
+			} 
+		?>
+		<li><a href="product_detail.php"><span>Product input</span></a></li>
+		<li><a href="price_analysis.php"><span>Price Analysis</span></a></li>
+		<li><a href="product_information.php"><span>Products</span></a></li>
+		<li><a href="about.php"><span>About Us</span></a></li>
       </ul>
             
     </div>
@@ -144,29 +146,28 @@
  
   <tbody id="table">
  <?php 
-    $page=$_REQUEST['page'];
+	if (isset($_REQUEST['page'])){
+		$page=$_REQUEST['page'];
+	}else{
+		$page=1;
+	}
     if($page==2){
     $sql="select * from foodDetails where foodID > 20 and foodID <=40";
-    }
-    if($page==3){
+    }elseif($page==3){
     $sql="select * from foodDetails where foodID > 40 and foodID <=60";
-    }
-    if($page==4){
+    }elseif($page==4){
     $sql="select * from foodDetails where foodID > 60 and foodID <=75";
-    }
-    else{
+    }else{
     $sql="select * from foodDetails where foodID <= 20";
     }
-    $connect=oci_connect(DB_USER,DB_PWD,DB_HOST);
-    $stmt=oci_parse($connect,$sql);
-    oci_execute($stmt);
+    $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+	$result=$connect->query($sql);
+	
+	while($row=$result->fetch_assoc()){
+		echo '<tr><td>'.$row["foodName"].'</td></tr>';
+	};
+
     $table="<script>";
-        while($row=oci_fetch_array($stmt)){
-        
-    echo '<tr><td>'.$row[1].'</td></tr>';
-        
-    };
-    
       $table+='</script>';
   ?>
   </tbody>
@@ -206,29 +207,6 @@
 
 
 <script type="text/javascript">
- 
-  
-  
-  
-  
-
-
-function userOut(){
-    <?php
-    setcookie("username", "", time()-3600);
-    ?>
-    
-    var s='<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" ><span class="glyphicon glyphicon-user"></span>  Register</a></li>';
-    s+='<li><a href="login.php"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-    
-    
-    //document.getElementById("user").innerHTML=s;
-    document.querySelector("#user").innerHTML=s;
-            
-    
-  }
- 
-
 
 </script>
 
