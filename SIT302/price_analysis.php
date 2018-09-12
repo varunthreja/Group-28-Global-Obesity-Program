@@ -1,6 +1,9 @@
 <?php 
- require_once "include.php" 
- 
+	require_once "include.php";
+	if (!isset($_COOKIE['username'])){
+		echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
+		exit;
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,7 +80,7 @@
   
     if (isset($_COOKIE["username"])){
        echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li>
-            <li><a href="javascript:userOut()" style="color:white">Log out</a></li></ul>';
+            <li><a href="logout.php" style="color:white">Log out</a></li></ul>';
       }
     else{
     
@@ -108,16 +111,15 @@
         <a href="index.php"><img src="images/GlobalObesityLogo.png" alt="Logo" /></a>
       </div>
             
-      <ul> 
+    <ul> 
         <li><a href="index.php"><span>Home</span></a></li>
-        <?php  if(isset($_COOKIE["username"])){
-                    echo '<li><a href="account_setting.php"><span>My Account</span></a></li>';
-                } ?>
-        <li><a href="product_detail.php"><span>Product input</span></a></li>
-                <li class="current"><a href="price_analysis.php"><span>Price Analysis</span></a></li>
-                <li><a href="product_information.php"><span>Products</span></a></li>
-                <li><a href="about.php"><span>About Us</span></a></li>
-      </ul>
+        <?php  
+			if(isset($_COOKIE["username"])){
+				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li class="current"><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+			}
+		?>
+		<li><a href="about.php"><span>About Us</span></a></li>
+    </ul>
             
     </div>
         
@@ -126,44 +128,33 @@
 <div class="showBox table-responsive" >
 
  <table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      
-      <th>Product 1</th>
-      <th>Product 2</th>
-        
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Product 1</th>
+			<th>Product 2</th>			
+		</tr>
+	</thead>
   
-<!--
-    var id=parseInt(window.location.search.slice(12));
-        if(id == ""){
-        
-        }
--->
- 
     <tbody id="table1">
- <?php 
-        $sql="select * from foodDetails";
-        $connect=oci_connect(DB_USER,DB_PWD,DB_HOST);
-        $stmt=oci_parse($connect,$sql);
-    oci_execute($stmt);
-        
-    echo '<tr><td><select name="product1" id="product1">';
-        while($row=oci_fetch_array($stmt)){
-    echo '<option value="'.$row[1].'">'.$row[1].'</option>';
-        }
-    echo '</select></td><td><select name="product2" id="product2"> <option value="none" selected></option>';
-    $sql="select * from foodDetails";
-    $connect=oci_connect(DB_USER,DB_PWD,DB_HOST);
-    $stmt=oci_parse($connect,$sql);
-    oci_execute($stmt);
-      while($row=oci_fetch_array($stmt)){
-    echo '<option value="'.$row[1].'">'.$row[1].'</option>';
-    }
-    echo '</select></td></tr>';
-       
-  ?>
+<?php 
+	$sql="select * from foodDetails";
+	$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+	$results=$conn->query($sql);
+
+	echo '<tr><td><select name="product1" id="product1">';
+	while($row=$results->fetch_assoc()){
+		echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+	}
+	echo '</select></td><td><select name="product2" id="product2"> <option value="none" selected></option>';
+	$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+	$results=$conn->query($sql);
+
+	while($row=$results->fetch_assoc()){
+	echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+	}
+	echo '</select></td></tr>';
+
+?>
 
 
          </tbody>
