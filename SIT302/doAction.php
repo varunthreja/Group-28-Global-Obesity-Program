@@ -16,6 +16,8 @@ if($act==="reg"){
 	update();
 }else if($act==="input"){
     input();
+}else if($act==="search"){
+    search();
 }
 
 function update(){
@@ -155,6 +157,16 @@ function input(){
     
 
     
+}
+
+function search(){
+    $sql=htmlentities($_POST['sql']);
+    $conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    $stmt=$conn->query($sql);
+	$results=mysqli_fetch_array($stmt);
+    if($results){
+        echo row[2].'+'.row[3];
+    }
 }
 
 ?>
