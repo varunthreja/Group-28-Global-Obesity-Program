@@ -1,6 +1,10 @@
 <?php 
- require_once "include.php" 
- 
+	require_once "include.php";
+	if (!isset($_COOKIE['username'])){
+		echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
+		exit;
+	}
+
 ?>
 <!DOCTYPE html>
 <html>
