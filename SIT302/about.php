@@ -55,8 +55,20 @@
 					} 
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
+				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 			</ul>
 		</div>
+	</div>
+	<div id="body">
+		<div style="text-align:center">
+				<p>What we eat and how much we eat influences our risk for disease and death. Poor diet is a leading cause of disease burden in Australia and 
+				globally. The price of foods and beverages is a critical driver of food choice, particularly among individuals with limited food budgets. 
+				Changing the price ratio between healthy and unhealthy foods is likely to be a critical leverage point for the improvement of population 
+				health, as has been the case with tobacco and alcohol. But actions to rebalance the price of foods towards healthier options are currently 
+				limited by a lack of understanding of the relative price and affordability of healthy and unhealthy foods and diets in Australia. Our aim 
+				is to rigorously and systematically advance the evidence required for the uptake and successful implementation of effective and equitable
+				healthy food pricing policies.</p>
+				</div>
 	</div>
 	<div id="footer">
 		<div>
