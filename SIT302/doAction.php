@@ -51,8 +51,8 @@ function reg(){
 	$password=htmlentities($_POST['password']);
 	$salt='salt1024';
 	$password=md5($salt.$password);
-	$organisiation=htmlentities($_POST['organisiation']);
-	$organisiationAddress=htmlentities($_POST['organisiationAddress']);
+	$organisiation=htmlentities($_POST['organisation']);
+	$organisiationAddress=htmlentities($_POST['organisationAddress']);
 	$position=htmlentities($_POST['position']);
 	$email=htmlentities($_POST['email']);
 	$contactNumber=htmlentities($_POST['contactNumber']);
