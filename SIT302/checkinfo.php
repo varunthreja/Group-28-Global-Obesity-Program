@@ -39,7 +39,7 @@
 			
 		}
 		else if($type == 5){
-			checkNumber();
+			checkNumber($text);
 		}
 		
 		

@@ -67,12 +67,7 @@
 				}   
 			?>
 		</div>
-		<form class="navbar-form navbar-right" role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-			<button type="submit" class="btn btn-default">submit</button>
-		</form>
+
 
 
 	</div>
@@ -93,8 +88,7 @@
 			?>
 			<li><a href="about.php"><span>About Us</span></a></li>
 			<li><a href="contactus.php"><span>Contact Us</span></a></li>
-	
-			<?php	
+			<?php
 				if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
 					echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
 				}
@@ -145,7 +139,7 @@
                         <hr>
 <!-- change user imformation -->
                         <h3>Personal details</h3>
-                        <form action="userdetail1-1.php" method="post">
+                        <form action="doAction.php?act=update" method="post">
                             
 
                            <?php
@@ -159,7 +153,7 @@
      while($row=$result->fetch_assoc()){
                 $name=$row["name"];
                 $organisation=$row["organisation"];
-                $organsiationAddress=$row["organisationAddress"];
+                $organsiationAddress=$row["organsiationAddress"];
                 $position=$row["position"];
                 $email=$row["email"];
                 $contactNumber=$row["contactNumber"];
@@ -177,7 +171,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">name *</label>
-                                            <input type="text" class="form-control" id="firstname" onkeyup ="checkinfo(this.value,1)" value='<?php echo $name; ?>' name="name" required>
+                                            <input type="text" class="form-control" id="firstname" onkeyup ="checkinfo(this.value,1)" value='<?php echo $name; ?>' name="realname" required>
                                             <p id="firstnamesuggestion"></p>
                                         </div>
                                     </div>
@@ -189,14 +183,14 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="address">Organisation *</label>
-                                            <input type="text" class="form-control" id="address" name="address" value='<?php echo $organisation; ?>' onkeyup="checkinfo(this.value,3)" required> 
+                                            <input type="text" class="form-control" id="address" name="organisation" value='<?php echo $organisation; ?>' onkeyup="checkinfo(this.value,3)" required> 
                                             <p id="addresssuggestion"></p>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="company">OrganisationAddress</label>
-                                            <input type="text" class="form-control" id="company" value='<?php echo $organsiationAddress;?>' name="company"  >
+                                            <input type="text" class="form-control" id="company" value='<?php echo $organsiationAddress;?>' name="organsiationAddress"  >
                                         </div>
                                     </div>
                                 </div>
@@ -206,14 +200,14 @@
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="city">Position</label>
-                                            <input type="text" class="form-control" id="city" name="city" value='<?php echo $position; ?>' onkeyup ="checkinfo(this.value,4)" required>
+                                            <input type="text" class="form-control" id="city" name="position" value='<?php echo $position; ?>' onkeyup ="checkinfo(this.value,4)" required>
                                             <p id="citysuggestion" class="post"></p>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="postcode">Email</label>
-                                            <input type="text" class="form-control" id="postcode" name="postcode" value='<?php echo $email; ?>' onkeyup="checkinfo(this.value,5)" required>
+                                            <input type="text" class="form-control" id="postcode" name="email" value='<?php echo $email; ?>' onkeyup="checkinfo(this.value,5)" required>
                                             <p id="postcodesuggestion" class="post"></p>
                                         </div>
                                     </div>
@@ -222,7 +216,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="phone">Contact Number *</label>
-                                            <input type="text" class="form-control" id="phone" name="telephone" value='<?php echo $contactNumber; ?>'  onkeyup="checkinfo(this.value,6)" required>
+                                            <input type="text" class="form-control" id="phone" name="contactNumber" value='<?php echo $contactNumber; ?>'  onkeyup="checkinfo(this.value,6)" required>
                                             <p id="telephonesuggestion"></p>
                                         </div>
                                     </div>
