@@ -97,12 +97,7 @@
 </div>
 
 
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">submit</button>
-    </form>
+
 
 
     </div>
@@ -133,7 +128,17 @@
             
     </div>
         
-
+<div class="search_form">    
+ <form class="navbar-form search_box" role="search">
+        <div class="form-group">
+            <input type="text" id="txt1" name="name" onkeyup="showHint(this.value)" onkeydown ="showAgain()" class="form-control" placeholder="Search">
+            <div class="suggestionsBox" id="suggestions" >
+            <div class="suggestionList" id="txtHint"></div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">submit</button>
+</form>    
+</div>
 
 
 <div class="main" id="showBox" >

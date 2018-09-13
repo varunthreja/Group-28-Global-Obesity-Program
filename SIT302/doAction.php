@@ -59,26 +59,26 @@ function update1(){
 
 function reg(){
     $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-	//apply  htmlentities function
+    //apply  htmlentities function
     $username=htmlentities($_POST['username']);
-	$password=htmlentities($_POST['password']);
-	$salt='salt1024';
-	$password=md5($salt.$password);
-	$organisiation=htmlentities($_POST['organisation']);
-	$organisiationAddress=htmlentities($_POST['organisationAddress']);
-	$position=htmlentities($_POST['position']);
-	$email=htmlentities($_POST['email']);
-	$contactNumber=htmlentities($_POST['contactNumber']);
-	$name=htmlentities($_POST['realname']);
+    $password=htmlentities($_POST['password']);
+    $salt='salt1024';
+    $password=md5($salt.$password);
+    $organisation=htmlentities($_POST['organisation']);
+    $organsiationAddress=htmlentities($_POST['organsiationAddress']);
+    $position=htmlentities($_POST['position']);
+    $email=htmlentities($_POST['email']);
+    $contactNumber=htmlentities($_POST['contactNumber']);
+    $name=htmlentities($_POST['realname']);
 
-    $result="INSERT INTO users (username, password, name, organisation, organisationAddress, position, email, contactNumber) VALUES ('{$username}','{$password}','{$name}','{$organisiation}','{$organisiationAddress}','{$position}','{$email}',$contactNumber)";
-	echo $result;
-	# $conn->exec($result);
+    $result="INSERT INTO users (username, password, name, organisation, organsiationAddress, position, email, contactNumber,confirmed) VALUES ('{$username}','{$password}','{$name}','{$organisation}','{$organsiationAddress}','{$position}','{$email}',$contactNumber,0)";
+    # $conn->exec($result);
     if (mysqli_query($conn, $result)) {
-	    echo "<script>window.location='login.php'</script>";
-	} else {
-		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
+        echo "<script>window.location='login.php'</script>";
+
+    } else {
+        echo "Error: " . $result . "<br>" . mysqli_error($conn);
+    }
     
 }
 

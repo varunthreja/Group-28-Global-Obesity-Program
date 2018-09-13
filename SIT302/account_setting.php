@@ -1,10 +1,10 @@
 <?php 
-	require_once "include.php";
+  require_once "include.php";
 
-	if (!isset($_COOKIE['username'])){
-		echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
-		exit;
-	}
+  if (!isset($_COOKIE['username'])){
+    echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
+    exit;
+  }
 
 ?>
 <!DOCTYPE html>
@@ -53,24 +53,24 @@
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container-fluid"> 
-		<div class="navbar-header">
-			<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
-			<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
-		</div>
-		<div id="user" >
-			<?php  
-				if (isset($_COOKIE["username"])){
-				   echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
-				}else{
-					echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-				}   
-			?>
-		</div>
+  <div class="container-fluid"> 
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
+      <a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
+    </div>
+    <div id="user" >
+      <?php  
+        if (isset($_COOKIE["username"])){
+           echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+        }else{
+          echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+        }   
+      ?>
+    </div>
 
 
 
-	</div>
+  </div>
 </nav>
 
 <div id="page">
@@ -80,20 +80,20 @@
       </div>
             
       <ul> 
-			<li><a href="index.php"><span>Home</span></a></li>
-			<?php  
-				if(isset($_COOKIE["username"])){
-					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
-				} 
-			?>
-			<li><a href="about.php"><span>About Us</span></a></li>
-			<li><a href="contactus.php"><span>Contact Us</span></a></li>
-			<?php
-				if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-					echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
-				}
-			?>
-		</ul>
+      <li><a href="index.php"><span>Home</span></a></li>
+      <?php  
+        if(isset($_COOKIE["username"])){
+          echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+        } 
+      ?>
+      <li><a href="about.php"><span>About Us</span></a></li>
+      <li><a href="contactus.php"><span>Contact Us</span></a></li>
+      <?php
+        if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
+          echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+        }
+      ?>
+    </ul>
             
     </div>
         
@@ -110,7 +110,7 @@
                                     <div class="form-group">
                                         <label for="password_old">Old password *</label>
                                         <input type="password" class="form-control" id="password_old" onblur="checkOldPassword(this.value)" required>
-                    <p id="oldAlert"></p>
+                                    <p id="oldAlert"></p>
                                     </div>
                                 </div>
                             </div>
@@ -253,40 +253,40 @@
 
 
 <script type="text/javascript">
-  
+   document.getElementById("changePassword").disabled=true;
 function checkinfo(text,type){
-	var  url="checkinfo.php";
-	var  data={"text":text,"type":type};
-	var  success=function(respond) {
-		if (respond==10){document.getElementById("firstnamesuggestion").innerHTML="length should be limited 3 between 10";}
-		if (respond==11){document.getElementById("firstnamesuggestion").innerHTML="";}
-		if (respond==12){document.getElementById("firstnamesuggestion").innerHTML="letter only";}
-		if (respond==20){document.getElementById("lastnamesuggestion").innerHTML="length should be limited 3 between 10";}
-		if (respond==21){document.getElementById("lastnamesuggestion").innerHTML="";}
-		if (respond==22){document.getElementById("lastnamesuggestion").innerHTML="letter only";}
-		if (respond==30){document.getElementById("addresssuggestion").innerHTML="please enter valid address ";}
-		if (respond==31){document.getElementById("addresssuggestion").innerHTML="";}
-		if (respond==40){document.getElementById("citysuggestion").innerHTML="";}
-		if (respond==41){document.getElementById("citysuggestion").innerHTML="letter and '.' only";}
-		if (respond==50){document.getElementById("postcodesuggestion").innerHTML="";}
-		if (respond==51){document.getElementById("postcodesuggestion").innerHTML="4 number only";}
-		if (respond==60){document.getElementById("telephonesuggestion").innerHTML="";}
-		if (respond==61){document.getElementById("telephonesuggestion").innerHTML="number only and please enter vaild telephone";}
-		if (respond==70){document.getElementById("emailsuggestion").innerHTML="";}
-		if (respond==71){document.getElementById("emailsuggestion").innerHTML="example@example.com";}
-		if (respond==80){document.getElementById("q").innerHTML="length should be limited 3 between 10";}
-		if (respond==81){document.getElementById("q").innerHTML="";}
-		if (respond==82){document.getElementById("q").innerHTML="letter only";}
-		if (respond==90){document.getElementById("w").innerHTML="";}
-		if (respond==91){document.getElementById("w").innerHTML="4~14 number need";}
-		if (respond==100){document.getElementById("e").innerHTML="";}
-		if (respond==101){document.getElementById("e").innerHTML="2 number need ";}
-		if (respond==110){document.getElementById("r").innerHTML="";}
-		if (respond==111){document.getElementById("r").innerHTML="4 numbers need " ;}
-		if (respond==120){document.getElementById("t").innerHTML="";}
-		if (respond==121){document.getElementById("t").innerHTML="3 numbers need";}
-	} 
-	$.post(url,data,success,'json');	
+  var  url="checkinfo.php";
+  var  data={"text":text,"type":type};
+  var  success=function(respond) {
+    if (respond==10){document.getElementById("firstnamesuggestion").innerHTML="length should be limited 3 between 10";}
+    if (respond==11){document.getElementById("firstnamesuggestion").innerHTML="";}
+    if (respond==12){document.getElementById("firstnamesuggestion").innerHTML="letter only";}
+    if (respond==20){document.getElementById("lastnamesuggestion").innerHTML="length should be limited 3 between 10";}
+    if (respond==21){document.getElementById("lastnamesuggestion").innerHTML="";}
+    if (respond==22){document.getElementById("lastnamesuggestion").innerHTML="letter only";}
+    if (respond==30){document.getElementById("addresssuggestion").innerHTML="please enter valid address ";}
+    if (respond==31){document.getElementById("addresssuggestion").innerHTML="";}
+    if (respond==40){document.getElementById("citysuggestion").innerHTML="";}
+    if (respond==41){document.getElementById("citysuggestion").innerHTML="letter and '.' only";}
+    if (respond==50){document.getElementById("postcodesuggestion").innerHTML="";}
+    if (respond==51){document.getElementById("postcodesuggestion").innerHTML="4 number only";}
+    if (respond==60){document.getElementById("telephonesuggestion").innerHTML="";}
+    if (respond==61){document.getElementById("telephonesuggestion").innerHTML="number only and please enter vaild telephone";}
+    if (respond==70){document.getElementById("emailsuggestion").innerHTML="";}
+    if (respond==71){document.getElementById("emailsuggestion").innerHTML="example@example.com";}
+    if (respond==80){document.getElementById("q").innerHTML="length should be limited 3 between 10";}
+    if (respond==81){document.getElementById("q").innerHTML="";}
+    if (respond==82){document.getElementById("q").innerHTML="letter only";}
+    if (respond==90){document.getElementById("w").innerHTML="";}
+    if (respond==91){document.getElementById("w").innerHTML="4~14 number need";}
+    if (respond==100){document.getElementById("e").innerHTML="";}
+    if (respond==101){document.getElementById("e").innerHTML="2 number need ";}
+    if (respond==110){document.getElementById("r").innerHTML="";}
+    if (respond==111){document.getElementById("r").innerHTML="4 numbers need " ;}
+    if (respond==120){document.getElementById("t").innerHTML="";}
+    if (respond==121){document.getElementById("t").innerHTML="3 numbers need";}
+  } 
+  $.post(url,data,success,'json');  
 }
 
  

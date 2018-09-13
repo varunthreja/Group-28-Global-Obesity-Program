@@ -67,14 +67,7 @@
 					echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
 				}   
 			?>
-		</div>
-		<form class="navbar-form navbar-right" role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-			<button type="submit" class="btn btn-default">submit</button>
-		</form>
-	</div>
+		
 </nav>
 
 <div id="page">
