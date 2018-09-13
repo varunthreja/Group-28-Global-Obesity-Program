@@ -87,7 +87,7 @@
 			<li><a href="index.php"><span>Home</span></a></li>
 			<?php  
 				if(isset($_COOKIE["username"])){
-					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li class="current"><a href="product_detail.php"><span>Products</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li class="current"><a href="product_detail.php"><span>Products</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
 				} 
 			?>
 			<li><a href="about.php"><span>About Us</span></a></li>

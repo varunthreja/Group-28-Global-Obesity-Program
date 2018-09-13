@@ -60,7 +60,7 @@
 		</div>
 	</div>
 	<div id="body">
-		<h1>Code needs to be inputted</h1>
+		<h1>Code will do here</h1>
 	</div>
 	<div id="footer">
 		<div>
