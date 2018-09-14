@@ -97,12 +97,7 @@
 </div>
 
 
-    <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">submit</button>
-    </form>
+
 
 
     </div>
@@ -118,7 +113,11 @@
         <li><a href="index.php"><span>Home</span></a></li>
         <?php  
 			if(isset($_COOKIE["username"])){
+<<<<<<< HEAD
 				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
+=======
+				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li class="current"><a href="product_information.php"><span>Products</span></a></li>';
+>>>>>>> 15af2edd061300f122f5f99cc3453d7830256eb9
 			} 
 		?>
 		<li><a href="about.php"><span>About Us</span></a></li>
@@ -133,7 +132,17 @@
             
     </div>
         
-
+<div class="search_form">    
+ <form class="navbar-form search_box" role="search">
+        <div class="form-group">
+            <input type="text" id="txt1" name="name" onkeyup="showHint(this.value)" onkeydown ="showAgain()" class="form-control" placeholder="Search">
+            <div class="suggestionsBox" id="suggestions" >
+            <div class="suggestionList" id="txtHint"></div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">submit</button>
+</form>    
+</div>
 
 
 <div class="main" id="showBox" >

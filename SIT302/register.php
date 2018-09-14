@@ -73,12 +73,7 @@
         ?>
       </div>
 
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">submit</button>
-      </form>
+
 
     </div>
   </nav>
@@ -124,7 +119,7 @@
                                 <p></p>
                             </div>
                             <div>
-                                <input type="text" name="organisationAddress" placeholder="organisationAddress" id="organisationAddress" required>
+                                <input type="text" name="organsiationAddress" placeholder="organsiationAddress" id="organisationAddress" required>
                                 <p></p>
                             </div>
                              <div>
