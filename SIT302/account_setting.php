@@ -80,7 +80,6 @@
       </div>
             
       <ul> 
-<<<<<<< HEAD
 			<li><a href="index.php"><span>Home</span></a></li>
 			<?php  
 				if(isset($_COOKIE["username"])){
@@ -96,24 +95,7 @@
 				}
 			?>
 		</ul>
-=======
-      <li><a href="index.php"><span>Home</span></a></li>
-      <?php  
-        if(isset($_COOKIE["username"])){
-          echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
-        } 
-      ?>
-      <li><a href="about.php"><span>About Us</span></a></li>
-      <li><a href="contactus.php"><span>Contact Us</span></a></li>
-      <?php
-        if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-          echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
-        }
-      ?>
-    </ul>
->>>>>>> 15af2edd061300f122f5f99cc3453d7830256eb9
-            
-    </div>
+      </div>
         
       <div class="a">
                     <div class="box">
@@ -171,7 +153,7 @@
      while($row=$result->fetch_assoc()){
                 $name=$row["name"];
                 $organisation=$row["organisation"];
-                $organsiationAddress=$row["organsiationAddress"];
+                $organsiationAddress=$row["organisationAddress"];
                 $position=$row["position"];
                 $email=$row["email"];
                 $contactNumber=$row["contactNumber"];

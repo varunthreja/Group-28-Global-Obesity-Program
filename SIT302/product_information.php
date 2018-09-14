@@ -113,11 +113,7 @@
         <li><a href="index.php"><span>Home</span></a></li>
         <?php  
 			if(isset($_COOKIE["username"])){
-#<<<<<<< HEAD
 				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
-#=======
-				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li class="current"><a href="product_information.php"><span>Products</span></a></li>';
-#>>>>>>> 15af2edd061300f122f5f99cc3453d7830256eb9
 			} 
 		?>
 		<li><a href="about.php"><span>About Us</span></a></li>
