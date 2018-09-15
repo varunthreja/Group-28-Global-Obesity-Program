@@ -23,7 +23,7 @@
 		  width:100%;
 		  
 		  margin:20px auto;
-		  border:2px solid ;
+		  border:2px solid darkgray ;
 		  overflow:hidden;
 		  display: flex;
 		}
@@ -44,7 +44,7 @@
 		}
 
 		body{
-			padding:70px 0px;
+			padding:0px 0px;
 		}   
 	</style>
 </head>
@@ -86,17 +86,17 @@
 				<a href="index.php"><img src="images/image_GlobalObesity.jpg" alt="Logo" /></a>
 			</div>
 			<ul>
-				<li class="current"><a href="index.php"><span>Home</span></a></li>
+				<li><a href="index.php"><span>Home</span></a></li>
 				<?php  
 					if(isset($_COOKIE["username"])){
-						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
+						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
 					} 
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 				<?php
 					if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-						echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+						echo '<li class="current"><a href="admin.php"><span>Admin Panel</span></a></li>';
 					}
 				?>
 			</ul>
@@ -131,7 +131,7 @@
 			if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
-					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$row["confirmed"].'</td></tr>';
+					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organsiationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$row["confirmed"].'</td></tr>';
 				}
 			} else {
 				echo "0 results";
@@ -144,7 +144,12 @@
 
 
 </div>
-
+<div id="footer">
+		<div>
+			<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
+			<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
+		</div>
+	</div>
 <script type="text/javascript" src="jquery.js"></script>
 
 <script type="text/javascript">
@@ -190,5 +195,6 @@ function changStatus(value){
 // }
   
 </script>
+
 </body>
 </html>

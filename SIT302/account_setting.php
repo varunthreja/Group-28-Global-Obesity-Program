@@ -47,7 +47,9 @@
   display: flex;
 
 }
-
+#header ul li a:hover span {
+    background: url(../images/bg-menu-selected-left.gif) no-repeat left top;
+}
 </style>
 </head>
 <body>
@@ -80,24 +82,24 @@
       </div>
             
       <ul> 
-			<li><a href="index.php"><span>Home</span></a></li>
-			<?php  
-				if(isset($_COOKIE["username"])){
-					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
-				} 
-			?>
-			<li><a href="about.php"><span>About Us</span></a></li>
-			<li><a href="contactus.php"><span>Contact Us</span></a></li>
-	
-			<?php	
-				if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-					echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
-				}
-			?>
-		</ul>
-      </div>
-        
-      <div class="a">
+      <li><a href="index.php"><span>Home</span></a></li>
+      <?php  
+        if(isset($_COOKIE["username"])){
+          echo '<li class="current"><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+        } 
+      ?>
+      <li><a href="about.php"><span>About Us</span></a></li>
+      <li><a href="contactus.php"><span>Contact Us</span></a></li>
+      <?php
+        if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
+          echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+        }
+      ?>
+    </ul>
+            
+    </div>
+      </div>  
+     
                     <div class="box">
                         <h1>My account</h1>
                         <p class="lead">Change your personal details or your password here.</p>
@@ -153,7 +155,7 @@
      while($row=$result->fetch_assoc()){
                 $name=$row["name"];
                 $organisation=$row["organisation"];
-                $organsiationAddress=$row["organisationAddress"];
+                $organsiationAddress=$row["organsiationAddress"];
                 $position=$row["position"];
                 $email=$row["email"];
                 $contactNumber=$row["contactNumber"];
@@ -239,11 +241,7 @@
 
 
         
-        <div id="body">
-            
-        
-    
-      
+        <div id="footer">
       <div>
         <p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
         <p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
