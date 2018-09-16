@@ -22,15 +22,28 @@ if($act==="reg"){
     search();
 }
 function update(){
-        $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-		$userID=$_POST["userID"];
-        $sql="update users set confirmed='1' where userID='{$userID}' ";
-        
-        if($connect->query($sql) === TRUE){
-            echo 1;
-        }else{
-            echo 2;
+    $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    $userID=$_POST["userID"];
+    $status="select confirmed from users where userID='{$userID}'";
+    $result = $connect->query($status);
+
+    $value="";
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        if($row["confirmed"] == 1){
+            $value = 0;
         }
+        else{
+            $value = 1;
+        }
+    }
+    
+    $sql="update users set confirmed='{$value}' where userID='{$userID}'";    
+    if($connect->query($sql) === TRUE){
+        echo 1;
+    }else{
+        echo 2;
+    }
 }
 
 function update1(){
