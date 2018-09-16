@@ -128,7 +128,7 @@
     				}
 				}
 
-				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSizee"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
+				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSize1"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
 
 				
 			?>
@@ -148,15 +148,15 @@
 		<p id="userSuggestion"></p>
 		<tbody id="table2">
 			<tr>
-				<td><input type="text" name="yourCost"></td><td><input type="text" name="comments"></td><td><input type="text" name="pricePromote"></td>
+				<td><input type="text" name="yourCost"></td><td><input type="text" name="comments"></td><td><input type="radio" value="T" name="pricePromoted">True<input type="radio" value="F" name="pricePromoted">False</td>
 			</tr>
 		</tbody>
 	</table>
-</div>
-</div>
-<div class="button_line">
 	<button type="submit" class="Input_button" id="button">Input</button>
+</form>
 </div>
+</div>
+
        
 <div id="footer">
 	<div>

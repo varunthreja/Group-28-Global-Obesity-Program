@@ -162,16 +162,46 @@ function check(){
 function input(){
     //apply  htmlentities function
     $foodName=htmlentities($_POST['foodName']);
-    $sbrand=htmlentities($_POST['sbrand']);
-    $ybrand=htmlentities($_POST['organisation']);
-    $ssize=htmlentities($_POST['ssize']);
-    $ysize=htmlentities($_POST['position']);
+    $brand=htmlentities($_POST['ybrand']);
+    $servingSize=htmlentities($_POST['ysize']);
     $foodSize=htmlentities($_POST['foodSize']);
-    $yourCost=htmlentities($_POST['yourCost']);
+    $price=htmlentities($_POST['yourCost']);
     $comments=htmlentities($_POST['comments']);
-    $pricePromote=htmlentities($_POST['pricePromote']);
-   echo $foodName;
+    $pricePromoted=htmlentities($_POST['pricePromoted']);
+    $pricePer=1;
+    $servingSize=$servingSize.$foodSize;
+    $conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    $collectionDate=date("Y-m-d")." ".date("H:i:s");
+    $sql="select * from fooddetails where foodName ='{$foodName}'";
+    $stmt=$conn->query($sql);
+    $results=mysqli_fetch_array($stmt);
+    if($results){
+        
+       $foodID=$results["foodID"];
+    }
+    else {
+    $foodName1='"'.$foodName.'"';
+    $sql="select * from fooddetails where foodName ='{$foodName1}'";
+    $stmt=$conn->query($sql);
+    $results=mysqli_fetch_array($stmt);
+    $foodID=$results["foodID"];
 }
+
+
+
+
+    $sql="INSERT INTO main (foodID, collectionDate, brand, servingSize, price, pricePer, pricePromoted,comments) VALUES ('{$foodID}','{$collectionDate}','{$brand}','{$servingSize}','{$price}','{$pricePer}','F','{$comments}')";
+
+
+    if(mysqli_query($conn, $sql)){
+        
+      echo "<script>window.location='product_detail.php'</script>";
+    }
+}
+
+
+
+
 
 function search(){
     $foodName=htmlentities($_POST['foodName']);
