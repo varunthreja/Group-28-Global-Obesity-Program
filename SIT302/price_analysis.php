@@ -42,7 +42,7 @@
   width:100%;
   
   margin:20px auto;
-  border:2px solid ;
+  border:2px solid darkgray ;
   overflow:hidden;
   display: flex;
 
@@ -126,7 +126,7 @@
     </ul>
             
     </div>
-        
+   </div>     
 <div class="main" id="showBox" >
 
 <div class="showBox table-responsive" >
@@ -209,7 +209,7 @@
 
 
         
-        <div id="body">
+        <div id="footer">
             
         
     

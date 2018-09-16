@@ -12,7 +12,7 @@ $con = MySQLi_connect(
  
    "", //Database password.
  
-   "scrappertest" //Database name or anything you would like to call it.
+   "user_detail" //Database name or anything you would like to call it.
  
 );
  

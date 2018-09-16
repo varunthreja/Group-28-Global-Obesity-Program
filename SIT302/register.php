@@ -119,7 +119,7 @@
                                 <p></p>
                             </div>
                             <div>
-                                <input type="text" name="organsiationAddress" placeholder="organsiationAddress" id="organisationAddress" required>
+                                <input type="text" name="organisationAddress" placeholder="organisationAddress" id="organisationAddress" required>
                                 <p></p>
                             </div>
                              <div>

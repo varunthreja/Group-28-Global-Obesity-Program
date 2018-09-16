@@ -1,6 +1,5 @@
 <?php 
  require_once "include.php" 
- 
 ?>
 <!DOCTYPE php>
 <php>
@@ -51,6 +50,11 @@
 				?>
 				<li class="current"><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
+				<?php
+			if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
+				echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+			}
+		?>
 			</ul>
 		</div>
 	</div>

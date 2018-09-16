@@ -21,7 +21,6 @@ if($act==="reg"){
 }else if($act==="search"){
     search();
 }
-
 function update(){
         $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 		$userID=$_POST["userID"];
@@ -54,12 +53,12 @@ function update1(){
     } else {
         echo "Error: " . $result . "<br>" . mysqli_error($conn);
     }
-       
 }
 
 function reg(){
     $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
     //apply  htmlentities function
+    $userID=htmlentities($_POST['userID']);
     $username=htmlentities($_POST['username']);
     $password=htmlentities($_POST['password']);
     $salt='salt1024';
@@ -71,7 +70,7 @@ function reg(){
     $contactNumber=htmlentities($_POST['contactNumber']);
     $name=htmlentities($_POST['realname']);
 
-    $result="INSERT INTO users (username, password, name, organisation, organsiationAddress, position, email, contactNumber,confirmed) VALUES ('{$username}','{$password}','{$name}','{$organisation}','{$organsiationAddress}','{$position}','{$email}',$contactNumber,0)";
+    $result="INSERT INTO users (userID, username, password, name, organisation, organsiationAddress, position, email, contactNumber,confirmed) VALUES ('{$userID}','{$username}','{$password}','{$name}','{$organisation}','{$organsiationAddress}','{$position}','{$email}',$contactNumber,0)";
     # $conn->exec($result);
     if (mysqli_query($conn, $result)) {
         echo "<script>window.location='login.php'</script>";
@@ -147,8 +146,6 @@ function check(){
         echo 2;
     }
 }
-
-
 function input(){
     //apply  htmlentities function
     $foodName=htmlentities($_POST['foodName']);
@@ -161,7 +158,6 @@ function input(){
     $comments=htmlentities($_POST['comments']);
     $pricePromote=htmlentities($_POST['pricePromote']);
    echo $foodName;
-    
 }
 
 function search(){
