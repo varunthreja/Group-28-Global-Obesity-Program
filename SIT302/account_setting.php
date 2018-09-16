@@ -155,7 +155,7 @@
      while($row=$result->fetch_assoc()){
                 $name=$row["name"];
                 $organisation=$row["organisation"];
-                $organsiationAddress=$row["organsiationAddress"];
+                $organisationAddress=$row["organisationAddress"];
                 $position=$row["position"];
                 $email=$row["email"];
                 $contactNumber=$row["contactNumber"];
@@ -191,8 +191,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="company">OrganisationAddress</label>
-                                            <input type="text" class="form-control" id="company" value='<?php echo $organsiationAddress;?>' name="organsiationAddress"  >
+                                            <label for="company">Organisation Address</label>
+                                            <input type="text" class="form-control" id="company" value='<?php echo $organisationAddress;?>' name="organisationAddress"  >
                                         </div>
                                     </div>
                                 </div>
