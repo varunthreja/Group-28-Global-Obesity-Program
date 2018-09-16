@@ -101,37 +101,37 @@
    <form method="post" action="doAction.php?act=reg" id="myForm" > 
   
                             <div>
-                                <input type="text" name="username" placeholder="user name" id="username" required>
+                                <input type="text" onblur="validate(this.value, 'username')" name="username" placeholder="User name" id="username" required>
                                 <p></p>
                             </div>
                            
                             <div>
-                                <input type="password" name="password" placeholder="password" id="password"  required>
+                                <input type="password" onblur="validate(this.value, 'password')" name="password" placeholder="Password" id="password"  required>
                                 <p id="passwordSuggestion" class="error"></p>
                             </div>
               <div>
-                                <input type="text" name="realname" placeholder="real name" id="realname" required>
+                                <input type="text" onblur="validate(this.value, 'name')" name="realname" placeholder="Full name" id="realname" required>
                                 <p></p>
                             </div>
             
                 <div>
-                                <input type="text" name="organisation" placeholder="organisation" id="organisation" required>
+                                <input type="text" onblur="validate(this.value, 'organisation')" name="organisation" placeholder="Organisation" id="organisation" required>
                                 <p></p>
                             </div>
                             <div>
-                                <input type="text" name="organisationAddress" placeholder="organisationAddress" id="organisationAddress" required>
+                                <input type="text" onblur="validate(this.value, 'organisationAddress')" name="organisationAddress" placeholder="Organisation Address" id="organisationAddress" required>
                                 <p></p>
                             </div>
                              <div>
-                                <input type="text" name="position" placeholder="position" id="position" required>
+                                <input type="text" onblur="validate(this.value, 'position')" name="position" placeholder="position" id="position" required>
                                 <p></p>
                             </div>
                            <div>
-                                <input type="email" name="email" placeholder="email" id="email" required>
+                                <input type="email" onblur="validate(this.value, 'email')" name="email" placeholder="email" id="email" required>
                                 <p></p>
                             </div>
                              <div>
-                                <input type="number" name="contactNumber" placeholder="contactNumber" id="contactNumber" required>
+                                <input type="text" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder="contactNumber" id="contactNumber" maxlength="10" required>
                                 <p></p>
                             </div>
               
@@ -213,10 +213,10 @@
   alert(1);
      time=setTimeout(function(){
      check(name.value,1);
-      },1000);
-  
+      },1000); 
 
   });
+    
   organisation.addEventListener("keyup",function(){
      if(typeof time=="number"){
       clearTimeout(time);
@@ -282,11 +282,11 @@
       }
       else if(respond==11){
         
-        document.getElementById("userSuggestion").innerHTML="The username needs to be at least 5 characters long";
+        document.getElementById("userSuggestion").innerHTML="The username needs to be between 4 to 20 characters long";
         document.getElementById("button").disabled=true;
       }
       else if(respond==12){
-        document.getElementById("userSuggestion").innerHTML="Only letters and spaces are allowed for the username";
+        document.getElementById("userSuggestion").innerHTML="The username should only contain alphanumeric characters and hypens";
         document.getElementById("button").disabled=true;
       }
       else if(respond==20){
@@ -296,11 +296,11 @@
       }
       else if(respond==21){
         
-        document.getElementById("userSuggestion").innerHTML="The password needs to be at least 6 characters long";
+        document.getElementById("userSuggestion").innerHTML="The password should only be between 6 to 32 characters long";
         document.getElementById("button").disabled=true;
       }
       else if(respond==22){
-        document.getElementById("userSuggestion").innerHTML="Only alphanumeric characters are allowed for the password";
+        document.getElementById("userSuggestion").innerHTML="The password can only be 6 to 32 characters containing alphanumeric characters and hypens";
         document.getElementById("button").disabled=true;
       }
       else if(respond==30){
@@ -310,11 +310,11 @@
       }
       else if(respond==31){
         
-        document.getElementById("userSuggestion").innerHTML="The organisation needs to be at least 2 characters long";
+        document.getElementById("userSuggestion").innerHTML="The organisation should only be between 2 to 20 characters long";
         document.getElementById("button").disabled=true;
       }
       else if(respond==32){
-        document.getElementById("userSuggestion").innerHTML="Only alphanumeric characters, spaces and dashes are allowed for the organisation";
+        document.getElementById("userSuggestion").innerHTML="The organisation can only contain alphanumeric characters, hypens and spaces";
         document.getElementById("button").disabled=true;
       }
       else if(respond==40){
@@ -324,11 +324,11 @@
       }
       else if(respond==41){
         
-        document.getElementById("userSuggestion").innerHTML="The position needs to be at least 2 characters";
+        document.getElementById("userSuggestion").innerHTML="The position should only be between 2 to 200 characters long";
         document.getElementById("button").disabled=true;
       }
       else if(respond==42){
-        document.getElementById("userSuggestion").innerHTML="Only letters and spaces are allowed for the position";
+        document.getElementById("userSuggestion").innerHTML="The position can only be 2 to 200 characters containing alphanumeric characters, hypens and spaces";
         document.getElementById("button").disabled=true;
       }
       else if(respond==52){
@@ -340,13 +340,192 @@
         document.getElementById("button").disabled=false;
       }
       else if(respond==51){
-        document.getElementById("userSuggestion").innerHTML="Only 10 numbers are allowed for the contact number";
+        document.getElementById("userSuggestion").innerHTML="The contact number can only contain 10 numbers";
         document.getElementById("button").disabled=true;
       }
     }
     $.post(url,data,success,"json");
   }
 
+function isEmpty(value){
+    value = value.trim();
+    var valid = false;
+    if(value != ""){
+      valid = true;
+    }
+    return valid;
+}
+
+function isValid(value){
+    value = value.trim();
+    var valid = false;
+    if(value.length >= 2){
+      valid = true;
+    }
+    return valid;
+}
+
+function validate(value, prefix){
+    var status = false;
+    var id = "userSuggestion";
+    switch (prefix){
+      case 'username':
+        if(isEmpty(value)){
+          if(isValid(value)){
+            if(/[a-zA-Z0-9\-]{4,20}$/.test(value)){
+              status = true;
+              document.getElementById(id).innerHTML = "";
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " can only contain alphanumeric characters, hypens and spaces";
+            }  
+          }
+          else{
+            document.getElementById(id).innerHTML = "The " + prefix + " should only be between 4 to 20 characters long";           
+          }
+        }
+        else {      
+          document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+        }
+        break;
+      case "password":
+        if(isEmpty(value)){
+            if(isValid(value)){
+              if(/[0-9\w\-]{6,32}$/.test(value)){
+                status = true;
+                document.getElementById(id).innerHTML = "";
+              }
+              else{
+                document.getElementById(id).innerHTML = "The " + prefix + " can only be 6 to 32 characters containing alphanumeric characters and hypens";
+              }  
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " should only be between 6 to 32 characters long";           
+            }
+          }
+          else {      
+            document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+          }
+        break;
+      case "name":
+        if(isEmpty(value)){
+            if(isValid(value)){
+              if(/^[A-Za-z ]{2,100}$/.test(value)){
+                status = true;
+                document.getElementById(id).innerHTML = "";
+              }
+              else{
+                document.getElementById(id).innerHTML = "The " + prefix + " can only contain letters and spaces";
+              }  
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " should only be between 2 to 100 characters long";           
+            }
+          }
+          else {      
+            document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+          }
+        break;
+      case "organisation":
+        if(isEmpty(value)){
+            if(isValid(value)){
+              if(/^[0-9A-Za-z -]{2,20}$/.test(value)){
+                status = true;
+                document.getElementById(id).innerHTML = "";
+              }
+              else{
+                document.getElementById(id).innerHTML = "The " + prefix + " can only contain alphanumeric characters, hypens and spaces";
+              }  
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " should only be between 2 to 20 characters long";           
+            }
+          }
+          else {      
+            document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+          }
+        break;
+    
+    case "organisationAddress":
+        if(isEmpty(value)){
+            if(isValid(value)){
+              if(/^[0-9A-Za-z -]{4,200}$/.test(value)){
+                status = true;
+                document.getElementById(id).innerHTML = "";
+              }
+              else{
+                document.getElementById(id).innerHTML = "The " + prefix + " can only contain alphanumeric characters, hypens and spaces";
+              }  
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " should only be between 2 to 200 characters long";           
+            }
+          }
+          else {      
+            document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+          }
+        break;
+    case "position":
+        if(isEmpty(value)){
+            if(isValid(value)){
+              if(/^[A-Za-z ]{4,50}$/.test(value)){
+                status = true;
+                document.getElementById(id).innerHTML = "";
+              }
+              else{
+                document.getElementById(id).innerHTML = "The " + prefix + " can only be 2 to 200 characters containing alphanumeric characters, hypens and spaces";
+              }  
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " should only be between 2 to 200 characters long";           
+            }
+          }
+          else {      
+            document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+          }
+        break;
+    case "email":
+        if(isEmpty(value)){
+            if(isValid(value)){
+              if(/^[a-zA-Z.0-9_-]+@[a-zA-Z]+\.[a-zA-Z.]+$/.test(value)){
+                status = true;
+                document.getElementById(id).innerHTML = "";
+              }
+              else{
+                document.getElementById(id).innerHTML = "The " + prefix + " can only contain alphanumeric characters, periods, hypens, spaces and underscores";
+              }  
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " should only be between 4 to 50 characters long";           
+            }
+          }
+          else {      
+            document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+          }
+        break;
+    case "contactNumber":
+        if(isEmpty(value)){
+            if(isValid(value)){
+              if(/^[0-9]{10}$/.test(value)){
+                status = true;
+                document.getElementById(id).innerHTML = "";
+              }
+              else{
+                document.getElementById(id).innerHTML = "The " + prefix + " can only contain 10 numbers";
+              }  
+            }
+            else{
+              document.getElementById(id).innerHTML = "The " + prefix + " can only contain 10 numbers";           
+            }
+          }
+          else {      
+            document.getElementById(id).innerHTML = "The " + prefix + " cannot be empty nor be whitespace";
+          }
+        break;
+    }
+
+    return status;
+}
     
 
 

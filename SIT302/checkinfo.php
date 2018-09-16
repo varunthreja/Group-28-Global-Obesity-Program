@@ -24,7 +24,7 @@
 		}
 		if ($type==3){
 			
-			checkOrganisiation($text);
+			checkOrganisation($text);
 			
 			
 			
@@ -106,9 +106,9 @@
 }
 
 function checkPassword($text){
-	$regex = '/^[\w\s ]+$/';
+	$regex = '/^[0-9\w-]+$/';
 
-	if (preg_match('/^[\w\s ]+$/',$text)){       
+	if (preg_match($regex,$text)){       
 		if (strlen($text)>5&&strlen($text)<32){
 			echo 20;
 		}

@@ -38,7 +38,7 @@
 		.main{
 			width:100%;
 			margin:20px auto;
-			border:2px solid ;
+			border:2px solid darkgray ;
 			overflow:hidden;
 			display: flex;
 		}
@@ -80,7 +80,7 @@
 			<li><a href="index.php"><span>Home</span></a></li>
 			<?php  
 				if(isset($_COOKIE["username"])){
-					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li class="current"><a href="product_detail.php"><span>Products</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
+					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li class="current"><a href="product_detail.php"><span>Products</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
 				} 
 			?>
 			<li><a href="about.php"><span>About Us</span></a></li>
@@ -94,7 +94,7 @@
 		</ul>
 		
 	</div>
-        
+      </div>  
 <div class="main" id="showBox" >
 
 <div class="showBox table-responsive" >
@@ -116,17 +116,21 @@
 				$sql="select * from foodDetails";
 				$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 				$results=$conn->query($sql);
-				$table="<script>";
-
-				echo '<tr><td><select name="foodName" id="foodName">';
+				echo '<tr><td><select name="foodName" id="foodName"><option value=""></option>';
 
 				while($row=$results->fetch_assoc()){
-					echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+					 if($row["foodName"][0]=='"')
+					{
+     					 echo '<option value='.$row["foodName"].'>'.$row["foodName"].'</option>';
+    				}
+   				 else {
+     					 echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+    				}
 				}
 
-				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSizee"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
+				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSize1"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
 
-				$table+='</script>';
+				
 			?>
 		</tbody>
 	</table>
@@ -144,80 +148,101 @@
 		<p id="userSuggestion"></p>
 		<tbody id="table2">
 			<tr>
-				<td><input type="text" name="yourCost"></td><td><input type="text" name="comments"></td><td><input type="text" name="pricePromote"></td>
+				<td><input type="text" name="yourCost"></td><td><input type="text" name="comments"></td><td><input type="radio" value="T" name="pricePromoted">True<input type="radio" value="F" name="pricePromoted">False</td>
 			</tr>
 		</tbody>
 	</table>
-</div>
-</div>
-<div class="button_line">
 	<button type="submit" class="Input_button" id="button">Input</button>
+</form>
 </div>
+</div>
+
        
-<div id="body">
+<div id="footer">
 	<div>
 		<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
 		<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
 	</div>
 </div>
 
-
 <script type="text/javascript">
-  var brand=document.getElementById("specificBrand");
-  var size=document.getElementById("specificSize");
+	var foodName;
+    $("#foodName").change(function(){
 
-	brand.addEventListener("keyup",function(){
-     if(typeof time=="number"){
-      clearTimeout(time);
-      }
-  alert(1);
-     time=setTimeout(function(){
-     check(brand.value,3);
-      },1000);
-  
-
-  });
-
-  size.addEventListener("keyup",function(){
-     if(typeof time=="number"){
-      clearTimeout(time);
-      }
-  alert(1);
-     time=setTimeout(function(){
-     check(size.value,3);
-      },1000);
-  
-
-  });
-  
-  
-function check(value,type){
-    var url="checkinfo.php";
-    var data={"text":value,"type":type};
-    
-    
-    
+    foodName=$("#foodName").val();
+    var url="doAction.php?act=search";
+    var data={"foodName":foodName};
     var success=function(respond){
+    	if(respond){
+    		var info=respond.split("+");
+    		var brand=document.getElementById("specificBrand");
+  			var size=document.getElementById("specificSize");
+  			brand.value=info[0];
+  			size.value=info[1];
+    	}
+ 	 }
+  $.post(url,data,success,'json');
+  
+ });
+
+// function search(productName){
+  
+ 
+// }
+
+
+// 	brand.addEventListener("keyup",function(){
+//      if(typeof time=="number"){
+//       clearTimeout(time);
+//       }
+//   alert(1);
+//      time=setTimeout(function(){
+//      check(brand.value,3);
+//       },1000);
+  
+
+//   });
+
+//   size.addEventListener("keyup",function(){
+//      if(typeof time=="number"){
+//       clearTimeout(time);
+//       }
+//   alert(1);
+//      time=setTimeout(function(){
+//      check(size.value,3);
+//       },1000);
+  
+
+//   });
+  
+  
+// function check(value,type){
+//     var url="checkinfo.php";
+//     var data={"text":value,"type":type};
+    
+    
+    
+//     var success=function(respond){
       
      
-      if(respond==30){
+//       if(respond==30){
         
-        document.getElementById("userSuggestion").innerHTML="";
-        document.getElementById("button").disabled=false;
-      }
-      else if(respond==31){
+//         document.getElementById("userSuggestion").innerHTML="";
+//         document.getElementById("button").disabled=false;
+//       }
+//       else if(respond==31){
         
-        document.getElementById("userSuggestion").innerHTML="more than 5 less than 30";
-        document.getElementById("button").disabled=true;
-      }
-      else if(respond==32){
-        document.getElementById("userSuggestion").innerHTML="letters numbers spaces - only";
-        document.getElementById("button").disabled=true;
-      }
+//         document.getElementById("userSuggestion").innerHTML="more than 5 less than 30";
+//         document.getElementById("button").disabled=true;
+//       }
+//       else if(respond==32){
+//         document.getElementById("userSuggestion").innerHTML="letters numbers spaces - only";
+//         document.getElementById("button").disabled=true;
+//       }
       
-    }
-    $.post(url,data,success,"json");
-  }
+//     }
+//     $.post(url,data,success,"json");
+//   }
 
 </script>
 

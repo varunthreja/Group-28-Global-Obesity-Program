@@ -17,21 +17,33 @@ if($act==="reg"){
 }else if($act==="input"){
     input();
 }else if($act==="update1"){
-    update();
+    update1();
 }else if($act==="search"){
     search();
 }
-
 function update(){
-        $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-		$userID=$_POST["userID"];
-        $sql="update users set confirmed='1' where userID='{$userID}' ";
-        
-        if($connect->query($sql) === TRUE){
-            echo 1;
-        }else{
-            echo 2;
+    $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    $userID=$_POST["userID"];
+    $status="select confirmed from users where userID='{$userID}'";
+    $result = $connect->query($status);
+
+    $value="";
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        if($row["confirmed"] == 1){
+            $value = 0;
         }
+        else{
+            $value = 1;
+        }
+    }
+    
+    $sql="update users set confirmed='{$value}' where userID='{$userID}'";    
+    if($connect->query($sql) === TRUE){
+        echo 1;
+    }else{
+        echo 2;
+    }
 }
 
 function update1(){
@@ -39,7 +51,7 @@ function update1(){
     //apply  htmlentities function
     $username=$_COOKIE["username"];
     $organisation=htmlentities($_POST['organisation']);
-    $organsiationAddress=htmlentities($_POST['organisationAddress']);
+    $organisationAddress=htmlentities($_POST['organisationAddress']);
     $position=htmlentities($_POST['position']);
     $email=htmlentities($_POST['email']);
     $contactNumber=htmlentities($_POST['contactNumber']);
@@ -54,12 +66,12 @@ function update1(){
     } else {
         echo "Error: " . $result . "<br>" . mysqli_error($conn);
     }
-       
 }
 
 function reg(){
     $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
     //apply  htmlentities function
+    //$userID=htmlentities($_POST['userID']);
     $username=htmlentities($_POST['username']);
     $password=htmlentities($_POST['password']);
     $salt='salt1024';
@@ -147,22 +159,49 @@ function check(){
         echo 2;
     }
 }
-
-
 function input(){
     //apply  htmlentities function
     $foodName=htmlentities($_POST['foodName']);
-    $sbrand=htmlentities($_POST['sbrand']);
-    $ybrand=htmlentities($_POST['organisiation']);
-    $ssize=htmlentities($_POST['ssize']);
-    $ysize=htmlentities($_POST['position']);
+    $brand=htmlentities($_POST['ybrand']);
+    $servingSize=htmlentities($_POST['ysize']);
     $foodSize=htmlentities($_POST['foodSize']);
-    $yourCost=htmlentities($_POST['yourCost']);
+    $price=htmlentities($_POST['yourCost']);
     $comments=htmlentities($_POST['comments']);
-    $pricePromote=htmlentities($_POST['pricePromote']);
-   echo $foodName;
-    
+    $pricePromoted=htmlentities($_POST['pricePromoted']);
+    $pricePer=1;
+    $servingSize=$servingSize.$foodSize;
+    $conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    $collectionDate=date("Y-m-d")." ".date("H:i:s");
+    $sql="select * from fooddetails where foodName ='{$foodName}'";
+    $stmt=$conn->query($sql);
+    $results=mysqli_fetch_array($stmt);
+    if($results){
+        
+       $foodID=$results["foodID"];
+    }
+    else {
+    $foodName1='"'.$foodName.'"';
+    $sql="select * from fooddetails where foodName ='{$foodName1}'";
+    $stmt=$conn->query($sql);
+    $results=mysqli_fetch_array($stmt);
+    $foodID=$results["foodID"];
 }
+
+
+
+
+    $sql="INSERT INTO main (foodID, collectionDate, brand, servingSize, price, pricePer, pricePromoted,comments) VALUES ('{$foodID}','{$collectionDate}','{$brand}','{$servingSize}','{$price}','{$pricePer}','F','{$comments}')";
+
+
+    if(mysqli_query($conn, $sql)){
+        
+      echo "<script>window.location='product_detail.php'</script>";
+    }
+}
+
+
+
+
 
 function search(){
     $foodName=htmlentities($_POST['foodName']);
@@ -171,7 +210,16 @@ function search(){
     $stmt=$conn->query($sql);
     $results=mysqli_fetch_array($stmt);
     if($results){
-        echo row["foodSpecificBrand"].'+'.row["servingSize"];
+        
+        echo '"'.$results["foodSpecificBrand"].'+'.$results["servingSize"].'"';
+    }
+    $foodName='"'.$foodName.'"';
+    $sql="select * from fooddetails where foodName ='{$foodName}'";
+    $stmt=$conn->query($sql);
+    $results=mysqli_fetch_array($stmt);
+    if($results){
+        
+        echo '"'.$results["foodSpecificBrand"].'+'.$results["servingSize"].'"';
     }
 }
 

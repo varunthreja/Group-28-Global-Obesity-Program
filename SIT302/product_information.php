@@ -42,7 +42,7 @@
 .main{
   width:50%;
   margin:20px auto;
-  border:2px solid ;
+  border:2px solid darkgray ;
   overflow:hidden;
   display: flex;
 
@@ -113,7 +113,7 @@
         <li><a href="index.php"><span>Home</span></a></li>
         <?php  
 			if(isset($_COOKIE["username"])){
-				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
+				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li class="current"><a href="product_information.php"><span>Products</span></a></li>';
 			} 
 		?>
 		<li><a href="about.php"><span>About Us</span></a></li>
@@ -127,7 +127,7 @@
       </ul>
             
     </div>
-        
+    </div>    
 <div class="search_form">    
  <form class="navbar-form search_box" role="search">
         <div class="form-group">
@@ -212,7 +212,7 @@
 
 
         
-    <div id="body">
+    <div id="footer">
       <div>
         <p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
         <p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
