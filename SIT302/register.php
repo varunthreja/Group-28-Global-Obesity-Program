@@ -131,7 +131,7 @@
                                 <p></p>
                             </div>
                              <div>
-                                <input type="number" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder="contactNumber" id="contactNumber" required>
+                                <input type="text" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder="contactNumber" id="contactNumber" maxlength="10" required>
                                 <p></p>
                             </div>
               
