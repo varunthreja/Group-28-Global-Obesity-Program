@@ -209,7 +209,7 @@ create table main(
 	pricePer varchar(20),
 	pricePromoted char(1),
 	comments varchar(200),
-	CONSTRAINT pk_main PRIMARY KEY(foodID),
+	CONSTRAINT pk_main PRIMARY KEY(foodID，collectionDate),
 	CONSTRAINT fk_foodID FOREIGN KEY (foodID) REFERENCES foodDetails(foodID)
 );
 
