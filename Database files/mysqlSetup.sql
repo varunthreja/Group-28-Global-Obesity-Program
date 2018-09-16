@@ -209,8 +209,8 @@ create table main(
 	pricePer varchar(20),
 	pricePromoted char(1),
 	comments varchar(200),
-	CONSTRAINT pk_main PRIMARY KEY(foodID, collectionID),
-	CONSTRAINT fk_foodID FOREIGN KEY (foodID) REFERENCES foodDetails(foodID),
+	CONSTRAINT pk_main PRIMARY KEY(foodID),
+	CONSTRAINT fk_foodID FOREIGN KEY (foodID) REFERENCES foodDetails(foodID)
 );
 
 LOAD DATA LOCAL INFILE 'C:/Users/Jake/OneDrive - Deakin University/Group 28/Jake/MYSQL Files/testData.csv'
