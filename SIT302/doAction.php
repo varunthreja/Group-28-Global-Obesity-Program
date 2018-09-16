@@ -180,8 +180,16 @@ function search(){
     $stmt=$conn->query($sql);
     $results=mysqli_fetch_array($stmt);
     if($results){
-        echo 1;
-        echo row["foodSpecificBrand"].'+'.row["servingSize"];
+        
+        echo '"'.$results["foodSpecificBrand"].'+'.$results["servingSize"].'"';
+    }
+    $foodName='"'.$foodName.'"';
+    $sql="select * from fooddetails where foodName ='{$foodName}'";
+    $stmt=$conn->query($sql);
+    $results=mysqli_fetch_array($stmt);
+    if($results){
+        
+        echo '"'.$results["foodSpecificBrand"].'+'.$results["servingSize"].'"';
     }
 }
 

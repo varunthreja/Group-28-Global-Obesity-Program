@@ -116,23 +116,21 @@
 				$sql="select * from foodDetails";
 				$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 				$results=$conn->query($sql);
-				$table="<script>";
-
-				echo '<tr><td><select name="foodName" id="foodName">';
+				echo '<tr><td><select name="foodName" id="foodName"><option value=""></option>';
 
 				while($row=$results->fetch_assoc()){
-					 if(strpos($row["foodName"],'"')==-1)
+					 if($row["foodName"][0]=='"')
 					{
-     					 echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+     					 echo '<option value='.$row["foodName"].'>'.$row["foodName"].'</option>';
     				}
    				 else {
-     					 echo '<option value='.$row["foodName"].'>'.$row["foodName"].'</option>';
+     					 echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
     				}
 				}
 
 				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSizee"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
 
-				$table+='</script>';
+				
 			?>
 		</tbody>
 	</table>
@@ -173,22 +171,25 @@
 
     foodName=$("#foodName").val();
     var url="doAction.php?act=search";
-    alert(1);
     var data={"foodName":foodName};
-    alert(1);
     var success=function(respond){
-
+    	if(respond){
+    		var info=respond.split("+");
+    		var brand=document.getElementById("specificBrand");
+  			var size=document.getElementById("specificSize");
+  			brand.value=info[0];
+  			size.value=info[1];
+    	}
  	 }
   $.post(url,data,success,'json');
-  alert(1);
+  
  });
 
 // function search(productName){
   
  
 // }
-//   var brand=document.getElementById("specificBrand");
-//   var size=document.getElementById("specificSize");
+
 
 // 	brand.addEventListener("keyup",function(){
 //      if(typeof time=="number"){
