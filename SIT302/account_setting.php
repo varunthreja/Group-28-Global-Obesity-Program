@@ -141,7 +141,7 @@
                         <hr>
 <!-- change user imformation -->
                         <h3>Personal details</h3>
-                        <form action="doAction.php?act=update" method="post">
+                        <form action="doAction.php?act=update1" method="post">
                             
 
                            <?php

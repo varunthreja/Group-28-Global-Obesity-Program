@@ -17,7 +17,7 @@ if($act==="reg"){
 }else if($act==="input"){
     input();
 }else if($act==="update1"){
-    update();
+    update1();
 }else if($act==="search"){
     search();
 }
@@ -51,13 +51,13 @@ function update1(){
     //apply  htmlentities function
     $username=$_COOKIE["username"];
     $organisation=htmlentities($_POST['organisation']);
-    $organsationAddress=htmlentities($_POST['organsationAddress']);
+    $organisationAddress=htmlentities($_POST['organisationAddress']);
     $position=htmlentities($_POST['position']);
     $email=htmlentities($_POST['email']);
     $contactNumber=htmlentities($_POST['contactNumber']);
     $name=htmlentities($_POST['realname']);
 
-    $result="update users set name='{$name}',organisation='{$organisation}',organsationAddress='{$organsationAddress}',position='{$position}',email='{$email}',contactNumber='{$contactNumber}' where username='{$username}';";
+    $result="update users set name='{$name}',organisation='{$organisation}',organisationAddress='{$organisationAddress}',position='{$position}',email='{$email}',contactNumber='{$contactNumber}' where username='{$username}';";
     # $conn->exec($result);
     if (mysqli_query($conn, $result)) {
         
