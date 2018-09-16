@@ -101,25 +101,25 @@
    <form method="post" action="doAction.php?act=reg" id="myForm" > 
   
                             <div>
-                                <input type="text" name="username" placeholder="user name" id="username" required>
+                                <input type="text" name="username" placeholder="User name" id="username" required>
                                 <p></p>
                             </div>
                            
                             <div>
-                                <input type="password" name="password" placeholder="password" id="password"  required>
+                                <input type="password" name="password" placeholder="Password" id="password"  required>
                                 <p id="passwordSuggestion" class="error"></p>
                             </div>
               <div>
-                                <input type="text" name="realname" placeholder="real name" id="realname" required>
+                                <input type="text" name="realname" placeholder="real name" id="Full name" required>
                                 <p></p>
                             </div>
             
                 <div>
-                                <input type="text" name="organisation" placeholder="organisation" id="organisation" required>
+                                <input type="text" name="organisation" placeholder="Organisation" id="organisation" required>
                                 <p></p>
                             </div>
                             <div>
-                                <input type="text" name="organisationAddress" placeholder="organisationAddress" id="organisationAddress" required>
+                                <input type="text" name="organisationAddress" placeholder="Organisation Address" id="organisationAddress" required>
                                 <p></p>
                             </div>
                              <div>
@@ -213,10 +213,10 @@
   alert(1);
      time=setTimeout(function(){
      check(name.value,1);
-      },1000);
-  
+      },1000); 
 
   });
+    
   organisation.addEventListener("keyup",function(){
      if(typeof time=="number"){
       clearTimeout(time);
