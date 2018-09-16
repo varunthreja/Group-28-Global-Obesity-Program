@@ -147,7 +147,14 @@
 
 	echo '<tr><td><select name="product1" id="product1">';
 	while($row=$results->fetch_assoc()){
-		echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+
+    if(strpos($row["foodName"],'"')==-1)
+		{
+      echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+    }
+    else {
+      echo '<option value='.$row["foodName"].'>'.$row["foodName"].'</option>';
+    }
 	}
 	echo '</select></td><td><select name="product2" id="product2"> <option value="none" selected></option>';
 	$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
@@ -216,29 +223,6 @@
 
 
 <script type="text/javascript">
- 
-  
-  
-  
-  
-
-
-function userOut(){
-    <?php
-    setcookie("username", "", time()-3600);
-    ?>
-    
-    var s='<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" ><span class="glyphicon glyphicon-user"></span>  Register</a></li>';
-    s+='<li><a href="login.php"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-    
-    
-    //document.getElementById("user").innerHTML=s;
-    document.querySelector("#user").innerHTML=s;
-            
-    
-  }
- 
-
 
 </script>
 

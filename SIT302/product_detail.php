@@ -121,7 +121,13 @@
 				echo '<tr><td><select name="foodName" id="foodName">';
 
 				while($row=$results->fetch_assoc()){
-					echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+					 if(strpos($row["foodName"],'"')==-1)
+					{
+     					 echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
+    				}
+   				 else {
+     					 echo '<option value='.$row["foodName"].'>'.$row["foodName"].'</option>';
+    				}
 				}
 
 				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSizee"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
@@ -161,63 +167,81 @@
 	</div>
 </div>
 
-
 <script type="text/javascript">
-  var brand=document.getElementById("specificBrand");
-  var size=document.getElementById("specificSize");
+	var foodName;
+    $("#foodName").change(function(){
 
-	brand.addEventListener("keyup",function(){
-     if(typeof time=="number"){
-      clearTimeout(time);
-      }
-  alert(1);
-     time=setTimeout(function(){
-     check(brand.value,3);
-      },1000);
-  
-
-  });
-
-  size.addEventListener("keyup",function(){
-     if(typeof time=="number"){
-      clearTimeout(time);
-      }
-  alert(1);
-     time=setTimeout(function(){
-     check(size.value,3);
-      },1000);
-  
-
-  });
-  
-  
-function check(value,type){
-    var url="checkinfo.php";
-    var data={"text":value,"type":type};
-    
-    
-    
+    foodName=$("#foodName").val();
+    var url="doAction.php?act=search";
+    alert(1);
+    var data={"foodName":foodName};
+    alert(1);
     var success=function(respond){
+
+ 	 }
+  $.post(url,data,success,'json');
+  alert(1);
+ });
+
+// function search(productName){
+  
+ 
+// }
+//   var brand=document.getElementById("specificBrand");
+//   var size=document.getElementById("specificSize");
+
+// 	brand.addEventListener("keyup",function(){
+//      if(typeof time=="number"){
+//       clearTimeout(time);
+//       }
+//   alert(1);
+//      time=setTimeout(function(){
+//      check(brand.value,3);
+//       },1000);
+  
+
+//   });
+
+//   size.addEventListener("keyup",function(){
+//      if(typeof time=="number"){
+//       clearTimeout(time);
+//       }
+//   alert(1);
+//      time=setTimeout(function(){
+//      check(size.value,3);
+//       },1000);
+  
+
+//   });
+  
+  
+// function check(value,type){
+//     var url="checkinfo.php";
+//     var data={"text":value,"type":type};
+    
+    
+    
+//     var success=function(respond){
       
      
-      if(respond==30){
+//       if(respond==30){
         
-        document.getElementById("userSuggestion").innerHTML="";
-        document.getElementById("button").disabled=false;
-      }
-      else if(respond==31){
+//         document.getElementById("userSuggestion").innerHTML="";
+//         document.getElementById("button").disabled=false;
+//       }
+//       else if(respond==31){
         
-        document.getElementById("userSuggestion").innerHTML="more than 5 less than 30";
-        document.getElementById("button").disabled=true;
-      }
-      else if(respond==32){
-        document.getElementById("userSuggestion").innerHTML="letters numbers spaces - only";
-        document.getElementById("button").disabled=true;
-      }
+//         document.getElementById("userSuggestion").innerHTML="more than 5 less than 30";
+//         document.getElementById("button").disabled=true;
+//       }
+//       else if(respond==32){
+//         document.getElementById("userSuggestion").innerHTML="letters numbers spaces - only";
+//         document.getElementById("button").disabled=true;
+//       }
       
-    }
-    $.post(url,data,success,"json");
-  }
+//     }
+//     $.post(url,data,success,"json");
+//   }
 
 </script>
 

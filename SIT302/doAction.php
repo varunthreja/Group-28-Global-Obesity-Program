@@ -171,6 +171,7 @@ function search(){
     $stmt=$conn->query($sql);
     $results=mysqli_fetch_array($stmt);
     if($results){
+        echo 1;
         echo row["foodSpecificBrand"].'+'.row["servingSize"];
     }
 }
