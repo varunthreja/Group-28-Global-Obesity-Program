@@ -112,8 +112,8 @@
 			<th>User Id</th>
 			<th>User Name</th>
 			<th>Name</th>
-			<th>organisiation</th>
-			<th>organisiationAddress</th>
+			<th>Organisation</th>
+			<th>Organisation Address</th>
 			<th>position</th>
 			<th>email</th>
 			<th>contactNumber</th>
@@ -131,7 +131,7 @@
 			if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
-					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organsiationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$row["confirmed"].'</td></tr>';
+					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$row["confirmed"].'</td></tr>';
 				}
 			} else {
 				echo "0 results";
