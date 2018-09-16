@@ -77,13 +77,13 @@ function reg(){
     $salt='salt1024';
     $password=md5($salt.$password);
     $organisation=htmlentities($_POST['organisation']);
-    $organsationAddress=htmlentities($_POST['organsationAddress']);
+    $organisationAddress=htmlentities($_POST['organisationAddress']);
     $position=htmlentities($_POST['position']);
     $email=htmlentities($_POST['email']);
     $contactNumber=htmlentities($_POST['contactNumber']);
     $name=htmlentities($_POST['realname']);
 
-    $result="INSERT INTO users (username, password, name, organisation, organsationAddress, position, email, contactNumber,confirmed) VALUES ('{$username}','{$password}','{$name}','{$organisation}','{$organisationAddress}','{$position}','{$email}',$contactNumber,0)";
+    $result="INSERT INTO users (username, password, name, organisation, organisationAddress, position, email, contactNumber,confirmed) VALUES ('{$username}','{$password}','{$name}','{$organisation}','{$organisationAddress}','{$position}','{$email}',$contactNumber,0)";
     # $conn->exec($result);
     if (mysqli_query($conn, $result)) {
         echo "<script>window.location='login.php'</script>";
