@@ -20,6 +20,8 @@ if($act==="reg"){
     update1();
 }else if($act==="search"){
     search();
+}else if($act==="updateAdmin"){
+	updateAdmin();
 }
 function update(){
     $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
@@ -39,6 +41,30 @@ function update(){
     }
     
     $sql="update users set confirmed='{$value}' where userID='{$userID}'";    
+    if($connect->query($sql) === TRUE){
+        echo 1;
+    }else{
+        echo 2;
+    }
+}
+
+function updateAdmin(){
+    $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+    $userID=$_POST["userID"];
+    $status="select isAdmin from users where userID='{$userID}'";
+    $result = $connect->query($status);
+
+    $value="";
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        if($row["isAdmin"] == 1){
+            $value = 0;
+        }else{
+            $value = 1;
+        }
+    }
+    
+    $sql="update users set isAdmin='{$value}' where userID='{$userID}'";    
     if($connect->query($sql) === TRUE){
         echo 1;
     }else{

@@ -118,6 +118,7 @@
 			<th>email</th>
 			<th>contactNumber</th>
 			<th>Status</th>
+			<th>Admin</th>
 		</tr>
 	</thead>
   
@@ -131,7 +132,18 @@
 			if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
-					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$row["confirmed"].'</td></tr>';
+					if ($row["confirmed"] == 1){
+						$confirmed = "Confirmed";
+					}else{
+						$confirmed = "Unconfirmed";
+					}
+					if($row["isAdmin"] == 1){
+						$admin="True";
+					}else{
+						$admin="False";
+					}
+					
+					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$confirmed.'</td><td><button onclick="changeAdmin('.$row["userID"].')" >'.$admin.'</td></tr>';
 				}
 			} else {
 				echo "0 results";
@@ -145,11 +157,11 @@
 
 </div>
 <div id="footer">
-		<div>
-			<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
-			<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
-		</div>
+	<div>
+		<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
+		<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
 	</div>
+</div>
 <script type="text/javascript" src="jquery.js"></script>
 
 <script type="text/javascript">
@@ -178,6 +190,20 @@ function changStatus(value){
 	$.post(url,data,success,"json");
 }
 
+function changeAdmin(value){
+	var url='doAction.php?act=updateAdmin';
+	var data={"userID":value};
+	var success=function(respond){
+		if(respond==1){
+			alert("has changed");
+			window.location="admin.php";
+		}
+		else if(respond==2){
+			alert("has not change");
+		}
+	};
+	$.post(url,data,success,"json");
+}
 
 // function freeze(value){
 	// var url='doAction.php?act=freeze';
