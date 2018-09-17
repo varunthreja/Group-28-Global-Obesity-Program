@@ -217,9 +217,6 @@ function input(){
     $foodID=$results["foodID"];
 }
 
-
-
-
     $sql="INSERT INTO main (foodID, collectionDate, brand, servingSize, price, pricePer, pricePromoted,comments) VALUES ('{$foodID}','{$collectionDate}','{$brand}','{$servingSize}','{$price}','{$pricePer}','F','{$comments}')";
 
 
