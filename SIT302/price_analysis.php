@@ -131,40 +131,42 @@
 
 <div class="showBox table-responsive" >
 
+
  <table class="table table-bordered table-hover">
-	<thead>
+	<!-- <thead>
 		<tr>
-			<th>Product 1</th>
-			<th>Product 2</th>			
+      Product
 		</tr>
-	</thead>
+	</thead> -->
   
     <tbody id="table1">
 <?php 
 	$sql="select * from foodDetails";
 	$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 	$results=$conn->query($sql);
-
-	echo '<tr><td><select name="product1" id="product1">';
 	while($row=$results->fetch_assoc()){
 
-    if(strpos($row["foodName"],'"')==-1)
-		{
-      echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
-    }
-    else {
-      echo '<option value='.$row["foodName"].'>'.$row["foodName"].'</option>';
-    }
-	}
-	echo '</select></td><td><select name="product2" id="product2"> <option value="none" selected></option>';
-	$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-	$results=$conn->query($sql);
 
-	while($row=$results->fetch_assoc()){
-	echo '<option value="'.$row["foodName"].'">'.$row["foodName"].'</option>';
-	}
-	echo '</select></td></tr>';
+    if(($row["foodID"]+1)%5==1){
+      echo '<tr>';
+    }
 
+    if($row["foodName"][0]!='"')
+    {
+      echo '<td><input type="checkbox" name="product" value="'.$row["foodName"].'">'.$row["foodName"].'</td>';
+    }
+    else if($row["foodName"][0]=='"'){
+      echo '<td><input type="checkbox" name="product" value='.$row["foodName"].'>'.$row["foodName"].'</td>';
+    }
+
+
+    if(($row["foodID"]+1)%5==0){
+      echo '</tr>';
+    }
+
+       
+	}
+	
 ?>
 
 
@@ -182,8 +184,8 @@
   <tbody id="table2">
  
         <tr>
-        <td><input type="date" name="start"></td>
-        <td><input type="date" name="end"></td>
+        <td><input type="date" name="start" id="start" required></td>
+        <td><input type="date" name="end" id="end" required></td>
         </tr>
 
   </tbody>
@@ -223,8 +225,45 @@
 
 
 <script type="text/javascript">
+  var button=document.getElementById("product_submit");
+  var startDate;
+  var endDate;
+  $("#start").change(function(){
+    $("#start").attr("value",$(this).val()); //赋值
+    startDate=$("#start").val();
+});
+  $("#end").change(function(){
+    $("#end").attr("value",$(this).val()); //赋值
+     endDate=$("#end").val();
+     if(endDate<startDate){
+      alert("endDate must later than startDate");
+      button.disabled=true;
+     }
+});
+
+
+
+
+  button.addEventListener("click",function(){
+  var selectProduct = '';
+$('input:checkbox[name="product"]:checked').each(function(k){
+    if(k == 0){
+        selectProduct = $(this).val();
+    }else{
+        selectProduct += '+'+$(this).val();
+    }
+})
+
+  var sql="select * from table where foodName="+selectProduct+"and startDate="+startDate+"endDate="+endDate;
+
+  alert(sql);
+
+
+
+  })
 
 </script>
+
 
 </body>
 </html>
