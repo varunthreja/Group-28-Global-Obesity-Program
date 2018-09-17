@@ -6,5 +6,5 @@ define('DB_USER','root');
 define('DB_PWD',"");
 //TYPE THE NAME OF YOUR MYSQL DATABASE
 //Keep DB_TABLENAME the same though
-define('DB_TABLENAME', 'user_detail');
+define('DB_TABLENAME', 'scrappertest');
 ?>

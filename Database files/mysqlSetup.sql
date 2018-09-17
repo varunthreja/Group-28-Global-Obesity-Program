@@ -202,14 +202,14 @@ CREATE TABLE collections (
 
 create table main(
 	foodID int,
-	collectionDate TIMESTAMP,
+	collectionDate date,
 	brand varchar(50),
 	servingSize varchar(20),
 	price decimal(5,2) NOT NULL,
 	pricePer varchar(20),
 	pricePromoted char(1),
 	comments varchar(200),
-	CONSTRAINT pk_main PRIMARY KEY(foodID，collectionDate),
+	CONSTRAINT pk_main PRIMARY KEY(foodID, collectionDate),
 	CONSTRAINT fk_foodID FOREIGN KEY (foodID) REFERENCES foodDetails(foodID)
 );
 
@@ -217,6 +217,18 @@ LOAD DATA LOCAL INFILE 'C:/Users/Jake/OneDrive - Deakin University/Group 28/Jake
 INTO TABLE main 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n';
+
+CREATE TABLE baskets(
+	basketID varchar(3) PRIMARY KEY,
+	basketName varchar(50),
+	basketDescription varchar(150)
+);
+
+INSERT INTO baskets VALUES ("HH1", "Household of 6", "male 19-50yrs; female 19-50yrs; female 70+yrs; boy 14yrs; girl 8 yrs; boy 4 yrs"),
+("HH2", "Household of 3", "female 19-50yrs; boy 14 yrs; girl 8yrs"),
+("HH3", "Household of 1", "male 19-50 yrs"),
+("HH4", "Household of 2", "male 70+ yrs; female 70+yrs"),
+("HH5", "Household of 4", "male 19-50 yrs old; female 19-50 yrs old; boy 14 yrs old; girl 8 yrs old");
 
 /* ---------------------------------------------------------- */
 /* This is one of tables that will be used to calculate the   */

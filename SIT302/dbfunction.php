@@ -27,7 +27,7 @@ function insert($username,$password,$name,$organisiation,$organisiationAddress,$
 	$user_id=rand(1,999999);
 	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 	//NOTE I made it so that the confirmed and isAdmin columns are set to 0 by default 
-	$sql="INSERT INTO users (userID, username, password, name, organisation, organsiationAddress , position, email, contactNumber, confirmed, isAdmin) VALUES ('{$user_id}','{$username}','{$password}','{$name}','{$organisiation}','{$organisiationAddress}','{$position}','{$email}','{$contactNumber}',0, 0)";
+	$sql="INSERT INTO users (username, password, name, organisation, organsiationAddress , position, email, contactNumber, confirmed, isAdmin) VALUES ('{$user_id}','{$username}','{$password}','{$name}','{$organisiation}','{$organisiationAddress}','{$position}','{$email}','{$contactNumber}',0, 0)";
     //mysqli_query($connect, $sql);
     
     //NOTE This block isn't necessary I just used this for testing

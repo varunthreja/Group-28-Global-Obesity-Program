@@ -124,7 +124,7 @@ function login(){
 		if($username=="admin"){
 			setcookie("username", $username, time()+3600);
 			session_start();
-			echo 3;
+			echo 1;
 		}elseif ($results["confirmed"]==0){
 			echo 4;
 		}else {
@@ -165,11 +165,15 @@ function input(){
     $brand=htmlentities($_POST['ybrand']);
     $servingSize=htmlentities($_POST['ysize']);
     $foodSize=htmlentities($_POST['foodSize']);
+	echo $foodSize;
+	if ($foodSize == "ml" or $foodSize == "kg"){
+		$servingSize = $servingSize * 1000;
+	}
+	echo $servingSize;
     $price=htmlentities($_POST['yourCost']);
     $comments=htmlentities($_POST['comments']);
     $pricePromoted=htmlentities($_POST['pricePromoted']);
     $pricePer=1;
-    $servingSize=$servingSize.$foodSize;
     $conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
     $collectionDate=date("Y-m-d")." ".date("H:i:s");
     $sql="select * from fooddetails where foodName ='{$foodName}'";
@@ -191,8 +195,8 @@ function input(){
 
 
     if(mysqli_query($conn, $sql)){
-        
-      echo "<script>window.location='product_detail.php'</script>";
+       echo '<a href="product_detail.php">return</a>'; 
+      #echo "<script>window.location='product_detail.php'</script>";
     }
 }
 
