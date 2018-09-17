@@ -129,15 +129,14 @@
     </div>
     </div>    
 <div class="search_form">    
- <form class="navbar-form search_box" role="search">
+ <div class="navbar-form search_box" role="search">
         <div class="form-group">
-            <input type="text" id="txt1" name="name" onkeyup="showHint(this.value)" onkeydown ="showAgain()" class="form-control" placeholder="Search">
-            <div class="suggestionsBox" id="suggestions" >
-            <div class="suggestionList" id="txtHint"></div>
-            </div>
+            <input type="text" id="search_input" name="name" class="form-control search_input" placeholder="Search">
+            <button id="search_btn" class="btn btn-default">submit</button>
         </div>
-        <button type="submit" class="btn btn-default">submit</button>
-</form>    
+        
+        
+</div>    
 </div>
 
 
@@ -159,8 +158,25 @@
     }
 -->
  
+<?php
+  $foodName=array();
+  $sql="select * from foodDetails";
+  $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+  $result=$connect->query($sql);
+  while($row=$result->fetch_assoc()){
+    if($row["foodName"][0]!='"'){
+      $a='"'.$row["foodName"].'"';
+      array_push($foodName, $a);
+    }
+    if($row["foodName"][0]=='"'){
+      array_push($foodName, $row["foodName"]);
+    }
+  }
+ ?>
+
+
   <tbody id="table">
- <?php 
+ <?php
 	if (isset($_REQUEST['page'])){
 		$page=$_REQUEST['page'];
 	}else{
@@ -181,10 +197,7 @@
 	while($row=$result->fetch_assoc()){
 		echo '<tr><td>'.$row["foodName"].'</td></tr>';
 	};
-
-    $table="<script>";
-      $table+='</script>';
-  ?>
+?>
   </tbody>
 </table>
 
@@ -198,8 +211,8 @@
      <!--    <div class="input">
           <button class="Input_button" id="product_submit">Input</button>
         </div> -->
-
-  <ul class="pagination">
+<div id='pagination'>
+  <ul class="pagination" >
     <li><a href="#">&laquo;</a></li>
     <li><a href="product_information.php?page=1">1</a></li>
     <li><a href="product_information.php?page=2">2</a></li>
@@ -207,7 +220,7 @@
     <li><a href="product_information.php?page=4">4</a></li>
     <li><a href="#">&raquo;</a></li>
   </ul><br>
-
+</div>
 
 
 
@@ -222,6 +235,57 @@
 
 
 <script type="text/javascript">
+
+
+
+
+  var foodName = <?php echo json_encode($foodName) ?>;//php array => json 
+  $("#search_input").on("keyup",function(){
+   var search_input=$("#search_input").val().toString();
+   var result=filterArray(foodName,search_input);
+   document.getElementById("table").innerHTML="<tr><td>1<td></tr>";
+   var updateTable;
+   for(let i=0;i<result.length;i++){
+      updateTable+='<tr><td>';
+      updateTable+=result[i];
+      updateTable+='</td></tr>';
+   }
+   document.getElementById("table").innerHTML=updateTable;
+   document.getElementById("pagination").innerHTML="";
+  });
+
+
+
+
+
+  $("#search_btn").on("click",function(){
+   var search_input=$("#search_input").val().toString();
+   var result=filterArray(foodName,search_input);
+   document.getElementById("table").innerHTML="<tr><td>1<td></tr>";
+   var updateTable;
+   for(let i=0;i<result.length;i++){
+      updateTable+='<tr><td>';
+      updateTable+=result[i];
+      updateTable+='</td></tr>';
+   }
+   document.getElementById("table").innerHTML=updateTable;
+   document.getElementById("pagination").innerHTML="";
+  })
+
+
+
+  function filterArray(array,clue){
+    var resultArray=[];
+    for(let i=0;i<array.length;i++){
+        var testString=array[i].toLowerCase();
+        if(testString.indexOf(clue)>-1){
+          resultArray.push(array[i]);
+        } 
+    }
+    return resultArray;
+  }
+
+  
 
 </script>
 
