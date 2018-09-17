@@ -136,9 +136,6 @@
 			window.location="index.php";
 		}else if(respond==2){
 			suggestion.innerHTML="password was incorrect";
-		}else if(respond==3){
-			suggestion.innerHTML="";
-			window.location="admin.php";
 		}else if(respond==4){
 			suggestion.innerHTML="User not confirmed"
 		}
