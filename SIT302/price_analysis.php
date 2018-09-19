@@ -112,16 +112,22 @@
         <li><a href="index.php"><span>Home</span></a></li>
         <?php  
 			if(isset($_COOKIE["username"])){
-				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li class="current"><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+				 echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
 			}
 		?>
 		<li><a href="about.php"><span>About Us</span></a></li>
 		<li><a href="contactus.php"><span>Contact Us</span></a></li>
 
 		<?php
-			if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-				echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
-			}
+			$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+			$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
+			$result = $conn->query($sql);
+			if($result->num_rows > 0){
+				$row = $result->fetch_assoc();
+				if($row["isAdmin"] == 1){
+					echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+				}
+			}	
 		?>
     </ul>
             
