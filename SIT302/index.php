@@ -8,7 +8,6 @@
 	<title>Global Obesity Program</title>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
-
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
 	<link rel="stylesheet" href="asset.css">
@@ -26,7 +25,7 @@
 
 
 					if (isset($_COOKIE["username"])){
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
@@ -34,16 +33,6 @@
 					}   
 				?>
 			</div>
-
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input id="search" type="text" class="form-control" placeholder="Search">
-				   <div id="display"></div>
-
-				</div>
-				<button type="submit" class="btn btn-default">submit</button>
-			</form>
-
 		</div>
 	</nav>
     
@@ -56,14 +45,22 @@
 				<li class="current"><a href="index.php"><span>Home</span></a></li>
 				<?php  
 					if(isset($_COOKIE["username"])){
-						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
 					} 
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 				<?php
-					if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-						echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+					if (isset($_COOKIE["username"])){
+						$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+						$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
+						$result = $conn->query($sql);
+						if($result->num_rows > 0){
+							$row = $result->fetch_assoc();
+							if($row["isAdmin"] == 1){
+								echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+							}
+						}
 					}
 				?>
 			</ul>

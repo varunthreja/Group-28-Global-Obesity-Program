@@ -74,12 +74,6 @@
 				?>
 			</div>
 
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">submit</button>
-			</form>
 
 		</div>
 	</nav>
@@ -93,10 +87,11 @@
 				<li class="current"><a href="index.php"><span>Home</span></a></li>
 				<?php  
 					if(isset($_COOKIE["username"])){
-						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
 					} 
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
+				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -104,9 +99,9 @@
 		<form method="post" action="doAction.php?act=login" id="loginForm" > 
 			<table>
 				<tr><h1>Login to your Account</h1></tr>
-				<tr><input type="text" name="username" id="1" placeholder="Username" onblur="get(this.value)" class="text" required ></tr>
+				<tr><input type="text" name="username" id="1" placeholder="Username" id="usernameField" onblur="get(this.value)" class="text" required ></tr>
 				<p></p>
-				<tr><input type="password" name="password" class="text" placeholder="Password" id="123" onblur="show(this.value)"  required></tr>
+				<tr><input type="password" name="password" class="text" placeholder="Password" id="passwordField" onblur="show(this.value)"  required></tr>
 				<p></p>
 			</table>
 			<div class="submit">
@@ -145,10 +140,23 @@
 	e.preventDefault();
 	})
 	
-	var input = document.getElementById("123");
+	var input = document.getElementById("usernameField");
 
 	// Execute a function when the user releases a key on the keyboard
 	input.addEventListener("keyup", function(event) {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Number 13 is the "Enter" key on the keyboard
+		if (event.keyCode === 13) {
+		// Trigger the button element with a click
+			document.getElementById("loginButton").click();
+		}
+	});
+	
+	var input2 = document.getElementById("passwordField");
+
+	// Execute a function when the user releases a key on the keyboard
+	input2.addEventListener("keyup", function(event) {
 		// Cancel the default action, if needed
 		event.preventDefault();
 		// Number 13 is the "Enter" key on the keyboard
