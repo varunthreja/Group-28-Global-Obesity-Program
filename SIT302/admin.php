@@ -120,14 +120,13 @@
 	<table class="table table-bordered table-hover">
 		<thead>
 		<tr>
-			<th>User Id</th>
 			<th>User Name</th>
 			<th>Name</th>
 			<th>Organisation</th>
 			<th>Organisation Address</th>
-			<th>position</th>
-			<th>email</th>
-			<th>contactNumber</th>
+			<th>Position</th>
+			<th>Email</th>
+			<th>Contact Number</th>
 			<th>Status</th>
 			<th>Admin</th>
 		</tr>
@@ -154,7 +153,7 @@
 						$admin="False";
 					}
 					
-					echo '<tr><td>'.$row["userID"].'</td><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$confirmed.'</td><td><button onclick="changeAdmin('.$row["userID"].')" >'.$admin.'</td></tr>';
+					echo '<tr><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$confirmed.'</td><td><button onclick="changeAdmin('.$row["userID"].')" >'.$admin.'</td></tr>';
 				}
 			} else {
 				echo "0 results";
