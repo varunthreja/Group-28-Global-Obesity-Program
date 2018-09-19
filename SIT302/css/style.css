@@ -122,6 +122,18 @@ div.body {
 	background: none;
 }
 
+#body h1{
+	font-family: Times New Roman, Times, serif;
+	font-size: 29px;
+}
+
+#body p{
+	font-size: 16px;
+	font-family: Times New Roman, Times, serif;	
+	padding-left: 28px;
+	padding-right:28px;
+}
+
 #body ul li h1 {
 	font-family: Times New Roman, Times, serif;
 	font-size: 29px;

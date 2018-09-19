@@ -81,7 +81,7 @@
 
   
     if (isset($_COOKIE["username"])){
-       echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li>
+       echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li>
             <li><a href="logout.php" style="color:white">Log out</a></li></ul>';
       }
     else{
@@ -138,46 +138,41 @@
 <div class="showBox table-responsive" >
 
 
- <table class="table table-bordered table-hover">
-	<!-- <thead>
-		<tr>
-      Product
-		</tr>
-	</thead> -->
-  
+<table class="table table-bordered table-hover">
+
     <tbody id="table1">
-<?php 
-	$sql="select * from foodDetails";
-	$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-	$results=$conn->query($sql);
-	while($row=$results->fetch_assoc()){
+		<?php 
+			$sql="select * from foodDetails";
+			$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+			$results=$conn->query($sql);
+			while($row=$results->fetch_assoc()){
 
 
-    if(($row["foodID"]+1)%5==1){
-      echo '<tr>';
-    }
+			if(($row["foodID"]+1)%5==1){
+			  echo '<tr>';
+			}
 
-    if($row["foodName"][0]!='"')
-    {
-      echo '<td><input type="checkbox" name="product" value="'.$row["foodName"].'">'.$row["foodName"].'</td>';
-    }
-    else if($row["foodName"][0]=='"'){
-      echo '<td><input type="checkbox" name="product" value='.$row["foodName"].'>'.$row["foodName"].'</td>';
-    }
-
-
-    if(($row["foodID"]+1)%5==0){
-      echo '</tr>';
-    }
-
-       
-	}
-	
-?>
+			if($row["foodName"][0]!='"')
+			{
+			  echo '<td><input type="checkbox" name="product" value="'.$row["foodName"].'">'.$row["foodName"].'</td>';
+			}
+			else if($row["foodName"][0]=='"'){
+			  echo '<td><input type="checkbox" name="product" value='.$row["foodName"].'>'.$row["foodName"].'</td>';
+			}
 
 
-         </tbody>
-    </table>
+			if(($row["foodID"]+1)%5==0){
+			  echo '</tr>';
+			}
+
+			   
+			}
+			
+		?>
+
+
+	</tbody>
+</table>
 
 <table class="table table-bordered table-hover">
   <thead>
@@ -187,14 +182,23 @@
     </tr>
   </thead>
 
-  <tbody id="table2">
- 
-        <tr>
-        <td><input type="date" name="start" id="start" required></td>
-        <td><input type="date" name="end" id="end" required></td>
-        </tr>
+<tbody id="table2">
+	<tr>
+		<?php
+			$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
+			$result = $conn->query($sql);
+			while ($row=$result->fetch_assoc()){
+				echo '<td><input type="date" id="start" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'" required></td>';
+			}
+			$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
+			$result = $conn->query($sql);
+			while ($row=$result->fetch_assoc()){
+				echo '<td><input type="date" id="end" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'" required></td>';
+			}
+		?>
+	</tr>
 
-  </tbody>
+</tbody>
 </table>
 
 </div>
@@ -260,7 +264,7 @@ $('input:checkbox[name="product"]:checked').each(function(k){
     }
 })
 
-  var sql="select * from table where foodName="+selectProduct+"and startDate="+startDate+"endDate="+endDate;
+  var sql="select * from main where foodID=(SELECT foodID from foodDetails WHERE foodName='"+selectProduct+"') and collectionDate between '"+startDate+"' and '"+endDate+"'";
 
   alert(sql);
 

@@ -6,8 +6,10 @@
 <head>
 	<meta charset="UTF-8" />
     <title>Global Obesity Program</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
 	<link rel="stylesheet" href="asset.css">
 </head>
 <body onload="alert_cookie()">
@@ -23,7 +25,7 @@
 
 
 					if (isset($_COOKIE["username"])){
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
@@ -66,16 +68,17 @@
 			</ul>
 		</div>
 	</div>
-	<div id="body">
-		<div style="text-align:center">
-				<p>What we eat and how much we eat influences our risk for disease and death. Poor diet is a leading cause of disease burden in Australia and 
-				globally. The price of foods and beverages is a critical driver of food choice, particularly among individuals with limited food budgets. 
-				Changing the price ratio between healthy and unhealthy foods is likely to be a critical leverage point for the improvement of population 
-				health, as has been the case with tobacco and alcohol. But actions to rebalance the price of foods towards healthier options are currently 
-				limited by a lack of understanding of the relative price and affordability of healthy and unhealthy foods and diets in Australia. Our aim 
-				is to rigorously and systematically advance the evidence required for the uptake and successful implementation of effective and equitable
-				healthy food pricing policies.</p>
-				</div>
+	<div id="body" style="text-align:center">
+		<h1>Our Mission</h1>
+		<p>WE NEED MORE INFO HERE</p>
+		<h1>About Us</h1>
+		<p>What we eat and how much we eat influences our risk for disease and death. Poor diet is a leading cause of disease burden in Australia and 
+		globally. The price of foods and beverages is a critical driver of food choice, particularly among individuals with limited food budgets. 
+		Changing the price ratio between healthy and unhealthy foods is likely to be a critical leverage point for the improvement of population 
+		health, as has been the case with tobacco and alcohol. But actions to rebalance the price of foods towards healthier options are currently 
+		limited by a lack of understanding of the relative price and affordability of healthy and unhealthy foods and diets in Australia. Our aim 
+		is to rigorously and systematically advance the evidence required for the uptake and successful implementation of effective and equitable
+		healthy food pricing policies.</p>
 	</div>
 	<div id="footer">
 		<div>

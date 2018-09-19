@@ -82,8 +82,7 @@
 
   
     if (isset($_COOKIE["username"])){
-       echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li>
-            <li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+       echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
       }
     else{
     
@@ -113,7 +112,7 @@
         <li><a href="index.php"><span>Home</span></a></li>
         <?php  
 			if(isset($_COOKIE["username"])){
-				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li class="current"><a href="product_information.php"><span>Products</span></a></li>';
+				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
 			} 
 		?>
 		<li><a href="about.php"><span>About Us</span></a></li>
@@ -171,7 +170,7 @@
   $result=$connect->query($sql);
   while($row=$result->fetch_assoc()){
     if($row["foodName"][0]!='"'){
-      $a='"'.$row["foodName"].'"';
+      $a=$row["foodName"];
       array_push($foodName, $a);
     }
     if($row["foodName"][0]=='"'){
@@ -212,7 +211,7 @@
         </div> -->
 <div id='pagination'>
   <ul class="pagination" >
-    <li><a href="#">&laquo;</a></li>
+    <li><a href="product_information.php?page=1">&laquo;</a></li>
     <li><a href="product_information.php?page=1">1</a></li>
     <li><a href="product_information.php?page=2">2</a></li>
     <li><a href="product_information.php?page=3">3</a></li>
