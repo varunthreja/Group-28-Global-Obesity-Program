@@ -17,7 +17,6 @@
 		<div class="container-fluid"> 
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
-				<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
 			</div>
 
 			<div id="user" >
@@ -33,6 +32,11 @@
 					}   
 				?>
 			</div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 393fcc4432d4f10fd0e61f12fc05319848753383
 		</div>
 	</nav>
     

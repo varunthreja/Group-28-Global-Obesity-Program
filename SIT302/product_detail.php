@@ -56,7 +56,6 @@
 	<div class="container-fluid"> 
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
-			<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
 		</div>
 		<div id="user" >
 			<?php  
@@ -134,7 +133,7 @@
     				}
 				}
 
-				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand"></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="text"  name="ysize"><select name="foodSize" id="foodSize1"><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
+				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand" required></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="number"  name="ysize" required><select name="foodSize" id="foodSize1" required><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
 
 				
 			?>
@@ -154,7 +153,7 @@
 		<p id="userSuggestion"></p>
 		<tbody id="table2">
 			<tr>
-				<td><input type="text" name="yourCost"></td><td><input type="text" name="comments"></td><td><input type="radio" value="T" name="pricePromoted">True<input type="radio" value="F" name="pricePromoted">False</td>
+				<td>$<input type="number" name="yourCost" required></td><td><input type="text" name="comments" required></td><td><input type="radio" value="T" name="pricePromoted">True<input type="radio" value="F" name="pricePromoted">False</td>
 			</tr>
 		</tbody>
 	</table>
