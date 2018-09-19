@@ -191,11 +191,10 @@ function changStatus(value){
 	var data={"userID":value};
 	var success=function(respond){
 		if(respond==1){
-			alert("has changed");
 			window.location="admin.php";
 		}
 		else if(respond==2){
-			alert("has not change");
+			alert("User "+value+"'s status has not been changed");
 		}
 	};
 	$.post(url,data,success,"json");
@@ -206,11 +205,10 @@ function changeAdmin(value){
 	var data={"userID":value};
 	var success=function(respond){
 		if(respond==1){
-			alert("has changed");
 			window.location="admin.php";
 		}
 		else if(respond==2){
-			alert("has not change");
+			alert("User "+value+"'s status has not been changed");
 		}
 	};
 	$.post(url,data,success,"json");
