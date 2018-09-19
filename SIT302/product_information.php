@@ -188,15 +188,8 @@
 	}else{
 		$page=1;
 	}
-    if($page==2){
-    $sql="select * from foodDetails where foodID > 20 and foodID <=40 ORDER BY foodName";
-    }elseif($page==3){
-    $sql="select * from foodDetails where foodID > 40 and foodID <=60 ORDER BY foodName";
-    }elseif($page==4){
-    $sql="select * from foodDetails where foodID > 60 and foodID <=75 ORDER BY foodName";
-    }else{
-    $sql="select * from foodDetails where foodID <= 20 ORDER BY foodName";
-    }
+   	
+	$sql="SELECT foodName FROM foodDetails ORDER BY foodName LIMIT 20 OFFSET ".(($page - 1) * 20);
     $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 	$result=$connect->query($sql);
 	
