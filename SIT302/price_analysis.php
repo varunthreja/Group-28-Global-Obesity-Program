@@ -263,7 +263,7 @@ $('input:checkbox[name="product"]:checked').each(function(k){
     }
 })
 
-  var sql="select * from main where foodID=(SELECT foodID from foodDetails WHERE foodName='"+selectProduct+"') and collectionDate between '"+startDate+"' and '"+endDate+"'";
+  var sql="SELECT a.collectionDate, a.price, b.foodName FROM main AS a, foodDetails AS b WHERE a.foodID  = (SELECT foodID FROM foodDetails WHERE foodName = '"+selectProduct+"') AND a.foodID = b.foodID AND a.collectionDate BETWEEN '"+startDate+"' AND '"+endDate+"'";
 
   alert(sql);
 
