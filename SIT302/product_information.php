@@ -170,13 +170,7 @@
   $connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
   $result=$connect->query($sql);
   while($row=$result->fetch_assoc()){
-    if($row["foodName"][0]!='"'){
-      $a=$row["foodName"];
-      array_push($foodName, $a);
-    }
-    if($row["foodName"][0]=='"'){
-      array_push($foodName, $row["foodName"]);
-    }
+     array_push($foodName, $row["foodName"]);
   }
  ?>
 
