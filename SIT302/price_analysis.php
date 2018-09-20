@@ -144,10 +144,11 @@
 			$sql="select * from foodDetails ORDER BY foodName";
 			$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 			$results=$conn->query($sql);
+      $i=0;
 			while($row=$results->fetch_assoc()){
 
-
-			if(($row["foodID"]+1)%5==1){
+        $i++;
+			if($i%5==1){
 			  echo '<tr>';
 			}
 
@@ -159,12 +160,9 @@
 			  echo '<td><input type="checkbox" name="product" value='.$row["foodName"].'>'.$row["foodName"].'</td>';
 			}
 
-
-			if(($row["foodID"]+1)%5==0){
+			if($i%5==0){
 			  echo '</tr>';
 			}
-
-			   
 			}
 			
 		?>
