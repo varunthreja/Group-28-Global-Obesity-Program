@@ -141,7 +141,7 @@
 
     <tbody id="table1">
 		<?php 
-			$sql="select * from foodDetails";
+			$sql="select * from foodDetails ORDER BY foodName";
 			$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 			$results=$conn->query($sql);
 			while($row=$results->fetch_assoc()){
