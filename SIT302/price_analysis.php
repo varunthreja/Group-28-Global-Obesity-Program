@@ -247,7 +247,7 @@
   var button=document.getElementById("product_submit");
   var startDate;
   var endDate;
-  var originalSelectValue=[];
+  var originalSelectValue=["Apples, red, loose"];
   $("#start").change(function(){
     $("#start").attr("value",$(this).val()); //赋值
     startDate=$("#start").val();
@@ -282,6 +282,7 @@
 
    var foodName = <?php echo json_encode($foodName) ?>;//php array => json 
   $("#search_input").on("keyup",function(){
+
    var search_input=$("#search_input").val().toString();
    var result=filterArray(foodName,search_input);
    document.getElementById("table1").innerHTML="";
@@ -290,19 +291,33 @@
       if((i+1)%5==1){
         updateTable+='<tr>';
       }
-      updateTable+='<td><input type="checkbox" name="product" value=';
-      updateTable+=result[i];
-      if(originalSelectValue.indexOf(result[i])>-1){
-      updateTable+=' checked="checked">';
-      }else{
-      updateTable+=' >';  
+      if(result[i][0]=='"')
+      {
+        updateTable+='<td><input type="checkbox" name="product"  value=';
+        updateTable+=result[i];
+        if(originalSelectValue.indexOf(result[i].slice(1,-1))>-1){
+          updateTable+=' checked="checked">';  
+        }else{
+           updateTable+='>';  
+        }
+      }
+      else{
+        updateTable+='<td><input type="checkbox" name="product" value="';
+        updateTable+=result[i];
+        if(originalSelectValue.indexOf(result[i])>-1){
+          updateTable+='" checked="checked">';  
+        }else{
+           updateTable+='" >';  
+        }
       }
       updateTable+=result[i];
       updateTable+='</td>';
       if((i+1)%5==0){
        updateTable+="</tr>";
       }
+    
    }
+
 
   document.getElementById("table1").innerHTML=updateTable;
   document.getElementById("pagination").innerHTML="";
@@ -320,15 +335,20 @@
   }
 
   $("#table1").on("click",function(e){
+      var temp=[];
       var e=e||window.event;
       var target=e.target;
     $('input:checkbox[name="product"]:checked').each(function(k){
-        if(originalSelectValue.indexOf($(this).val())==-1){
-          originalSelectValue.push($(this).val());
+        if(temp.indexOf($(this).val())==-1){
+          temp.push($(this).val());
         }
     });
+      //alert(temp);
+      originalSelectValue=(JSON.stringify(originalSelectValue) == JSON.stringify(temp))?originalSelectValue:temp;
+      
       alert(originalSelectValue);
       //originalSelectValue.push(selectValue);
+      
   });
 
 
