@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,21 +26,17 @@
 				top:10px;
 		}
 
-		.registerTable{
-		  width:30%;
-		  height:200px;
-		  border:1px solid;
-		  display:flex;
-		  align-items:center;
-		  justify-content:center;
-		  // position:absolute;
-		  top:0;
-		  left:0;
-		  right:0;
-		  bottom:0;
-		  margin:auto;
-		  padding:10px;
-		  background:#ffffff;
+.registerTable{
+    width: 34%;
+    height: auto;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1F487E;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-top: 10px;
 		 }
 
 		.submit{
@@ -49,14 +44,23 @@
 		  width:50%;
 		  margin:10px auto;
 		}
+		.form{
+  margin:10px;
+ } 
+ .button:hover{
+  background:#000;
+  color: #fff;
+    //padding: 5px;
+   } 
 	</style>
 </head>
 
-<body>
+<body bgcolor= "white">
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid"> 
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
+				<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
 			</div>
 
 			<div id="user" >
@@ -73,6 +77,12 @@
 				?>
 			</div>
 
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">submit</button>
+			</form>
 
 		</div>
 	</nav>
@@ -86,35 +96,49 @@
 				<li class="current"><a href="index.php"><span>Home</span></a></li>
 				<?php  
 					if(isset($_COOKIE["username"])){
-						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
+						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
 					} 
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
-				<li><a href="contactus.php"><span>Contact Us</span></a></li>
+				 <li><a href="contactus.php"><span>Contact Us</span></a></li>
 			</ul>
 		</div>
 	</div>
+
 	<div class="registerTable" onKeyPress="return "> 
+		
 		<form method="post" action="doAction.php?act=login" id="loginForm" > 
-			<table>
-				<tr><h1>Login to your Account</h1></tr>
-				<tr><input type="text" name="username" id="1" placeholder="Username" id="usernameField" onblur="get(this.value)" class="text" required ></tr>
-				<p></p>
-				<tr><input type="password" name="password" class="text" placeholder="Password" id="passwordField" onblur="show(this.value)"  required></tr>
-				<p></p>
-			</table>
-			<div class="submit">
-				<button type="submit" id="loginButton">log in</button>
+			<div class="row">
+				<h2 style="text-align:center; color:#7CDEDC">Login to your Account</h2>
+                          <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Username*</label></div>
+                          <div class="col-md-6"><input type="text" name="username" id="1" placeholder=" Username" onblur="get(this.value)" class="required form-control h5-phone" required ></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Password*</label></div>
+                          <div class="col-md-6"><input type="password" name="password" class="required form-control h5-phone" placeholder=" Password" id="123" onblur="show(this.value)"  required></div>
+                          </div>
+                          <div class="col-md-12 form">
+                      <div class="submit">
+				<button type="submit" id="loginButton" class="button btn btn-accent" style="color:#7CDEDC">log in</button>
 			</div> 		
 			<div id="loginSuggestion" class="error">
-			 
+			 </div>
 			</div> 
+                      </div>
+			
 		</form>
+	</div>
+	<div id="footer">
+		<div>
+			<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
+			<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
+		</div>
 	</div>	                       
 </body>
 
 <script>
-     
+   
 	var form=document.getElementById("loginForm");
 	var username;
 	var password;
@@ -139,23 +163,10 @@
 	e.preventDefault();
 	})
 	
-	var input = document.getElementById("usernameField");
+	var input = document.getElementById("123");
 
 	// Execute a function when the user releases a key on the keyboard
 	input.addEventListener("keyup", function(event) {
-		// Cancel the default action, if needed
-		event.preventDefault();
-		// Number 13 is the "Enter" key on the keyboard
-		if (event.keyCode === 13) {
-		// Trigger the button element with a click
-			document.getElementById("loginButton").click();
-		}
-	});
-	
-	var input2 = document.getElementById("passwordField");
-
-	// Execute a function when the user releases a key on the keyboard
-	input2.addEventListener("keyup", function(event) {
 		// Cancel the default action, if needed
 		event.preventDefault();
 		// Number 13 is the "Enter" key on the keyboard

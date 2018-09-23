@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="asset.css">
 </head>
 <body onload="alert_cookie()">
+
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid"> 
 			<div class="navbar-header">
@@ -67,10 +68,10 @@
 		</div>
 	</div>
 	<div id="body" style="text-align:center">
-		<h1>Our Mission</h1>
-		<p>WE NEED MORE INFO HERE</p>
-		<h1>About Us</h1>
-		<p>What we eat and how much we eat influences our risk for disease and death. Poor diet is a leading cause of disease burden in Australia and 
+		<h1 style="color:#7CDEDC">Our Mission</h1>
+		<p style="color:#A9B3CE">WE aim to provide healthy diet on an affordable price to everyone. </p>
+		<h1 style="color:#7CDEDC">About Us</h1>
+		<p style="color:#A9B3CE">What we eat and how much we eat influences our risk for disease and death. Poor diet is a leading cause of disease burden in Australia and 
 		globally. The price of foods and beverages is a critical driver of food choice, particularly among individuals with limited food budgets. 
 		Changing the price ratio between healthy and unhealthy foods is likely to be a critical leverage point for the improvement of population 
 		health, as has been the case with tobacco and alcohol. But actions to rebalance the price of foods towards healthier options are currently 
@@ -78,7 +79,10 @@
 		is to rigorously and systematically advance the evidence required for the uptake and successful implementation of effective and equitable
 		healthy food pricing policies.</p>
 	</div>
+	
+	
 	<div id="footer">
+	
 		<div>
 			<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
 			<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>

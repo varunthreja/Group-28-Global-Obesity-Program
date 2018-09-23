@@ -1,18 +1,17 @@
-<?php
-	require_once "include.php" 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
+  <!--
     <meta charset="utf-8">
     <meta name="robots" content="all,follow">
     <meta name="googlebot" content="index,follow,snippet,archive">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Obaju Your Fashion Shop">
     <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="">-->
+    
+  <title>Login</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
   <script
   src="https://code.jquery.com/jquery-2.1.1.min.js"
@@ -21,44 +20,46 @@
   <link rel="stylesheet" href="asset.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-<style>
 
-.error{color:red;}
-
-.registerTable{
-  width:30%;
-  height:500px;
-  border:1px solid;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  //position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  margin:auto;
- }
-
-
-.submit{
-  position:relative;
-  width:50%;
-  margin:0 auto;
+  <style>
+    .error{color:red;position:relative;
+        top:10px;
+    }
+.registerTable {
+    width: 50%;
+    height: auto;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1F487E;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-top: 10px;
 }
 
-
-
-</style>
-
-
+    .submit{
+      position:relative;
+      width:50%;
+      margin:10px auto;
+    }
+ .form{
+  margin:10px;
+ } 
+ .button:hover{
+  background:#000;
+  color: #fff;
+    //padding: 5px;
+   } 
+  </style>
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid"> 
       <div class="navbar-header">
         <a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
+        <a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
       </div>
 
       <div id="user" >
@@ -75,93 +76,85 @@
         ?>
       </div>
 
-
+      <form class="navbar-form navbar-right" role="search" >
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">submit</button>
+      </form>
 
     </div>
   </nav>
     
   <div id="page">
     <div id="header">
-	<div>
-		<a href="index.php"><img src="images/image_GlobalObesity.jpg" alt="Logo" /></a>
-	</div>
-	<ul>
-		<li class="current"><a href="index.php"><span>Home</span></a></li>
-		<?php  
-			if(isset($_COOKIE["username"])){
-				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
-			} 
-		?>
-		<li><a href="about.php"><span>About Us</span></a></li>
-		<li><a href="contactus.php"><span>Contact Us</span></a></li>
-		<?php
-			if (isset($_COOKIE["username"])){	
-				$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-				$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
-				$result = $conn->query($sql);
-				if($result->num_rows > 0){
-					$row = $result->fetch_assoc();
-					if($row["isAdmin"] == 1){
-						echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
-					}
-				}
-			}
-		?>
-	</ul>
+      <div>
+        <a href="index.php"><img src="images/image_GlobalObesity.jpg" alt="Logo" /></a>
+      </div>
+      <ul>
+        <li class="current"><a href="index.php"><span>Home</span></a></li>
+        <?php  
+          if(isset($_COOKIE["username"])){
+            echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+          } 
+        ?>
+        <li><a href="about.php"><span>About Us</span></a></li>
+        <li><a href="contactus.php"><span>Contact Us</span></a></li>
+      </ul>
     </div>
   </div>
 
-   <div class="registerTable">
+   <div class="registerTable" >
+  <form method="post" action="doAction.php?act=reg" id="myForm" > 
   
-  <div>
-   <form method="post" action="doAction.php?act=reg" id="myForm" > 
-  
-                            <div>
-                                <input type="text" onblur="validate(this.value, 'username')" name="username" placeholder="User name" id="username" required>
-                                <p></p>
-                            </div>
-                           
-                            <div>
-                                <input type="password" onblur="validate(this.value, 'password')" name="password" placeholder="Password" id="password"  required>
-                                <p id="passwordSuggestion" class="error"></p>
-                            </div>
-              <div>
-                                <input type="text" onblur="validate(this.value, 'name')" name="realname" placeholder="Full name" id="realname" required>
-                                <p></p>
-                            </div>
-            
-                <div>
-                                <input type="text" onblur="validate(this.value, 'organisation')" name="organisation" placeholder="Organisation" id="organisation" required>
-                                <p></p>
-                            </div>
-                            <div>
-                                <input type="text" onblur="validate(this.value, 'organisationAddress')" name="organisationAddress" placeholder="Organisation Address" id="organisationAddress" required>
-                                <p></p>
-                            </div>
-                             <div>
-                                <input type="text" onblur="validate(this.value, 'position')" name="position" placeholder="position" id="position" required>
-                                <p></p>
-                            </div>
-                           <div>
-                                <input type="email" onblur="validate(this.value, 'email')" name="email" placeholder="email" id="email" required>
-                                <p></p>
-                            </div>
-                             <div>
-                                <input type="text" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder="contactNumber" id="contactNumber" maxlength="10" required>
-                                <p></p>
-                            </div>
-              
-                            <div class="submit">
-                                <button type="submit" id="button"> Register</button>
+                          <div class="row">
+                          <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Username*</label></div>
+                          <div class="col-md-6"><input type="text" onblur="validate(this.value, 'username')" name="username" placeholder=" Username" class="required form-control h5-phone" id="username" required></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Password*</label></div>
+                          <div class="col-md-6"><input type="password" onblur="validate(this.value, 'password')" name="password" class="required form-control h5-phone" placeholder="Password" id="password"  required></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Fullname*</label></div>
+                          <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'name')" name="realname" class="required form-control h5-phone" placeholder=" Fullname" id="realname" required></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Organisation*</label></div>
+                          <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'organisation')" name="organisation" class="required form-control h5-phone" placeholder=" Organisation" id="organisation" required></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Organisation Address*</label></div>
+                          <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'organisationAddress')" name="organisationAddress" placeholder=" Organisation Address" id="organisationAddress" class="required form-control h5-phone" required></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Position*</label></div>
+                          <div class="col-md-6"><input type="text" onblur="validate(this.value, 'position')" name="position" placeholder=" position" class="required form-control h5-phone" id="position" required></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Email*</label></div>
+                          <div class="col-md-6"><input type="email" onblur="validate(this.value, 'email')" name="email" placeholder=" email" id="email" class="required form-control h5-phone" required></div>
+                          </div>
+                        <div class="col-md-12 form">
+                          <div class="col-md-6"><label style="color:#D8DC6A">Contact Number*</label></div>
+                          <div class="col-md-6"><input type="text" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder=" contactNumber" id="contactNumber"  required class="required form-control h5-phone"></div>
+                          </div>
+                          <div class="col-md-12 form">
+                         <div class="submit">
+                         <button type="submit" id="button" class="button btn btn-accent" style="color:#7CDEDC"> Register</button>
                             </div>
               </br>
               <p id="userSuggestion" class="error"></p>
-              
-     </form>
-</div>    
-    
+                        </div></div>
+ 
 </div>
-
+<div id="footer">
+    <div>
+      <p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
+      <p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
+    </div>
+  </div>
     <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="checkinfo.js"></script>
 </body>

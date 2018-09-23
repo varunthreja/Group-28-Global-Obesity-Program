@@ -15,17 +15,18 @@
 
 .search_box{
 	position: relative;
-	left: 470px;
+	left: 300px;
 }
 
 .search_input{
-	width: 270px !important;
+	width: 570px !important;
 }
 
 
 .navbar{
-	border-bottom:3px solid #3E2723;
-	background-color:#3E2723;
+	
+	border-bottom:3px solid #7284A8;
+	background-color: #7284A8;
 	
 }
 

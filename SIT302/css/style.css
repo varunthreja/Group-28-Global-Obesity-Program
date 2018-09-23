@@ -1,5 +1,5 @@
 body {
-	background: #e8e1d1;
+	background: white;
 	color: #7c6b4f;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -28,7 +28,7 @@ div.body span a:hover {
 }
 
 #page {	
-	background: url(../images/bg-body.jpg) repeat-x center top;
+	background: url(../images/banner5.jpg) repeat-x center top; /* Change Image if need to */
 	overflow: hidden;
 	width: 100%;
 }
@@ -94,7 +94,9 @@ div.body span a:hover {
 
 #body,
 div.body {
-	background: #86bc9e;
+    /*----------Change in Color if needed------------*/
+    /*background: #86bc9e;*/
+	background: #1F487E;
 	border: 1px solid #e0dacc;
 	margin: 17px auto 25px;
 	overflow: hidden;
@@ -121,19 +123,7 @@ div.body {
 #body ul li:first-child {
 	background: none;
 }
-
-#body h1{
-	font-family: Times New Roman, Times, serif;
-	font-size: 29px;
-}
-
-#body p{
-	font-size: 16px;
-	font-family: Times New Roman, Times, serif;	
-	padding-left: 28px;
-	padding-right:28px;
-}
-
+/*----------------------------------------H1-----------------------------------------*/
 #body ul li h1 {
 	font-family: Times New Roman, Times, serif;
 	font-size: 29px;
@@ -143,7 +133,7 @@ div.body {
 }
 
 #body ul li h1 a {
-	color: black;
+	color: #7CDEDC;
 	display: block;
 	text-align: center;
 	text-decoration: none;
@@ -152,23 +142,24 @@ div.body {
 }
 
 #body ul li h1 a:hover {
-	color: #4b0082
+	color: white;
 }
+/*----------------------------------------H1-----------------------------------------*/
 
 #body ul li div {
 	background: url(../images/frame.gif) no-repeat;
 	height: 238px;
 	margin: 0 0 15px;
-	width: 286px;
+	width: 286px; 
 }
 
 #body ul li a img  {	
 	display: block;	
 	padding: 3px;
 }
-
+/*----------------------------------------SPAN-----------------------------------------*/
 #body ul li span {
-	color:brown ;
+	color: #D8DC6A;
 	display: block;
 	font-size: 16px;
 	font-family: Times New Roman, Times, serif;
@@ -176,15 +167,18 @@ div.body {
 	padding: 0 0 5px;
 	text-transform: uppercase;
 }
+/*----------------------------------------SPAN-----------------------------------------*/
 
+
+/*----------------------------------------PARA-----------------------------------------*/
 #body ul li p {
 	line-height: 23px;
 	margin: 0;
 	padding: 0;
-    color: black;
+    color: #A9B3CE;
 	text-align: justify;
 }
-
+/*----------------------------------------PARA-----------------------------------------*/
 #body ul li a.readmore {
 	background: url(../images/bg-readmore.gif) no-repeat;
 	color: #69614a;
@@ -202,6 +196,7 @@ div.body {
 div.body {
 	padding: 30px 20px;
 	width: 920px;
+	
 }
 
 div.body h2 {
@@ -373,7 +368,11 @@ div.body ul li ul li:first-child {
 }
 
 #footer {
-	background: url(../images/bg-footer.jpg) repeat-x center bottom;
+	background: url(../images/footer1.jpg) repeat-x center bottom; /* Change image if needed */
+	
+	 /* remove it if not worked */
+
+   /* till here */
 }
 
 #footer ul {
@@ -406,7 +405,7 @@ div.body ul li ul li:first-child {
 }
 
 #footer ul li div {
-	background: url(../images/bg-footer-item.gif) no-repeat;
+	background: url(../images/bg-footer.jpg) no-repeat;
 	height: 266px;
 	margin: 0;
 	padding: 10px 0 0;
@@ -455,10 +454,14 @@ div.body ul li ul li:first-child {
 	display: block;
 }
 
+/* ---------------Change if required
+------------------------------*/
 #footer div {
 	margin: 70px auto 0;
 	overflow: hidden;
 	width: 960px;
+	
+ 
 }
 
 #footer div p {
@@ -467,23 +470,23 @@ div.body ul li ul li:first-child {
 }
 
 #footer div p a {
-	color: #988878;
+	color: white;
 	text-decoration: none;
 }
 
 #footer div p a:hover {
-	color: #988878;
+	color: #87ceeb;
 	text-decoration: underline;
 }
 
 #footer div p.connect {
 	float: left;
-	color: #988878;
+	color: white;
 }
 
 #footer div p.footnote {
 	float: right;
-	color: #988878;
+	color: white;
 }
  /* CSS---------------for the drop down menu
 ------------------------------*/
