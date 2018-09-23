@@ -346,7 +346,7 @@
       //alert(temp);
       originalSelectValue=(JSON.stringify(originalSelectValue) == JSON.stringify(temp))?originalSelectValue:temp;
       
-      alert(originalSelectValue);
+      //alert(originalSelectValue);
       //originalSelectValue.push(selectValue);
       
   });
