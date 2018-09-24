@@ -90,15 +90,17 @@
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 				<?php
-					$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-					$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
-					$result = $conn->query($sql);
-					if($result->num_rows > 0){
-						$row = $result->fetch_assoc();
-						if($row["isAdmin"] == 1){
-							echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+					if (isset($_COOKIE["username"])){
+						$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+						$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
+						$result = $conn->query($sql);
+						if($result->num_rows > 0){
+							$row = $result->fetch_assoc();
+							if($row["isAdmin"] == 1){
+								echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+							}
 						}
-					}	
+					}
 				?>
 			</ul>
 		</div>

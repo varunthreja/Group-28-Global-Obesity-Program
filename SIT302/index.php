@@ -25,7 +25,7 @@
 
 
 					if (isset($_COOKIE["username"])){
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
@@ -45,14 +45,22 @@
 				<li class="current"><a href="index.php"><span>Home</span></a></li>
 				<?php  
 					if(isset($_COOKIE["username"])){
-						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
+						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
 					} 
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 				<?php
-					if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-						echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+					if (isset($_COOKIE["username"])){
+						$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+						$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
+						$result = $conn->query($sql);
+						if($result->num_rows > 0){
+							$row = $result->fetch_assoc();
+							if($row["isAdmin"] == 1){
+								echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+							}
+						}
 					}
 				?>
 			</ul>
@@ -61,27 +69,27 @@
 	<div id="body">
             <ul>
                 <li>
-                    <h1><a href="index.php">Global Obesity Program</a></h1>
+                    <h1><a>Global Obesity Program</a></h1>
                     <div>
-                        <a href="index.php"><img src="images/GlobalObesity.jpg" alt="Image"  Height= "238"  width= "286"/></a>
+                        <a><img src="images/GlobalObesity.jpg" alt="Image"  Height= "238"  width= "286"/></a>
                     </div>
                     <span>Mission: To provide healthy diet under budget and eliminate obesity.</span>
                     <p>We aim to provide a healthy and affordable diet to each and every citizen of Australia.</p>
                     
                 </li>
                 <li>
-                    <h1><a href="products.php">Search Products</h1>
+                    <h1><a>Search Products</h1>
                     <div>
-                        <a href="products.php"><img src="images/fruits.jpg" alt="Image" Height= "238"  width= "286" /></a>
+                        <a><img src="images/fruits.jpg" alt="Image" Height= "238"  width= "286" /></a>
                     </div>
                     <span>Select from a wide range of products</span>
                     <p>Here you can choose from a wide variety of healthy products for yourself and your family.</p>
                    
                         </li>
                 <li>
-                    <h1><a href="price.php">Compare <br>Prices </a></h1>
+                    <h1><a>Compare <br>Prices </a></h1>
                     <div>
-                        <a href="price.php"><img src="images/graphs.jpg" alt="Image"  Height= "238"  width= "286"/></a>
+                        <a><img src="images/graphs.jpg" alt="Image"  Height= "238"  width= "286"/></a>
                     </div>
                     <span>Calculate an affordable price for your everyday diet</span>
                     <p>The data after price comparison is displayed in the form of graphs. You have the freedom to choose from several types of graphs for example, line graph, bar graph, pie-chart and so on.</p>
