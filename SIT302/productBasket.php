@@ -73,10 +73,10 @@
 			</ul>
 		</div>
 	</div>
-	<div id="body">
+	<div>
 		<form action="" method="post">
 			<table style="width:100%; text-align:center">
-				<tr style="color:#D8DC6A">
+				<tr>
 					<td>
 						Select a Household:
 						<select name="baskets">
