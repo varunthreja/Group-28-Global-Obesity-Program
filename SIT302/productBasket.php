@@ -52,6 +52,13 @@
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
+                
+                <?php
+					if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
+						echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+					}
+				?>
+                
 				<?php
 					$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 					$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
@@ -66,10 +73,10 @@
 			</ul>
 		</div>
 	</div>
-	<div id="body">
+	<div>
 		<form action="" method="post">
 			<table style="width:100%; text-align:center">
-				<tr style="color:#D8DC6A">
+				<tr>
 					<td>
 						Select a Household:
 						<select name="baskets">
