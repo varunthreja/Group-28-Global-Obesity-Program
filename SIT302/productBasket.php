@@ -73,10 +73,10 @@
 			</ul>
 		</div>
 	</div>
-	<div>
+	<div id="body">
 		<form action="" method="post">
 			<table style="width:100%; text-align:center">
-				<tr>
+				<tr style="color:#D8DC6A">
 					<td>
 						Select a Household:
 						<select name="baskets">
@@ -140,7 +140,7 @@
 
 		<?php
 			if (isset($_REQUEST["submit"])){
-				echo '<h2>Break down of basket:</h2>';
+				echo '<h2 style="color: #7CDEDC">Break down of basket:</h2>';
 				echo '<table class="fixed_header" style="margin-left:auto; margin-right:auto"><thead><th>Food Name</th><th>Collection Date</th><th>Serving Size</th><th>Price</th><th>Weighted Price</th></thead><tbody>';
 				$tally = 0;
 				$categories = array(0,0,0,0,0,0,0,0,0,0,0);
@@ -188,8 +188,8 @@
 					echo "At ".$tally." this basket is not affordable for ".$basket;						
 				}
 				
-				echo "<h2>Distribution of food categories:</h2>";
-				echo "<table><thead><th>Category Name</th><th>Category Total</th></thead><tbody>";
+				echo '<h2 style="color: #7CDEDC">Distribution of food categories:</h2>';
+				echo '<table><thead><th style="color:#D8DC6A">Category Name</th><th style="color:#D8DC6A">Category Total</th></thead><tbody>';
 				$sql = "SELECT categoryName FROM foodCategories";
 				$result = $conn->query($sql);
 				while ($row=$result->fetch_assoc()){
