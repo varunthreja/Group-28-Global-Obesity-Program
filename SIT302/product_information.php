@@ -100,21 +100,16 @@
 				echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li class="current"><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
 			} 
 		?>
-<<<<<<< HEAD
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 
-				<?php
-=======
-		<li><a href="about.php"><span>About Us</span></a></li>
-		<li><a href="contactus.php"><span>Contact Us</span></a></li>
+				
  <?php
 					if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
 						echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
 					}
 				?>
 		<?php
->>>>>>> a4660301c228f466aa8563c400abdca648688086
 			$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 			$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
 			$result = $conn->query($sql);
@@ -170,7 +165,7 @@
 							$page=1;
 						}
 						
-						$sql="SELECT productName FROM products ORDER BY productName LIMIT 50 OFFSET ".(($page - 1) * 20);
+						$sql="SELECT productName FROM products ORDER BY productName LIMIT 50 OFFSET ".(($page - 1) * 50);
 						$connect=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 						$result=$connect->query($sql);
 						
@@ -200,7 +195,7 @@
 				$productCount = $row["COUNT(*)"];
 			}
 			
-			echo ceil($productCount / 50);
+			$maxPage = ceil($productCount / 50);
 			
 			if (!isset($_REQUEST["page"]) or $_REQUEST["page"] == 1){
 				$page = 1;
@@ -222,8 +217,27 @@
 				echo '<li><a href="product_information.php?page='.($page + 3).'">'.($page + 3).'</a></li>';
 				echo '<li><a href="product_information.php?page='.($page + 4).'">'.($page + 4).'</a></li>';
 				echo '<li><a href="product_information.php?page='.ceil($productCount / 50).'">&raquo;</a></li>';
+			}else if ($_REQUEST["page"] == $maxPage - 1){
+				echo '<ul class="pagination">';
+				echo '<li><a href="product_information.php?page=1">&laquo;</a></li>';
+				echo '<li><a href="product_information.php?page='.($page - 3).'">'.($page - 3).'</a></li>';
+				echo '<li><a href="product_information.php?page='.($page - 2).'">'.($page - 2).'</a></li>';
+				echo '<li><a href="product_information.php?page='.($page - 1).'">'.($page - 1).'</a></li>';				
+				echo '<li><a href="product_information.php?page='.$page.'">'.$page.'</a></li>';
+				echo '<li><a href="product_information.php?page='.($page + 1).'">'.($page + 1).'</a></li>';
+				echo '<li><a href="product_information.php?page='.ceil($productCount / 50).'">&raquo;</a></li>';
+				echo '</ul>';
+			}else if ($_REQUEST["page"] == $maxPage){
+				echo '<ul class="pagination">';
+				echo '<li><a href="product_information.php?page=1">&laquo;</a></li>';
+				echo '<li><a href="product_information.php?page='.($page - 4).'">'.($page - 4).'</a></li>';
+				echo '<li><a href="product_information.php?page='.($page - 3).'">'.($page - 3).'</a></li>';
+				echo '<li><a href="product_information.php?page='.($page - 2).'">'.($page - 2).'</a></li>';
+				echo '<li><a href="product_information.php?page='.($page - 1).'">'.($page - 1).'</a></li>';				
+				echo '<li><a href="product_information.php?page='.$page.'">'.$page.'</a></li>';
+				//echo '<li><a href="product_information.php?page='.ceil($productCount / 50).'">&raquo;</a></li>';
+				echo '</ul>';
 			}else if ($_REQUEST["page"] >= 3){
-				echo "Hello World";
 				echo '<ul class="pagination">';
 				echo '<li><a href="product_information.php?page=1">&laquo;</a></li>';
 				echo '<li><a href="product_information.php?page='.($_REQUEST["page"] - 2).'">'.($_REQUEST["page"] - 2).'</a></li>';
@@ -247,10 +261,10 @@
 	</div>
 
 	<script type="text/javascript">
-		var foodName = <?php echo json_encode($foodName) ?>; //php array => json 
+		var productName = <?php echo json_encode($productName) ?>; //php array => json 
 		$("#search_input").on("keyup", function () {
 			var search_input = $("#search_input").val().toString();
-			var result = filterArray(foodName, search_input);
+			var result = filterArray(productName, search_input);
 			document.getElementById("table").innerHTML = "<tr><td>1<td></tr>";
 			var updateTable;
 			for (let i = 0; i < result.length; i++) {
@@ -264,7 +278,7 @@
 
 		$("#search_btn").on("click", function () {
 			var search_input = $("#search_input").val().toString();
-			var result = filterArray(foodName, search_input);
+			var result = filterArray(productName, search_input);
 			document.getElementById("table").innerHTML = "<tr><td>1<td></tr>";
 			var updateTable;
 			for (let i = 0; i < result.length; i++) {

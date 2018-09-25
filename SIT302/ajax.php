@@ -14,7 +14,7 @@ if (isset($_POST['search'])) {
  
 //Search query.
  
-   $Query = "SELECT foodName FROM foodDetails WHERE foodName LIKE '%$Name%' LIMIT 5";
+   $Query = "SELECT productName FROM products WHERE productName LIKE '%$Name%' LIMIT 50";
  
 //Query execution
  
