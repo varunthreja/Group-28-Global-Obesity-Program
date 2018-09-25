@@ -19,7 +19,12 @@ img {
 p a {
 	color: #800080;
 }
-
+#body{
+  min-height:400px;
+}
+.main{
+  min-height:400px;
+}
 p a:hover,
 #body ul li a.readmore:hover,
 #footer ul li div a.viewall:hover,
@@ -35,7 +40,7 @@ div.body span a:hover {
 
 #header {
 	margin: 0 auto;
-	width: 960px;
+	width: 1030px;
 }
 
 #header div {
