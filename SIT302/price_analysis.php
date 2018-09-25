@@ -269,11 +269,11 @@
     if(k == 0){
         selectProduct = $(this).val();
     }else{
-        selectProduct += '+'+$(this).val();
+        selectProduct += "', '"+$(this).val();
     }
 })
 
-  var sql="SELECT a.collectionDate, a.price, b.foodName FROM main AS a, foodDetails AS b WHERE a.foodID  = (SELECT foodID FROM foodDetails WHERE foodName = '"+selectProduct+"') AND a.foodID = b.foodID AND a.collectionDate BETWEEN '"+startDate+"' AND '"+endDate+"'";
+  var sql="SELECT a.collectionDate, a.price, b.foodName FROM main AS a, foodDetails AS b WHERE a.foodID  IN (SELECT foodID FROM foodDetails WHERE foodName IN ('"+selectProduct+"')) AND a.foodID = b.foodID AND a.collectionDate BETWEEN '"+startDate+"' AND '"+endDate+"'";
   alert(sql);
   });
 
