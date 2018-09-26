@@ -40,10 +40,7 @@ if (mysqli_connect_errno()) {
   exit();
 }
 
-$query = /*"SELECT collectionDate,price,foodName FROM main AS M
-JOIN collections AS C ON M.collectionDate = C.collectionDate
-JOIN fooddetails AS F ON M.foodID = F.foodID";*/
-'SELECT a.collectionDate, a.price , b.foodName FROM main as a, foodDetails as b WHERE a.foodName = "Bottled water, still" AND a.foodID = b.foodID';
+$query = "SELECT b.foodName, a.collectionDate, a.price FROM main AS a, foodDetails AS b WHERE a.foodID  IN (SELECT foodID FROM foodDetails WHERE foodName IN ('Beef lasagne, frozen', 'Cooked hot potato chips, 1 serve*', 'Pre-made chicken & Salad Sandwich (wholemeal) (1 sandwich = ~220g) * (triangle pre-pack)', 'Tinned chicken & vegetable soup, ready to eat')) AND a.foodID = b.foodID AND a.collectionDate BETWEEN '2018-01-27' AND '2018-09-11'";
 
 if ($result = mysqli_query($mysqli, $query)) {
   $out = array();
@@ -51,9 +48,8 @@ if ($result = mysqli_query($mysqli, $query)) {
   while ($row = $result->fetch_assoc()) {
     $out[] = $row;
   }
-
-  mysqli_free_result($result);
-
+  
+  // echo $out;
 }
 
 /* close connection*/
