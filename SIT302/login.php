@@ -120,7 +120,7 @@
                           </div>
                           <div class="col-md-12 form">
                       <div class="submit">
-				<button type="submit" id="loginButton" class="button btn btn-accent" style="color:#7CDEDC">log in</button>
+				<button type="submit" id="loginButton" class="button btn btn-accent">login</button>
 			</div> 		
 			<div id="loginSuggestion" class="error">
 			 </div>

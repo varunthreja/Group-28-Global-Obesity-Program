@@ -46,12 +46,14 @@
 				<li><a href="index.php"><span>Home</span></a></li>
 				<?php  
 					if(isset($_COOKIE["username"])){
-						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li class="current"><a href="productBasket.php"><span>Product Basket</span></a></li>';
+						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Product Basket</span></a></li>';
 					} 
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li class="current"><a href="contactus.php"><span>Contact Us</span></a></li>
-                <?php
+                
+
+				<?php
 					if (isset($_COOKIE["username"])){
 						$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 						$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
@@ -97,21 +99,21 @@
          <label class="sr-only" for="comment">Type your message here</label>
          <textarea class="required form-control" id="comment" name="comment" placeholder="Type your message here&nbsp;*" rows="6"></textarea>
       </div>
-      <button class="btn btn-accent" type="submit">Submit</button>  
+      <button class="button btn btn-accent" type="submit">Submit</button>  
    </form>
 </div>
 <div class="col-md-4 contact-info">
 <div class="phone" style="color:#7CDEDC">
    <h2>Call</h2>
-   <a href="tel:+4046872730" style="color:#D8DC6A">0300000000</a>
+   <a href="tel:+4046872730" style="color:white">0300000000</a>
 </div>
 <div class="email" style="color:#7CDEDC">
    <h2>Email</h2>
-   <a href="mailto:info@decidedekalb.com" style="color:#D8DC6A">kathryn@deakin.edu.au</a>
+   <a href="mailto:info@decidedekalb.com" style="color:white">kathryn@deakin.edu.au</a>
 </div>
 <div class="location" >
    <h2 style="color:#7CDEDC">Visit</h2>
-   <p style="color:#D8DC6A">Global Obesity Center </br>
+   <p style="color:white">Global Obesity Center </br>
       Deakin University </br>
       Burwood </br>
       VIC 3125

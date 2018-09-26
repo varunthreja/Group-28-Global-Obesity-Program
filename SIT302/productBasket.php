@@ -70,7 +70,7 @@
 	<div id="body">
 		<form action="" method="post">
 			<table style="width:100%; text-align:center">
-				<tr style="color:#D8DC6A">
+				<tr style="color:white">
 					<td>
 						Select a Household:
 						<select name="baskets">

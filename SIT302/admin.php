@@ -89,7 +89,12 @@
 				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
-                <?php
+                                <?php
+					if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
+						echo '<li class="current"><a href="admin.php"><span>Admin Panel</span></a></li>';
+					}
+				?>
+				<?php
 					$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 					$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
 					$result = $conn->query($sql);
@@ -143,7 +148,7 @@
 						$admin="False";
 					}
 					
-					echo '<tr><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" > '.$confirmed.'</td><td><button onclick="changeAdmin('.$row["userID"].')" >'.$admin.'</td></tr>';
+					echo '<tr><td>'.$row["username"].'</td><td>'.$row["name"].'</td><td>'.$row["organisation"].'</td><td>'.$row["organisationAddress"].'</td><td>'.$row["position"].'</td><td>'.$row["email"].'</td><td>'.$row["contactNumber"].'</td><td><button onclick="changStatus('.$row["userID"].')" class="button btn btn-accent" > '.$confirmed.'</td><td><button onclick="changeAdmin('.$row["userID"].')" class="button btn btn-accent">'.$admin.'</td></tr>';
 				}
 			} else {
 				echo "0 results";

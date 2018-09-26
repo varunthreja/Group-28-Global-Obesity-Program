@@ -90,6 +90,11 @@
       <li><a href="about.php"><span>About Us</span></a></li>
       <li><a href="contactus.php"><span>Contact Us</span></a></li>
       <?php
+					if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
+						echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+					}
+				?>
+      <?php
 		$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 		$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
 		$result = $conn->query($sql);
@@ -139,7 +144,7 @@
                             <!-- /.row -->
 
                             <div class="col-sm-12 text-center">
-                                <button  class="btn btn-primary" id="changePassword" onclick="changePassword()"><i class="fa fa-save"></i> Save new password</button>
+                                <button  class="button btn btn-accent" id="changePassword" onclick="changePassword()"><i class="fa fa-save"></i> Save new password</button>
                             </div>
                         
 
@@ -228,16 +233,16 @@
                                         </div>
                                     </div>
                                     
-
+                                <div class="pull-right">
+                                    <button type="submit" id="checkoutfirst"  class="button btn btn-accent">Save changes<i class="fa fa-chevron-right"></i>
+                                    </button>
                                 </div>
                                 <!-- /.row -->
                             </div>
 
                             <div class="box-footer">
                                 
-                                <div class="pull-right">
-                                    <button type="submit" id="checkoutfirst"  class="btn btn-primary" " >Save changes<i class="fa fa-chevron-right"></i>
-                                    </button>
+                                
                                 </div>
                             </div>
                         </form>

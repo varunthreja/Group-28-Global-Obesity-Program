@@ -142,7 +142,7 @@
                           </div>
                           <div class="col-md-12 form">
                          <div class="submit">
-                         <button type="submit" id="button" class="button btn btn-accent" style="color:#7CDEDC"> Register</button>
+                         <button type="submit" id="button" class="button btn btn-accent"> Register</button>
                             </div>
               </br>
               <p id="userSuggestion" class="error"></p>

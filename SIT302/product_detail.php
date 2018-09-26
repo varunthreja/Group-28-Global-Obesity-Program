@@ -84,7 +84,7 @@
 			?>
 			<li><a href="about.php"><span>About Us</span></a></li>
 			<li><a href="contactus.php"><span>Contact Us</span></a></li>
-			
+
 			<?php
 					$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 					$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
@@ -121,7 +121,7 @@
 				$sql="select * from foodDetails";
 				$conn=new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
 				$results=$conn->query($sql);
-				echo '<tr><td><select name="foodName" id="foodName"><option value=""></option>';
+				echo '<tr><td><select name="foodName" id="foodName" class="required form-control h5-phone"><option value=""></option>';
 
 				while($row=$results->fetch_assoc()){
 					 if($row["foodName"][0]=='"')
@@ -133,7 +133,7 @@
     				}
 				}
 
-				echo '</select></td><td><input type="text" name="sbrand" id="specificBrand"></td><td><input type="text" name="ybrand" required></td><td><input type="text" name="ssize" id="specificSize"></td><td><input type="number"  name="ysize" required><select name="foodSize" id="foodSize1" required><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
+				echo '</select></td><td><input type="text" class="required form-control h5-phone" name="sbrand" id="specificBrand"></td><td><input type="text" class="required form-control h5-phone" name="ybrand" required></td><td><input type="text" name="ssize" class="required form-control h5-phone" id="specificSize"></td><td><input type="number" class="required form-control h5-phone"  name="ysize" required><select name="foodSize" class="required form-control h5-phone" id="foodSize1" required><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
 
 				
 			?>
@@ -153,11 +153,11 @@
 		<p id="userSuggestion"></p>
 		<tbody id="table2">
 			<tr>
-				<td>$<input type="number" name="yourCost" required></td><td><input type="text" name="comments" required></td><td><input type="radio" value="T" name="pricePromoted">True<input type="radio" value="F" name="pricePromoted">False</td>
+				<td>$<input type="number" class="form-control h5-phone" name="yourCost" required></td><td>.<input type="text" class="form-control h5-phone"  name="comments" required></td><td>.<input type="radio" value="T" name="pricePromoted">True<input type="radio" value="F" name="pricePromoted">False</td>
 			</tr>
 		</tbody>
 	</table>
-	<button type="submit" class="Input_button" id="button">Input</button>
+	<button type="submit" class="button btn btn-accent" id="button">Input</button>
 </form>
 </div>
 </div>
