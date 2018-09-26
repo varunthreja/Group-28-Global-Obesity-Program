@@ -571,3 +571,34 @@ div.body ul li ul li:first-child {
 {
 	display:block
 }
+.btn{
+ color:#000;
+}
+.registerTable{
+ min-height:330px;
+}
+.navbar {
+    border-bottom: 3px solid #1F487E !important; 
+    background-color: #1F487E !important;
+}
+.box {
+    width: 75% !important;
+    margin: 0 auto;
+    background: #1F487E;
+    padding: 0px 10px 2px 15px;
+    color: #fff;
+}
+.pull-right {
+    padding-right: 16px;
+}
+.button:hover {
+    background: #000;
+    color: #fff !important;
+}
+.main {
+    background: #1F487E;
+    color: #fff;
+}
+.main:hover {
+    color: #000;
+}
