@@ -32,28 +32,38 @@ path {
 </script>
 
 <?php
-$mysqli = mysqli_connect('localhost','root','','scrappertest');
+	$mysqli = mysqli_connect('localhost','root','','scrappertest');
 
-/* check connection */
-if (mysqli_connect_errno()) {
-  printf("Connect failed: %s\n", mysqli_connect_error());
-  exit();
-}
+	/* check connection */
+	if (mysqli_connect_errno()) {
+	  printf("Connect failed: %s\n", mysqli_connect_error());
+	  exit();
+	}
 
-$query = "SELECT b.foodName, a.collectionDate, a.price FROM main AS a, foodDetails AS b WHERE a.foodID  IN (SELECT foodID FROM foodDetails WHERE foodName IN ('Beef lasagne, frozen', 'Cooked hot potato chips, 1 serve*', 'Pre-made chicken & Salad Sandwich (wholemeal) (1 sandwich = ~220g) * (triangle pre-pack)', 'Tinned chicken & vegetable soup, ready to eat')) AND a.foodID = b.foodID AND a.collectionDate BETWEEN '2018-01-27' AND '2018-09-11'";
+	if (count($_POST["product"]) > 1){
+		$product = $_POST["product"][0];
+		for ($x = 1; $x <= count($_POST["product"]) - 1; $x++){
+			$product = $product."','".$_POST["product"][$x];
+		}
+		
+	}else if(count($_POST["product"]) == 1){
+		$product = $_POST["product"][0];
+	}
 
-if ($result = mysqli_query($mysqli, $query)) {
-  $out = array();
+	$query = "SELECT b.foodName, a.collectionDate, a.price FROM main AS a, foodDetails AS b WHERE a.foodID  IN (SELECT foodID FROM foodDetails WHERE foodName IN ('".$product."')) AND a.foodID = b.foodID AND a.collectionDate BETWEEN '".$_POST["start"]."' AND '".$_POST["end"]."'";
 
-  while ($row = $result->fetch_assoc()) {
-    $out[] = $row;
-  }
-  
-  // echo $out;
-}
+	if ($result = mysqli_query($mysqli, $query)) {
+	  $out = array();
 
-/* close connection*/
-$mysqli->close();
+	  while ($row = $result->fetch_assoc()) {
+		$out[] = $row;
+	  }
+	  
+	  // echo $out;
+	}
+
+	/* close connection*/
+	$mysqli->close();
 ?>
 <script>
   

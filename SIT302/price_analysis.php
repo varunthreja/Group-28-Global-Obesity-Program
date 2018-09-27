@@ -93,12 +93,7 @@
 
 
 </div>
-
-
-
-
-
-    </div>
+</div>
 </nav>
 
 <div id="page">
@@ -146,7 +141,7 @@
 
 <div class="showBox table-responsive"  >
 
-
+<form action="d3js.php" method="post">
 <table class="table table-bordered table-hover">
 
     <tbody id="table1">
@@ -166,10 +161,10 @@
 
 			if($row["foodName"][0]!='"')
 			{
-			  echo '<td><input type="checkbox" name="product" value="'.$row["foodName"].'">'.$row["foodName"].'</td>';
+			  echo '<td><input type="checkbox" name="product[]" value="'.$row["foodName"].'">'.$row["foodName"].'</td>';
 			}
 			else if($row["foodName"][0]=='"'){
-			  echo '<td><input type="checkbox" name="product" value='.$row["foodName"].' >'.$row["foodName"].'</td>';
+			  echo '<td><input type="checkbox" name="product[]" value='.$row["foodName"].' >'.$row["foodName"].'</td>';
 			}
 
 			if($i%5==0){
@@ -197,19 +192,21 @@
 			$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
 			$result = $conn->query($sql);
 			while ($row=$result->fetch_assoc()){
-				echo '<td><input type="date" id="start" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MIN(collectionDate)"].'" required></td>';
+				echo '<td><input type="date" name="start" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MIN(collectionDate)"].'" required></td>';
 			}
 			$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
 			$result = $conn->query($sql);
 			while ($row=$result->fetch_assoc()){
-				echo '<td><input type="date" id="end" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'" required></td>';
+				echo '<td><input type="date" name="end" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'" required></td>';
 			}
 		?>
 	</tr>
 
 </tbody>
 </table>
-
+<input type="submit"/>
+<button class="Input_button" id="product_submit">Input</button>
+</form>
 </div>
 
 
@@ -224,7 +221,6 @@
     
 
 <div >
-  <button class="Input_button" id="product_submit">Input</button>
 </div>
 
 
@@ -354,7 +350,5 @@
 
 
 </script>
-
-
 </body>
 </html>
