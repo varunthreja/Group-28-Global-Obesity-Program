@@ -16,7 +16,6 @@
 		<div class="container-fluid"> 
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
-				<a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
 			</div>
 
 			<div id="user" >
@@ -24,7 +23,7 @@
 
 
 					if (isset($_COOKIE["username"])){
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';

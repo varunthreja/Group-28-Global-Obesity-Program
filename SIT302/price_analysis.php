@@ -197,7 +197,7 @@
 			$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
 			$result = $conn->query($sql);
 			while ($row=$result->fetch_assoc()){
-				echo '<td><input type="date" id="start" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'" required></td>';
+				echo '<td><input type="date" id="start" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MIN(collectionDate)"].'" required></td>';
 			}
 			$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
 			$result = $conn->query($sql);
