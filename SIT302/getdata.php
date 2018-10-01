@@ -1,6 +1,5 @@
 <?php
 include "config.php";
-include "password.php";
 $mysqli = mysqli_connect(DB_HOST,DB_USER,DB_PWD,DB_TABLENAME);
 $query = $_REQUEST['query'];
 
