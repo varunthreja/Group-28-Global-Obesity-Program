@@ -265,7 +265,7 @@
 					<tr>
 						<td></td>
 						<td></td>
-						<td style="text-align:center"><a href="testBasketAnalysis.php" name="clear">clear</a><button type="submit">Submit</button></td>
+						<td style="text-align:center"><a href="productBasket.php" name="clear">clear</a><button type="submit">Submit</button></td>
 					</tr>
 				</table>
 				<?php
