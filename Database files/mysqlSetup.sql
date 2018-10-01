@@ -39,10 +39,12 @@ USE scrapperTest;
 /* ---------------------------------------------------------- */
 
 CREATE TABLE brands (
-	brandID INT,
+	brandID INT AUTO_INCREMENT,
 	brandName VARCHAR(200),
 	PRIMARY KEY(brandID)
 );
+
+CREATE INDEX idx_Brand ON brands(brandName);
 
 /* ---------------------------------------------------------- */
 /* This table will store the ID's of all the stores that are  */
@@ -62,30 +64,31 @@ INTO TABLE stores
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n';
 
+CREATE TABLE categories(
+	categoryID INT PRIMARY KEY AUTO_INCREMENT,
+	categoryName VARCHAR(50)
+);
+
 CREATE TABLE products (
-	productID INT,
+	productID INT AUTO_INCREMENT,
 	brandID INT,
 	productName VARCHAR(200),
+	categoryID INT NOT NULL,
 	packSize varchar(40),
-	servingSize varchar(20),
-	servingsPer FLOAT,
-	productCode INT,
-	energy VARCHAR(10),
-	protien VARCHAR(10),
-	fat VARCHAR(10),
-	saturatedFats VARCHAR(10),
-	carbs VARCHAR(10),
-	sugars VARCHAR(10),
-	sodium VARCHAR(10),
+	servingSize varchar(50),
+	servingsPer varchar(20),
 	storeID INT NOT NULL,
-	equivilent INT,
 	PRIMARY KEY(productID, brandID, productName, packSize),
 	FOREIGN KEY (brandID) REFERENCES brands(brandID),
 	FOREIGN KEY (storeID) REFERENCES stores(storeID)
 );
 
+CREATE INDEX idx_ProductName ON products(productName);
+CREATE INDEX idx_BrandID ON products(brandID);
+CREATE INDEX idx_PackSize ON products(packSize);
+
 CREATE TABLE scrappedData (
-	collectionTime INT,
+	collectionTime DATE,
 	productID INT,
 	originalPrice FLOAT,
 	pricePromoted ENUM('TRUE', 'FALSE') NOT NULL,
@@ -221,14 +224,15 @@ LINES TERMINATED BY '\n';
 CREATE TABLE baskets(
 	basketID varchar(3) PRIMARY KEY,
 	basketName varchar(50),
-	basketDescription varchar(150)
+	basketDescription varchar(150),
+	basketBudget float
 );
 
-INSERT INTO baskets VALUES ("HH1", "Household of 6", "male 19-50yrs; female 19-50yrs; female 70+yrs; boy 14yrs; girl 8 yrs; boy 4 yrs"),
-("HH2", "Household of 3", "female 19-50yrs; boy 14 yrs; girl 8yrs"),
-("HH3", "Household of 1", "male 19-50 yrs"),
-("HH4", "Household of 2", "male 70+ yrs; female 70+yrs"),
-("HH5", "Household of 4", "male 19-50 yrs old; female 19-50 yrs old; boy 14 yrs old; girl 8 yrs old");
+INSERT INTO baskets VALUES ("HH1", "Household of 6", "male 19-50yrs; female 19-50yrs; female 70+yrs; boy 14yrs; girl 8 yrs; boy 4 yrs", 2696.9),
+("HH2", "Household of 3", "female 19-50yrs; boy 14 yrs; girl 8yrs", 1619.23),
+("HH3", "Household of 1", "male 19-50 yrs", 626.98),
+("HH4", "Household of 2", "male 70+ yrs; female 70+yrs", 1428.8),
+("HH5", "Household of 4", "male 19-50 yrs old; female 19-50 yrs old; boy 14 yrs old; girl 8 yrs old", 2234.68);
 
 /* ---------------------------------------------------------- */
 /* This is one of tables that will be used to calculate the   */
