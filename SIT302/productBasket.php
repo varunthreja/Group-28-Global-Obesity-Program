@@ -27,25 +27,15 @@
 
 			<div id="user">
 				<?php  
-
-
-				if (isset($_COOKIE["username"])){
-					echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
-				}
-				else{
-					# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
-					echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-				}   
-			?>
+					if (isset($_COOKIE["username"])){
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+					}
+					else{
+						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+					}   
+				?>
 			</div>
-
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">submit</button>
-			</form>
-
 		</div>
 	</nav>
 
@@ -57,17 +47,23 @@
 			<ul>
 				<li><a href="index.php"><span>Home</span></a></li>
 				<?php  
-				if(isset($_COOKIE["username"])){
-					echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li class="current"><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
-				} 
-			?>
+					if(isset($_COOKIE["username"])){
+						echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li class="current"><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
+					} 
+				?>
 				<li><a href="about.php"><span>About Us</span></a></li>
 				<li><a href="contactus.php"><span>Contact Us</span></a></li>
 				<?php
-				if (isset($_COOKIE["username"]) and ($_COOKIE["username"]=="admin" or $_COOKIE["username"]=="Admin")){
-					echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
-				}
-			?>
+					$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+					$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
+					$result = $conn->query($sql);
+					if($result->num_rows > 0){
+						$row = $result->fetch_assoc();
+						if($row["isAdmin"] == 1){
+							echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+						}
+					}	
+				?>
 			</ul>
 		</div>
 	</div>
@@ -214,33 +210,33 @@
 
 								/* This code will create the drop downmenu for selecting the basket */
 								<?php
-							$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-							$command = "SELECT * FROM baskets";
-							$result = $conn->query($command);
-							echo "<option value='' selected>Select your option</option>";
-							if ($result->num_rows > 0){
-								while ($row=$result->fetch_assoc()){
-									if (isset($_POST["baskets1"]) and $_POST["baskets1"] == $row["basketName"]){
-										echo '<option name="'.$row["basketID"].'" title="'.$row["basketDescription"].'" selected>'.$row["basketName"].'</option>';
+									$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+									$command = "SELECT * FROM baskets";
+									$result = $conn->query($command);
+									echo "<option value='' selected>Select your option</option>";
+									if ($result->num_rows > 0){
+										while ($row=$result->fetch_assoc()){
+											if (isset($_POST["basket1"]) and $_POST["basket1"] == $row["basketName"]){
+												echo '<option name="'.$row["basketID"].'" title="'.$row["basketDescription"].'" selected>'.$row["basketName"].'</option>';
+											}else{
+												echo '<option name="'.$row["basketID"].'" title="'.$row["basketDescription"].'">'.$row["basketName"].'</option>';								
+											}
+										}
 									}else{
-										echo '<option name="'.$row["basketID"].'" title="'.$row["basketDescription"].'">'.$row["basketName"].'</option>';								
-									}
-								}
-							}else{
-								echo "<option>No Results</option>";
-							};
-						?>
+										echo "<option>No Results</option>";
+									};
+								?>
 							</select>
 						</td>
 						<td>
 							Select a Basket:
 							<select name="BasketRating1">
 							<?php
-								if (isset($_POST["BasketRating1"]) and $_POST["BasketRating1"] == "healthybasketrating"){
+								if (isset($_POST["BasketRating1"]) and $_POST["BasketRating1"] == "Healthy"){
 									echo '<option name="BasketRating1" title="unhealthybasketrating"> Unhealthy';
 									echo '<option name="BasketRating1" title="healthybasketrating" selected> Healthy';
 								}else{
-									echo '<option name="BasketRating1" title="unhealthybasketrating" slelected> Unhealthy';
+									echo '<option name="BasketRating1" title="unhealthybasketrating" selected> Unhealthy';
 									echo '<option name="BasketRating1" title="healthybasketrating"> Healthy';
 								}
 							?>
@@ -253,7 +249,7 @@
 						$result = $conn->query($sql);
 						while ($row=$result->fetch_assoc()){
 							if (isset($_POST["limitDate1"])){
-								echo '<input type="date" name="limitDate1" value="'.$_POST["limitDate"].'"min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'">';
+								echo '<input type="date" name="limitDate1" value="'.$_POST["limitDate1"].'"min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'">';
 							}else{
 								echo '<input type="date" name="limitDate1" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'">';
 							}
