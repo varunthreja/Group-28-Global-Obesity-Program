@@ -104,6 +104,13 @@
     border:0;
     color:#fff;
   }
+
+  #d3js {
+  	text-align: center;
+  	display: inline-block;
+  	/*margin-left:auto;
+  	margin-right:auto;*/
+  }
 </style>
 </head>
 <body>
@@ -169,7 +176,7 @@
   </div>
 </div> 
 
-<div class="search_form">    
+<div id="jump" class="search_form">    
   <div class="navbar-form search_box" role="search">
     <div class="form-group">
       <input type="text" id="search_input" name="name" class="form-control search_input" placeholder="Search">
@@ -183,9 +190,9 @@
   </div>
   <script>
     // Set the dimensions of the canvas / graph
-    var margin = {top: 50, right: 30, bottom: 30, left: 330},
-        width = 1300 - margin.left - margin.right,
-        height = 650 - margin.top - margin.bottom;
+    var margin = {top: 50, right: 300, bottom: 30, left: 300},
+        width = screen.width - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
     // Parse the date / time
     var parseDate = d3.time.format("%Y-%m-%d").parse;
@@ -208,7 +215,7 @@
         .y(function(d) { return y(d.price); });
 
     // Adds the svg canvas
-    var svg = d3.select("body")
+    var svg = d3.select("#d3js")
         .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -280,7 +287,7 @@
       	</tr>
       </tbody>
     </table>
-    <button class="Input_button" id="product_submit">Input</button>
+    <button class="Input_button" id="product_submit"> Input </button>
   </div>
 </div>
       
@@ -298,19 +305,19 @@
   var endDate;
   var originalSelectValue=["Apples, red, loose"];
 
-  $("#start").change(function(){
-    $("#start").attr("value",$(this).val()); //赋值
-    startDate=$("#start").val();
-  });
+	$("#start").change(function(){
+	    $("#start").attr("value",$(this).val()); //赋值
+	    startDate=$("#start").val();
+	});
 
-  $("#end").change(function(){
-    $("#end").attr("value",$(this).val()); //赋值
-     endDate=$("#end").val();
-     if(endDate<startDate){
-      alert("endDate must later than startDate");
-      button.disabled=true;
-     }
-  });
+	$("#end").change(function(){
+		$("#end").attr("value",$(this).val()); //赋值
+		endDate=$("#end").val();
+		if(endDate<startDate){
+			alert("endDate must later than startDate");
+			button.disabled=true;
+		}
+	});
 
   button.addEventListener("click",function(){
     var selectProduct = '';
@@ -324,49 +331,47 @@
 
     var sql="SELECT b.foodName, a.collectionDate, a.price FROM main AS a, foodDetails AS b WHERE a.foodID  IN (SELECT foodID FROM foodDetails WHERE foodName IN ('"+selectProduct+"')) AND a.foodID = b.foodID AND a.collectionDate BETWEEN '"+start.value+"' AND '"+end.value+"'";
     getJSON(sql);
+    window.location.href="price_analysis.php#jump";
   });
 
-  $("#search_input").on("keyup",function(){
+	$("#search_input").on("keyup",function(){
+		var search_input=$("#search_input").val().toString();
+		var result=filterArray(foodName,search_input);
+		document.getElementById("table1").innerHTML="";
+		var updateTable;
+		for(let i=0;i<result.length;i++){
+		  if((i+1)%5==1){
+		    updateTable+='<tr>';
+		  }
+		  if(result[i][0]=='"')
+		  {
+		    updateTable+='<td><input type="checkbox" name="product"  value=';
+		    updateTable+=result[i];
+		    if(originalSelectValue.indexOf(result[i].slice(1,-1))>-1){
+		      updateTable+=' checked="checked">';  
+		    }else{
+		       updateTable+='>';  
+		    }
+		  }
+		  else{
+		    updateTable+='<td><input type="checkbox" name="product" value="';
+		    updateTable+=result[i];
+		    if(originalSelectValue.indexOf(result[i])>-1){
+		      updateTable+='" checked="checked">';  
+		    }else{
+		       updateTable+='" >';  
+		    }
+		  }
+		  updateTable+=result[i];
+		  updateTable+='</td>';
+		  if((i+1)%5==0){
+		   updateTable+="</tr>";
+		  }
 
-   var search_input=$("#search_input").val().toString();
-   var result=filterArray(foodName,search_input);
-   document.getElementById("table1").innerHTML="";
-   var updateTable;
-   for(let i=0;i<result.length;i++){
-      if((i+1)%5==1){
-        updateTable+='<tr>';
-      }
-      if(result[i][0]=='"')
-      {
-        updateTable+='<td><input type="checkbox" name="product"  value=';
-        updateTable+=result[i];
-        if(originalSelectValue.indexOf(result[i].slice(1,-1))>-1){
-          updateTable+=' checked="checked">';  
-        }else{
-           updateTable+='>';  
-        }
-      }
-      else{
-        updateTable+='<td><input type="checkbox" name="product" value="';
-        updateTable+=result[i];
-        if(originalSelectValue.indexOf(result[i])>-1){
-          updateTable+='" checked="checked">';  
-        }else{
-           updateTable+='" >';  
-        }
-      }
-      updateTable+=result[i];
-      updateTable+='</td>';
-      if((i+1)%5==0){
-       updateTable+="</tr>";
-      }
-    
-   }
-
-
-    document.getElementById("table1").innerHTML=updateTable;
-    document.getElementById("pagination").innerHTML="";
-  });
+		}
+	    document.getElementById("table1").innerHTML=updateTable;
+	    document.getElementById("pagination").innerHTML="";
+	});
 
  function filterArray(array,clue){
     var resultArray=[];
