@@ -197,7 +197,7 @@
   </div>    
 </div>
 
-<div class="d3js" id="d3js">
+<div class="d3js" id="d3js" style="display: none;">
   <div id="legendContainer" class="legendContainer">
     <svg id="legend"></svg>
   </div>
@@ -249,7 +249,7 @@
 <div class="main" id="showBox" >
   <div class="showBox table-responsive"  >
     <table class="table table-bordered table-hover">
-      <tbody id="table1">
+      <tbody id="table1" style="overflow-x: auto; height:200px; display: block;">
     		<?php 
           $foodName=array();
     			$sql="select * from foodDetails ORDER BY foodName";
@@ -305,7 +305,7 @@
       	</tr>
       </tbody>
     </table>
-    <button class="Input_button" id="product_submit"> Input </button>
+    <button class="Input_button" id="product_submit" onclick="toggleVisibility()"> Input </button>
   </div>
 </div>
       
@@ -401,7 +401,12 @@
     }
     return resultArray;
   }
-
+  function toggleVisibility() {
+    var x = document.getElementById("d3js");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }
+  } 
   $("#table1").on("click",function(e){
       var temp=[];
       var e=e||window.event;
