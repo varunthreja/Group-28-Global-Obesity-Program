@@ -5,7 +5,7 @@
 <php>
 <head>
 	<meta charset="UTF-8" />
-    <title>Global Obesity Program</title>
+    <title>About Us</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -17,7 +17,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid"> 
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php" style="color:white">Healthy Diet Affordability Calculator</a>
+				<a class="navbar-brand" href="index.php" style="color:white">Healthy Diet Affordability Evaluator</a>
 			</div>
 
 			<div id="user" >

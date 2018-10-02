@@ -58,8 +58,7 @@
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid"> 
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.php" style="color:white">Healthy Diet Affordability Calculator</a>
-        <a class="navbar-brand" href="product_information_input.php" style="color:white">| Product Detail Input</a>
+        <a class="navbar-brand" href="index.php" style="color:white">Healthy Diet Affordability Evaluator</a>
       </div>
 
       <div id="user" >
@@ -75,13 +74,6 @@
           }   
         ?>
       </div>
-
-      <form class="navbar-form navbar-right" role="search" >
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">submit</button>
-      </form>
 
     </div>
   </nav>
