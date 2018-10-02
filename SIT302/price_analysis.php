@@ -5,7 +5,7 @@
 		exit;
 	}
 ?>
-<!DOCTYPE php>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -111,9 +111,29 @@
   	/*margin-left:auto;
   	margin-right:auto;*/
   }
+
+  div.tooltip { 
+    position: absolute;     
+    text-align: center;     
+    width: 90px;          
+    height: 28px;         
+    padding: 2px;       
+    font: 12px sans-serif;    
+    background: lightsteelblue; 
+    border: 0px;    
+    border-radius: 8px;     
+    pointer-events: none;     
+}
 </style>
 </head>
 <body>
+
+
+  
+    <!--  <ul class="nav nav-pills">
+    <li><a href="#">Log in</a></li>
+    <li><a href="#">Log out</a></li>
+  </ul> -->
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid"> 
@@ -121,15 +141,19 @@
       <a class="navbar-brand" href="index.php" style="color:white">Healthy Diet Affordability Evaluator</a>
     </div>
     <div id="user" >
-      <?php
-          if (isset($_COOKIE["username"])){
-             echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li>
-                  <li><a href="logout.php" style="color:white">Log out</a></li></ul>';
-          }else{
-            echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li>
-                  <li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-          }   
-      ?>
+    <?php  
+
+      
+        if (isset($_COOKIE["username"])){
+           echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li>
+                <li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+          }
+        else{
+        
+          echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li>
+                <li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+        }   
+    ?>
     </div>
   </div>
 </nav>
@@ -143,24 +167,24 @@
     <ul> 
         <li><a href="index.php"><span>Home</span></a></li>
         <?php  
-      		if(isset($_COOKIE["username"])){
-      			 echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li class="current"><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
-      		}
-      	?>
-      	<li><a href="about.php"><span>About Us</span></a></li>
-      	<li><a href="contactus.php"><span>Contact Us</span></a></li>
-                 
-      	<?php
-      		$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
-      		$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
-      		$result = $conn->query($sql);
-      		if($result->num_rows > 0){
-      			$row = $result->fetch_assoc();
-      			if($row["isAdmin"] == 1){
-      				echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
-      			}
-      		}	
-      	?>
+  		if(isset($_COOKIE["username"])){
+  			 echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li class="current"><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li><li><a href="productBasket.php"><span>Basket Analysis</span></a></li>';
+  		}
+  	?>
+  	<li><a href="about.php"><span>About Us</span></a></li>
+  	<li><a href="contactus.php"><span>Contact Us</span></a></li>
+             
+  	<?php
+  		$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+  		$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
+  		$result = $conn->query($sql);
+  		if($result->num_rows > 0){
+  			$row = $result->fetch_assoc();
+  			if($row["isAdmin"] == 1){
+  				echo '<li><a href="admin.php"><span>Admin Panel</span></a></li>';
+  			}
+  		}	
+  	?>
     </ul>          
   </div>
 </div> 
@@ -173,7 +197,7 @@
   </div>    
 </div>
 
-<div class="d3js" id="d3js" style="display:none;">
+<div class="d3js" id="d3js">
   <div id="legendContainer" class="legendContainer">
     <svg id="legend"></svg>
   </div>
@@ -185,6 +209,7 @@
 
     // Parse the date / time
     var parseDate = d3.time.format("%Y-%m-%d").parse;
+    var formatTime = d3.time.format("%Y-%m-%d");
 
     // Set the ranges
     var x = d3.time.scale().range([0, width]);
@@ -203,6 +228,10 @@
         .x(function(d) { return x(d.collectionDate); })
         .y(function(d) { return y(d.price); });
 
+    var div = d3.select("#d3js").append("div") 
+    .attr("class", "tooltip")       
+    .style("opacity", 0);
+
     // Adds the svg canvas
     var svg = d3.select("#d3js")
         .append("svg")
@@ -220,7 +249,7 @@
 <div class="main" id="showBox" >
   <div class="showBox table-responsive"  >
     <table class="table table-bordered table-hover">
-      <tbody id="table1" style="overflow-x: auto; height:200px; display: block;">
+      <tbody id="table1">
     		<?php 
           $foodName=array();
     			$sql="select * from foodDetails ORDER BY foodName";
@@ -276,7 +305,7 @@
       	</tr>
       </tbody>
     </table>
-    <button class="Input_button" id="product_submit" onclick="toggleVisibility()"> Input </button>
+    <button class="Input_button" id="product_submit"> Input </button>
   </div>
 </div>
       
@@ -373,13 +402,6 @@
     return resultArray;
   }
 
-  function toggleVisibility() {
-    var x = document.getElementById("d3js");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    }
-  } 
-
   $("#table1").on("click",function(e){
       var temp=[];
       var e=e||window.event;
@@ -453,10 +475,7 @@
           }else {
             return "#ccc";
           }
-        })
-        
-        
-
+        })     
       
        // Hide or show the lines based on the ID
        svg.selectAll(".line").data(result, function(d){return d.key})
@@ -485,6 +504,27 @@
     legend.exit().remove();
 
     svg.selectAll(".axis").remove();
+
+    svg.selectAll("dot")  
+        .data(data)     
+        .enter().append("circle")               
+        .attr("r", 5)   
+        .attr("cx", function(d) { return x(d.collectionDate); })     
+        .attr("cy", function(d) { return y(d.price); })   
+        .on("mouseover", function(d) {    
+            div.transition()    
+                .duration(200)    
+                .style("opacity", .9);    
+            div .html(formatTime(d.collectionDate) + "<br/>"  + d.price)  
+                .style("left", (d3.event.pageX) + "px")   
+                .style("top", (d3.event.pageY - 28) + "px");  
+            })          
+        .on("mouseout", function(d) {   
+            div.transition()    
+                .duration(500)    
+                .style("opacity", 0); 
+        });
+
 
     // Add the X Axis
     svg.append("g")
