@@ -1,6 +1,7 @@
 <?php 
 	require_once "include.php";
 	$conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_TABLENAME);
+	if (isset($_COOKIE["username"])){
 	$sql = 'SELECT isAdmin FROM users WHERE username = "'.$_COOKIE["username"].'"';
 	$result = $conn->query($sql);
 	if($result->num_rows > 0){
@@ -9,6 +10,10 @@
 			echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
 			exit;
 		}
+	}
+	}else{
+		echo '<div class="cover"><h1>Unauthorized <small>Error 401</small></h1><p class="lead">The requested resource requires an authentication.</p><a href="index.php">Return to index</a></div>';
+			exit;
 	}
 ?>
 <!DOCTYPE html>
