@@ -72,7 +72,7 @@
                 <li>
                     <h1><a href="index.php">Global Obesity Program</a></h1>
                     <div>
-                        <a href="index.php"><img src="images/GlobalObesity.jpg" alt="Image"  Height= "238"  width= "286"/></a>
+                        <a href="index.php"><img src="http://www.globalobesity.com.au/wp-content/uploads/2016/11/global3.jpeg" alt="Image"  Height= "238"  width= "286"/></a>
                     </div>
                     <span>Mission: To provide healthy diet under budget and eliminate obesity.</span>
                     <p>We aim to provide a healthy and affordable diet to each and every citizen of Australia.</p>
@@ -81,7 +81,7 @@
                 <li>
                     <h1><a href="products.php">Search Products</h1>
                     <div>
-                        <a href="products.php"><img src="images/fruits.jpg" alt="Image" Height= "238"  width= "286" /></a>
+                        <a href="products.php"><img src="images/" alt="Image" Height= "238"  width= "286" /></a>
                     </div>
                     <span>Select from a wide range of products</span>
                     <p>Here you can choose from a wide variety of healthy products for yourself and your family.</p>

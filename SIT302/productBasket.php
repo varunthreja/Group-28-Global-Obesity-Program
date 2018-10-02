@@ -28,7 +28,7 @@
 			<div id="user">
 				<?php  
 					if (isset($_COOKIE["username"])){
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
@@ -112,17 +112,17 @@
 						<td>
 							Select a Date:
 							<?php
-						$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
-						$result = $conn->query($sql);
-						while ($row=$result->fetch_assoc()){
-							if (isset($_POST["limitDate"])){
-								echo '<input type="date" name="limitDate" value="'.$_POST["limitDate"].'"min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'">';
-							}else{
-								echo '<input type="date" name="limitDate" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'">';
-							}
-						}
-						
-					?>
+								$sql = "SELECT MIN(collectionDate), MAX(collectionDate) FROM main";
+								$result = $conn->query($sql);
+								while ($row=$result->fetch_assoc()){
+									if (isset($_POST["limitDate"])){
+										echo '<input type="date" name="limitDate" value="'.$_POST["limitDate"].'"min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'">';
+									}else{
+										echo '<input type="date" name="limitDate" min="'.$row["MIN(collectionDate)"].'" max="'.$row["MAX(collectionDate)"].'" value="'.$row["MAX(collectionDate)"].'">';
+									}
+								}
+								
+							?>
 						</td>
 					</tr>
 					<tr><td><a style="opacity:0">a</a></td></tr>
@@ -261,7 +261,7 @@
 					<tr>
 						<td></td>
 						<td></td>
-						<td style="text-align:center"><a href="productBasket.php" name="clear">clear</a><button type="submit">Submit</button></td>
+						<td style="text-align:center"><a href="productBasket.php" name="clear">clear     </a><button type="submit">Submit</button></td>
 					</tr>
 				</table>
 				<?php
