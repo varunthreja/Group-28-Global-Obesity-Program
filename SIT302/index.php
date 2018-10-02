@@ -17,7 +17,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid"> 
 			<div class="navbar-header" >
-				<a class="navbar-brand" href="index.php" style="color:white">Healthy Diets ASAP</a>
+				<a class="navbar-brand" href="index.php" style="color:white">Healthy Diet Affordability Calculator</a>
 			</div>
 
 			<div id="user" >
