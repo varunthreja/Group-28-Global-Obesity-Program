@@ -143,19 +143,19 @@
 		url="doAction.php?act=login";
 		data={"username":username,"password":password};
 		var success=function(respond){
-		if(respond==1){
-			suggestion.innerHTML="";
-			window.location="index.php";
-		}else if(respond==2){
-			suggestion.innerHTML="password was incorrect";
-		}else if(respond==4){
-			suggestion.innerHTML="User not confirmed"
-		}
+			if(respond==1){
+				suggestion.innerHTML="";
+				window.location="index.php";
+			}else if(respond==2){
+				suggestion.innerHTML="password was incorrect";
+			}else if(respond==4){
+				suggestion.innerHTML="User not confirmed"
+			}
 
-	};
-	$.post(url,data,success,"json");
-	e.preventDefault();
-	})
+		}
+		$.post(url,data,success,"json");
+		//e.preventDefault();
+	}
 	
 	var input = document.getElementById("123");
 
@@ -163,13 +163,11 @@
 	input.addEventListener("keyup", function(event) {
 		// Cancel the default action, if needed
 		event.preventDefault();
-		// Number 13 is the "Enter" key on the keyboard
-		if (event.keyCode === 13) {
-		// Trigger the button element with a click
-			document.getElementById("loginButton").click();
+		if (event.keycode == 13){
+			document.getElementById("loginForm").submit();
 		}
-	});
-	
+	}
+
 	function show(a){
 	password=a;
 

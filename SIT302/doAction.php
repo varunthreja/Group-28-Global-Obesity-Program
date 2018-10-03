@@ -125,7 +125,7 @@ function login(){
     $username=htmlentities($_POST['username']);
     $password=htmlentities($_POST['password']);
 	
-	// //Random String of salt used for everyone
+	//Random String of salt used for everyone
     $salt = 'salt1024';
     $password = md5($salt.$password);
       
@@ -135,28 +135,17 @@ function login(){
 	$results=mysqli_fetch_array($stmt);
     
     if($results["username"]){
-       /* 
-        $_COOKIE['username']=$username;
-        $connect=oci_connect(DB_USER,DB_PWD,DB_HOST);
-        $sql="select * from u where username='{$username}'" ;
-        $stmt=oci_parse($connect, $sql);
-        oci_execute($stmt);
-        $email=array();
-        $i=0;
-        while (oci_fetch_array($stmt)){ $email[$i]=oci_result($stmt,'EMAIL');$i++; }//****
-        $_COOKIE['email']=$email[0];
-        
-        */
+
 		if($username=="admin"){
 			setcookie("username", $username, time()+3600);
 			session_start();
-			echo 1;
-		}elseif ($results["confirmed"]==0){
+			header("Location: index.php");
+        }elseif ($results["confirmed"]==0){
 			echo 4;
 		}else {
 			setcookie("username", $username, time()+3600);
 			session_start();
-			echo 1;
+			header("Location: index.php");
 		}	
         
     }else{
