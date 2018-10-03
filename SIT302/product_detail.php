@@ -18,7 +18,6 @@
   crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="asset.css">
 	<style type="text/css">
-
 		.header{
 			width:50%;
 			height:500px;
@@ -41,8 +40,9 @@
 			border:2px solid darkgray ;
 			overflow:hidden;
 			display: flex;
+			background:#fff;
+			color:#000;
 		}
-
 		.Input_button{
 			width: 100px;
 			float: right;
@@ -133,7 +133,7 @@
     				}
 				}
 
-				echo '</select></td><td><input type="text" class="required form-control h5-phone" name="sbrand" id="specificBrand"></td><td><input type="text" class="required form-control h5-phone" name="ybrand" required></td><td><input type="text" name="ssize" class="required form-control h5-phone" id="specificSize"></td><td><input type="number" class="required form-control h5-phone"  name="ysize" required><select name="foodSize" class="required form-control h5-phone" id="foodSize1" required><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
+				echo '</select></td><td><input type="text" class="required form-control h5-phone" name="sbrand" id="specificBrand" readonly></td><td><input type="text" class="required form-control h5-phone" name="ybrand" required></td><td><input type="text" name="ssize" class="required form-control h5-phone" id="specificSize" readonly></td><td><input type="number" class="required form-control h5-phone"  name="ysize" required><select name="foodSize" class="required form-control h5-phone" id="foodSize1" required><option value="ml">ml</option><option value="L">L</option><option value="kg">per kg</option><option value="g">g</option></select></td></tr>';
 
 				
 			?>
@@ -153,11 +153,11 @@
 		<p id="userSuggestion"></p>
 		<tbody id="table2">
 			<tr>
-				<td>$<input type="number" class="form-control h5-phone" name="yourCost" required></td><td>.<input type="text" class="form-control h5-phone"  name="comments" required></td><td>.<input type="radio" value="T" name="pricePromoted">True<input type="radio" value="F" name="pricePromoted">False</td>
+				<td>$<input type="number" class="form-control h5-phone" name="yourCost" required></td><td><br/><input type="text" class="form-control h5-phone"  name="comments" required></td><td><input type="radio" value="T" name="pricePromoted">True<br/><input type="radio" value="F" name="pricePromoted">False</td>
 			</tr>
 		</tbody>
 	</table>
-	<button type="submit" class="button btn btn-accent" id="button">Input</button>
+	<button type="submit" class="button btn btn-accent" id="button" style="margin-left: 20px;">Input</button>
 </form>
 </div>
 </div>
