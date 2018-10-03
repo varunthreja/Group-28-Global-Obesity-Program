@@ -33,19 +33,16 @@
     flex:0 0 10%;
   }
   .showBox{
-
-
     width: 100%;
-
    }
   .main{
     width:100%;
-    
     margin:20px auto;
     border:2px solid darkgray ;
     overflow:hidden;
     display: flex;
-
+    background: #fff;
+    color: #000;
   }
 
   .button_line{
@@ -60,17 +57,17 @@
   }
 
   path {
-      stroke: #ccc;
-      stroke-width: 2;
-      fill: none;
+     stroke: #ccc;
+    stroke-width: 2;
+    fill: none;
   }
 
   .axis path,
   .axis line {
-      fill: none;
-      stroke: grey;
-      stroke-width: 1;
-      shape-rendering: crispEdges;
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
   }
 
   #legendContainer{
