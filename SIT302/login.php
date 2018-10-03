@@ -22,37 +22,38 @@
 
 
 	<style>
-		.error{color:red;position:relative;
-				top:10px;
-		}
-
-.registerTable{
-    width: 34%;
-    height: auto;
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1F487E;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding-top: 10px;
-		 }
-
-		.submit{
-		  position:relative;
-		  width:50%;
-		  margin:10px auto;
-		}
-		.form{
-  margin:10px;
- } 
- .button:hover{
-  background:#000;
-  color: #fff;
-    //padding: 5px;
-    margin-auto
-   } 
+		.error{
+	      color: #CCDC6A;
+	      position: relative;
+	      top: 0px;
+	      text-align: center;
+	    }
+		.registerTable {
+	      width: 50%;
+	      height: auto;
+	      border: 1px solid;
+	      display: flex;
+	      align-items: center;
+	      justify-content: center;
+	      background: #1F487E;
+	      margin: 0 auto;
+	      margin-top: 30px;
+	      padding-top: 10px;
+	    }
+	    .submit{
+	      position:relative;
+	      width:100%;
+	      margin:10px auto;
+	      text-align:center;
+	    }
+	    .form{
+	      margin:10px;
+	      width:96%;
+	    } 
+	    .button:hover{
+	      background:#000;
+	      color: #fff;
+	    } 
 	</style>
 </head>
 
@@ -103,11 +104,11 @@
 			<div class="row">
 				<h2 style="text-align:center; color:#7CDEDC">Login to your Account</h2>
                           <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Username*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Username*</label></div>
                           <div class="col-md-6"><input type="text" name="username" id="1" placeholder=" Username" onblur="get(this.value)" class="required form-control h5-phone" required ></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Password*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Password*</label></div>
                           <div class="col-md-6"><input type="password" name="password" class="required form-control h5-phone" placeholder=" Password" id="123" onblur="show(this.value)"  required></div>
                           </div>
                           <div class="col-md-12 form">

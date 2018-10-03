@@ -22,35 +22,38 @@
 
 
   <style>
-    .error{color:red;position:relative;
-        top:10px;
+    .error{
+      color: #CCDC6A;
+      position: relative;
+      top: 0px;
+      text-align: center;
     }
-.registerTable {
-    width: 50%;
-    height: auto;
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1F487E;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding-top: 10px;
-}
-
+    .registerTable {
+      width: 50%;
+      height: auto;
+      border: 1px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1F487E;
+      margin: 0 auto;
+      margin-top: 30px;
+      padding-top: 10px;
+    }
     .submit{
       position:relative;
-      width:50%;
+      width:100%;
       margin:10px auto;
+      text-align:center;
     }
- .form{
-  margin:10px;
- } 
- .button:hover{
-  background:#000;
-  color: #fff;
-    //padding: 5px;
-   } 
+    .form{
+      margin:10px;
+      width:96%;
+    } 
+    .button:hover{
+      background:#000;
+      color: #fff;
+    } 
   </style>
 </head>
 
@@ -133,11 +136,12 @@
                           <div class="col-md-6"><input type="text" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder=" contactNumber" id="contactNumber"  required class="required form-control h5-phone"></div>
                           </div>
                           <div class="col-md-12 form">
+                            <p id="userSuggestion" class="error"></p>
                          <div class="submit">
                          <button type="submit" id="button" class="button btn btn-accent"> Register</button>
                             </div>
               </br>
-              <p id="userSuggestion" class="error"></p>
+              
                         </div></div>
  
 </div>
