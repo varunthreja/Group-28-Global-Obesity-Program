@@ -27,7 +27,7 @@
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Login</a></li></ul>';
 					}   
 				?>
 			</div>
@@ -122,12 +122,13 @@
 </div>
    <!--  New Code -->
 	</div></div></div></div></div>
-	 <div id="footer">
+	  <div id="footer">
             <div>
-                <p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
+                <p class="connect">For more information follow us on <a href="https://twitter.com/GLOBE_obesity" target="_blank">Twitter</a>
+and visit our <a href="http://www.globalobesity.com.au/" target="_blank">Website</a> </p>
                 <p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
             </div>
-	</div>
+        </div>
 
 </body>
 </php>

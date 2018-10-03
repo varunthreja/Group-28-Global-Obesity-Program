@@ -12,6 +12,11 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
 	<link rel="stylesheet" href="asset.css">
+<script>
+ $('.menu-item a').click(function(){
+    $(this).addClass('active').siblings().removeClass('active');
+    });
+</script>
 </head>
 <body onload="alert_cookie()">
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -29,7 +34,7 @@
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Login</a></li></ul>';
 					}   
 				?>
 			
@@ -72,7 +77,7 @@
                 <li>
                     <h1><a href="index.php">Global Obesity Program</a></h1>
                     <div>
-                        <a href="index.php"><img src="http://www.globalobesity.com.au/wp-content/uploads/2016/11/global3.jpeg" alt="Image"  Height= "238"  width= "286"/></a>
+                        <img src="images/global3-360x240.jpeg" alt="Image"  Height= "238"  width= "286"/>
                     </div>
                     <span>Mission: To provide healthy diet under budget and eliminate obesity.</span>
                     <p>We aim to provide a healthy and affordable diet to each and every citizen of Australia.</p>
@@ -81,7 +86,7 @@
                 <li>
                     <h1><a href="products.php">Search Products</h1>
                     <div>
-                        <a href="products.php"><img src="images/" alt="Image" Height= "238"  width= "286" /></a>
+                        <img src="images/cbi2-360x240.jpeg" alt="Image" Height= "238"  width= "286" />
                     </div>
                     <span>Select from a wide range of products</span>
                     <p>Here you can choose from a wide variety of healthy products for yourself and your family.</p>
@@ -90,7 +95,7 @@
                 <li>
                     <h1><a href="price.php">Compare <br>Prices </a></h1>
                     <div>
-                        <a href="price.php"><img src="images/graphs.jpg" alt="Image"  Height= "238"  width= "286"/></a>
+                        <img src="images/economics-360x240.jpeg" alt="Image"  Height= "238"  width= "286"/>
                     </div>
                     <span>Calculate an affordable price for your everyday diet</span>
                     <p>The data after price comparison is displayed in the form of graphs. You have the freedom to choose from several types of graphs for example, line graph, bar graph, pie-chart and so on.</p>

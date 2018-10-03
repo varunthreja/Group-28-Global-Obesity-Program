@@ -28,7 +28,7 @@
 						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
 					}
 					else{
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Login</a></li></ul>';
 					}   
 				?>
 			</div>
@@ -69,10 +69,9 @@
 		</div>
 	</div>
 	<div id="body" style="text-align:center">
-		<h1 style="color:#7CDEDC">Our Mission</h1>
-		<p style="color:#A9B3CE">WE aim to provide healthy diet on an affordable price to everyone. </p>
-		<h1 style="color:#7CDEDC">About Us</h1>
-		<p style="color:#A9B3CE">What we eat and how much we eat influences our risk for disease and death. Poor diet is a leading cause of disease burden in Australia and 
+                 <h1 style="color:#7CDEDC">About Us</h1>
+		<h2 style="color:#D8DC6A">We aim to provide healthy diet on an affordable price to everyone. </h2>
+		<p style="color:#A9B3CE; padding: 0px 18px;">What we eat and how much we eat influences our risk for disease and death. Poor diet is a leading cause of disease burden in Australia and 
 		globally. The price of foods and beverages is a critical driver of food choice, particularly among individuals with limited food budgets. 
 		Changing the price ratio between healthy and unhealthy foods is likely to be a critical leverage point for the improvement of population 
 		health, as has been the case with tobacco and alcohol. But actions to rebalance the price of foods towards healthier options are currently 
@@ -82,13 +81,13 @@
 	</div>
 	
 	
-	<div id="footer">
-	
-		<div>
-			<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
-			<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
-		</div>
-	</div>
+	 <div id="footer">
+            <div>
+                <p class="connect">For more information follow us on <a href="https://twitter.com/GLOBE_obesity" target="_blank">Twitter</a>
+and visit our <a href="http://www.globalobesity.com.au/" target="_blank">Website</a> </p>
+                <p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
+            </div>
+        </div>
 
 </body>
 </php>

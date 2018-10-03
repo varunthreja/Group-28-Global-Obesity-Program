@@ -40,15 +40,16 @@
  }
 .main{
   width:100%;
-  
   margin:20px auto;
   border:2px solid ;
   overflow:hidden;
   display: flex;
-
+}
+.text-muted {
+    color: #D8DC6A;
 }
 #header ul li a:hover span {
-    background: url(../images/bg-menu-selected-left.gif) no-repeat left top;
+  background: url(../images/bg-menu-selected-left.gif) no-repeat left top;
 }
 </style>
 </head>
@@ -64,7 +65,7 @@
         if (isset($_COOKIE["username"])){
            echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
         }else{
-          echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+          echo '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Login</a></li></ul>';
         }   
       ?>
     </div>
@@ -107,10 +108,10 @@
       </div>  
      
                     <div class="box">
-                        <h1>My account</h1>
+                        <h1 style="color:#7CDEDC">My account</h1>
                         <p class="lead">Change your personal details or your password here.</p>
                         <p class="text-muted">* field is compulsory.</p>
-                        <h3>Change password</h3>
+                        <h3 style="color:#7CDEDC">Change password</h3>
 
                         
                             <div class="row">
@@ -146,7 +147,7 @@
 
                         <hr>
 <!-- change user imformation -->
-                        <h3>Personal details</h3>
+                        <h3 style="color:#7CDEDC">Personal details</h3>
                         <form action="doAction.php?act=update1" method="post">
                             
 
@@ -178,7 +179,7 @@
                                 <div class="row">                 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="firstname">name *</label>
+                                            <label for="firstname">Name *</label>
                                             <input type="text" class="form-control" id="firstname" onkeyup ="checkinfo(this.value,1)" value='<?php echo $name; ?>' name="realname" required>
                                             <p id="firstnamesuggestion"></p>
                                         </div>
