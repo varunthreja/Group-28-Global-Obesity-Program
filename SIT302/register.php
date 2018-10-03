@@ -101,35 +101,35 @@
   
                           <div class="row">
                           <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Username*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Username*</label></div>
                           <div class="col-md-6"><input type="text" onblur="validate(this.value, 'username')" name="username" placeholder=" Username" class="required form-control h5-phone" id="username" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Password*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Password*</label></div>
                           <div class="col-md-6"><input type="password" onblur="validate(this.value, 'password')" name="password" class="required form-control h5-phone" placeholder="Password" id="password"  required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Fullname*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Fullname*</label></div>
                           <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'name')" name="realname" class="required form-control h5-phone" placeholder=" Fullname" id="realname" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Organisation*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Organisation*</label></div>
                           <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'organisation')" name="organisation" class="required form-control h5-phone" placeholder=" Organisation" id="organisation" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Organisation Address*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Organisation Address*</label></div>
                           <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'organisationAddress')" name="organisationAddress" placeholder=" Organisation Address" id="organisationAddress" class="required form-control h5-phone" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Position*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Position*</label></div>
                           <div class="col-md-6"><input type="text" onblur="validate(this.value, 'position')" name="position" placeholder=" position" class="required form-control h5-phone" id="position" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Email*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Email*</label></div>
                           <div class="col-md-6"><input type="email" onblur="validate(this.value, 'email')" name="email" placeholder=" email" id="email" class="required form-control h5-phone" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A">Contact Number*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Contact Number*</label></div>
                           <div class="col-md-6"><input type="text" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder=" contactNumber" id="contactNumber"  required class="required form-control h5-phone"></div>
                           </div>
                           <div class="col-md-12 form">

@@ -51,6 +51,7 @@
   background:#000;
   color: #fff;
     //padding: 5px;
+    margin-auto
    } 
 	</style>
 </head>
@@ -71,7 +72,7 @@
 					}
 					else{
 						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
-						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
+						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Login</a></li></ul>';
 					}   
 				?>
 			</div>
@@ -110,11 +111,12 @@
                           <div class="col-md-6"><input type="password" name="password" class="required form-control h5-phone" placeholder=" Password" id="123" onblur="show(this.value)"  required></div>
                           </div>
                           <div class="col-md-12 form">
-                      <div class="submit">
-				<button type="submit" id="loginButton" class="button btn btn-accent">login</button>
-			</div> 		
-			<div id="loginSuggestion" class="error">
+                          	<div id="loginSuggestion" class="error">
 			 </div>
+                      <div class="submit">
+				<button type="submit" id="loginButton" class="button btn btn-accent">Login</button>
+			</div> 		
+			
 			</div> 
                       </div>
 			
