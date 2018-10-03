@@ -16,9 +16,15 @@
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="asset.css">
 	<link rel="stylesheet" type="text/css" href="temp.css" />
+	<style>
+	#body{
+	    background: #fff;
+	    color: #000 !important;
+	}
+	</style>
 </head>
 
-<body onload="alert_cookie()">
+<body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -31,7 +37,6 @@
 						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.ucfirst($_COOKIE["username"]).'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
 					}
 					else{
-						# echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
 						echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
 					}   
 				?>
@@ -71,7 +76,7 @@
 		<form action="" method="POST">
 			<div style="float:left;width:475px">
 				<table style="height:100px; width:100%; text-align:center;">
-					<tr style="color:#D8DC6A;height:70px;">
+					<tr style="height:70px;">
 						<td>
 							Select a Household:
 							<select name="basket">
@@ -170,17 +175,17 @@
 							}
 							$pricePer = round($price / $servingSize, 8);
 							$weightedPrice = round($pricePer * $foodWeight, 2);
-							echo "<tr><td style=width:40%;'>".$foodName."</td><td style=width:20%;'>".$collectionDate."</td><td style=width:20%;'>".$price."</td><td style=width:20%;'>".$weightedPrice."</td></tr>";
+							echo "<tr><td style=width:40%;'>".$foodName."</td><td style=width:20%;'>".$collectionDate."</td><td style=width:20%;'>$".$price."</td><td style=width:20%;'>$".$weightedPrice."</td></tr>";
 							$tally += $weightedPrice;
 							$categories[$index] += $weightedPrice;
 							
 						}
 						echo "</tbody></table>";
-						echo "Total Basket Value: ".$tally."<br>";
+						echo "<h3>Total Basket Value: $".$tally."</h3>";
 						if ($basketBudget * 0.3 > $tally){
-							echo "At ".$tally." this basket is affordable for ".$basket;
+							echo "<div style='height:50px;'><h4>At $".$tally." this basket is <u>affordable</u> for ".$basket."</h4></div>";
 						}else{
-							echo "At ".$tally." this basket is not affordable for ".$basket;						
+							echo "<div style='height:50px;'><h4>At $".$tally." this basket is <u>not affordable</u> for ".$basket."</h4></div>";
 						}
 						
 						echo "<h2>Distribution of food categories:</h2>";
@@ -203,7 +208,7 @@
 			</div>
 			<div style="float:right;width:475px">
 				<table style="height:100px;width:100%; text-align:center">
-					<tr style="color:#D8DC6A;height:70;">
+					<tr style="height:70;">
 						<td>
 							Select a Household:
 							<select name="basket1">
@@ -255,13 +260,13 @@
 							}
 						}
 						
-					?>
+						?>
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td></td>
-						<td style="text-align:center"><a href="productBasket.php" name="clear">clear     </a><button type="submit">Submit</button></td>
+						<td style="text-align:center"><a href="productBasket.php" name="clear" style="color: black;">clear     </a><button type="submit">Submit</button></td>
 					</tr>
 				</table>
 				<?php
@@ -307,17 +312,17 @@
 							}
 							$pricePer = round($price / $servingSize, 8);
 							$weightedPrice = round($pricePer * $foodWeight, 2);
-							echo "<tr><td style='width=40%'>".$foodName."</td><td style='width=20%'>".$collectionDate."</td><td>".$price."</td><td style='width=20%'>".$weightedPrice."</td></tr>";
+							echo "<tr><td style='width=40%'>".$foodName."</td><td style='width=20%'>".$collectionDate."</td><td>$".$price."</td><td style='width=20%'>$".$weightedPrice."</td></tr>";
 							$tally += $weightedPrice;
 							$categories[$index] += $weightedPrice;
 							
 						}
 						echo "</tbody></table>";
-						echo "Total Basket Value: ".$tally."<br>";
+						echo "<h3>Total Basket Value: $".$tally."</h3>	";
 						if ($basketBudget * 0.3 > $tally){
-							echo "At ".$tally." this basket is affordable for ".$basket;
+							echo "<div style='height:50px;'><h4>At $".$tally." this basket is <u>affordable</u> for ".$basket."</h4></div>";
 						}else{
-							echo "At ".$tally." this basket is not affordable for ".$basket;						
+							echo "<div style='height:50px;'><h4>At $".$tally." this basket is <u>not affordable</u> for ".$basket."</h4></div>";						
 						}
 						
 						echo "<h2>Distribution of food categories:</h2>";
@@ -341,5 +346,7 @@
 		</form>
 
 	</div>
+   <?php include('footer.php'); ?>         
+
 </body>
 </html>
