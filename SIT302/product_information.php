@@ -20,47 +20,40 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="asset.css">
     <style type="text/css">
-        .header {
-            width: 50%;
-            height: 500px;
-            margin: 0 auto;
-            border-radius: 10px;
-            border-bottom: 2px solid;
-            text-align: center;
-            line-height: 100px;
-            overflow: hidden;
+        .header{
+          width:50%;
+          height:500px;
+          margin:0 auto;
+          border-radius:10px;
+          border-bottom:2px solid ;
+          text-align:center;
+          line-height:100px;
+          overflow: hidden;
         }
-
-        .nav {
-            flex: 0 0 10%;
+        .nav{
+          flex:0 0 10%;
         }
-
-        .showBox {
-
-
-            width: 100%;
-
+        .showBox{
+          width: 100%;
         }
-
-        .main {
-            width: 50%;
-            margin: 20px auto;
-            border: 2px solid darkgray;
-            overflow: hidden;
-            display: flex;
-
+        .main{
+          width:50%;
+          margin:20px auto;
+          border:2px solid darkgray ;
+          overflow:hidden;
+          display: flex;
+          background: #fff;
+          color: #000;
         }
-
-        .Input_button {
-            width: 100px;
-            float: right;
-            position: relative;
-            right: 20px;
+        .Input_button{
+          width: 100px;
+          float: right;
+          position: relative;
+          right:20px;
         }
-
-        .input {
-            width: 100%;
-            height: 30px;
+        .input{
+          width: 100%;
+          height: 30px;
         }
     </style>
 </head>
