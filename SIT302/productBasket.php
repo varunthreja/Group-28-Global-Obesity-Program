@@ -72,7 +72,7 @@
 			</ul>
 		</div>
 	</div>
-	<div id="body">
+	<div id="body" style="border: 3px solid #e0dacc;padding: 5px; width: 970px">
 		<form action="" method="POST">
 			<div style="float:left;width:475px">
 				<table style="height:100px; width:100%; text-align:center;">
