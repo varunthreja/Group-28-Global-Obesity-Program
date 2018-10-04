@@ -51,88 +51,48 @@
       width:96%;
     } 
     .button:hover{
-      background:#000;
+      background:#D8DC6A;
       color: #fff;
     } 
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid"> 
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.php" style="color:white">Healthy Diet Affordability Evaluator</a>
-      </div>
-
-      <div id="user" >
-        <?php  
-
-
-          if (isset($_COOKIE["username"])){
-            echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="account_setting.php" style="color:white"><span ></span>'.$_COOKIE["username"].'</a></li><li><a href="logout.php" style="color:white">Log out</a></li></ul>';
-          }
-          else{
-            # echo  '<script>var c=confirm("We plan to use cookie to provide you a better shopping evironment,do you want to start cookie?");if(c==true){alert("cookie start")}else{alert("cookie banned")}</script>';
-            echo  '<ul class="nav nav-pills navbar-nav navbar-right"> <li><a href="register.php" style="color:white"><span class="glyphicon glyphicon-user"></span>  Register</a></li><li><a href="login.php" style="color:white"><span class="glyphicon glyphicon-log-in"> Log in</a></li></ul>';
-          }   
-        ?>
-      </div>
-
-    </div>
-  </nav>
-    
-  <div id="page">
-    <div id="header">
-      <div>
-        <a href="index.php"><img src="images/image_GlobalObesity.jpg" alt="Logo" /></a>
-      </div>
-      <ul>
-        <li class="current"><a href="index.php"><span>Home</span></a></li>
-        <?php  
-          if(isset($_COOKIE["username"])){
-            echo '<li><a href="account_setting.php"><span>My Account</span></a></li><li><a href="product_detail.php"><span>Product input</span></a></li><li><a href="price_analysis.php"><span>Price Analysis</span></a></li><li><a href="product_information.php"><span>Products</span></a></li>';
-          } 
-        ?>
-        <li><a href="about.php"><span>About Us</span></a></li>
-        <li><a href="contactus.php"><span>Contact Us</span></a></li>
-      </ul>
-    </div>
-  </div>
-
+  <?php include("header.php");?>
    <div class="registerTable" >
   <form method="post" action="doAction.php?act=reg" id="myForm" > 
   
                           <div class="row">
                           <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Username*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A;">Username*</label></div>
                           <div class="col-md-6"><input type="text" onblur="validate(this.value, 'username')" name="username" placeholder=" Username" class="required form-control h5-phone" id="username" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Password*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A;">Password*</label></div>
                           <div class="col-md-6"><input type="password" onblur="validate(this.value, 'password')" name="password" class="required form-control h5-phone" placeholder="Password" id="password"  required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Fullname*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A;">Fullname*</label></div>
                           <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'name')" name="realname" class="required form-control h5-phone" placeholder=" Fullname" id="realname" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Organisation*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A;">Organisation*</label></div>
                           <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'organisation')" name="organisation" class="required form-control h5-phone" placeholder=" Organisation" id="organisation" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Organisation Address*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A;">Organisation Address*</label></div>
                           <div class="col-md-6"> <input type="text" onblur="validate(this.value, 'organisationAddress')" name="organisationAddress" placeholder=" Organisation Address" id="organisationAddress" class="required form-control h5-phone" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Position*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A;">Position*</label></div>
                           <div class="col-md-6"><input type="text" onblur="validate(this.value, 'position')" name="position" placeholder=" position" class="required form-control h5-phone" id="position" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Email*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; ">Email*</label></div>
                           <div class="col-md-6"><input type="email" onblur="validate(this.value, 'email')" name="email" placeholder=" email" id="email" class="required form-control h5-phone" required></div>
                           </div>
                         <div class="col-md-12 form">
-                          <div class="col-md-6"><label style="color:#D8DC6A; padding-top: 10px;">Contact Number*</label></div>
+                          <div class="col-md-6"><label style="color:#D8DC6A; ">Contact Number*</label></div>
                           <div class="col-md-6"><input type="text" onblur="validate(this.value, 'contactNumber')" name="contactNumber" placeholder=" contactNumber" id="contactNumber"  required class="required form-control h5-phone"></div>
                           </div>
                           <div class="col-md-12 form">
@@ -145,12 +105,7 @@
                         </div></div>
  
 </div>
-<div id="footer">
-    <div>
-      <p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
-      <p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
-    </div>
-  </div>
+<?php include("footer.php)?>
     <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="checkinfo.js"></script>
 </body>
