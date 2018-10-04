@@ -116,12 +116,7 @@
 </div>
 
        
-<div id="footer">
-	<div>
-		<p class="connect">Join us on <a href="http://facebook.com/" target="_blank">Facebook</a> &amp; <a href="http://twitter.com/" target="_blank">Twitter</a></p>
-		<p class="footnote">Copyright &copy; Deakin University. All right reserved.</p>
-	</div>
-</div>
+<?php include ("footer.php");?>
 
 <script type="text/javascript">
 	var foodName;

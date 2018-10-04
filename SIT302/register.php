@@ -105,7 +105,7 @@
                         </div></div>
  
 </div>
-<?php include("footer.php)?>
+<?php include("footer.php"); ?>
     <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="checkinfo.js"></script>
 </body>

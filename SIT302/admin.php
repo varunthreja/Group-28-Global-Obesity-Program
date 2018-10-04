@@ -119,17 +119,7 @@
 
 <script type="text/javascript" src="jquery.js"></script>
 
-<script type="text/javascript">
-	// var status=document.getElementById("status");
-	// status.addEventListener("click",function(){
-		// // var confirm=confirm("Do you want to change the status of users?");
-		// // if(confirm){
-			// // var username=status.parentNode.childNodes[0];
-			// // alert(username);
-		// // }
-		// alert(1);
-	// });
-	
+<script type="text/javascript">	
 function changStatus(value){
 	var url='doAction.php?act=update';
 	var data={"userID":value};
