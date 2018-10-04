@@ -348,7 +348,7 @@
     getJSON(sql);
     window.location.href="price_analysis.php#jump";
   });
-
+  var foodName = <?php echo json_encode($foodName) ?>;
 	$("#search_input").on("keyup",function(){
 		var search_input=$("#search_input").val().toString();
 		var result=filterArray(foodName,search_input);

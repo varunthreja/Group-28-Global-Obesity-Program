@@ -245,7 +245,7 @@
     </div>
 
     <script type="text/javascript">
-        var productName = <?php echo json_encode($productName) ?>; //php array => json 
+        var productName = <?php echo json_encode($foodName) ?>; //php array => json 
         $("#search_input").on("keyup", function () {
             var search_input = $("#search_input").val().toString();
             var result = filterArray(productName, search_input);
