@@ -6,72 +6,59 @@
 <php>
 <head>
 	<meta charset="UTF-8" />
-    <title>Contact Us</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+  <title>Contact Us</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
 	<link rel="stylesheet" href="asset.css">
 </head>
 <body>
 	<?php include("header.php");?>
 	<div id="body">
-    <!-- New code -->
-		<div class="container">
-<div class="contact-section">
-<h2 class="ct-section-head" style="color:#7CDEDC">
-   CONTACT US 
-</h2>
-<div class="row contact-fields">
-<div class="col-md-8 left-form">
-   <form method="post" action="">
-      <div class="form-group">
-         <label class="sr-only" for="fname">First Name *</label>
-         <input class="required form-control" id="fname" name="fname" placeholder="First Name&nbsp;*" type="text">
+		<div class="container" style="width: 960px">
+      <div style="margin-left: auto; margin-right: auto;width:550px;">
+        <div style="text-align: center;">
+          <h3 style="font-family: Times New Roman, Times, serif; font-size: 29px; color: #7CDEDC;">Twitter: <a href="https://twitter.com/GLOBE_obesity" target="_blank">@GLOBE_obesity</a><br></h3>
+          <h3 style="font-family: Times New Roman, Times, serif; font-size: 29px; color: #7CDEDC;">Website: <a href="https://www.globalobesity.com.au" target="_blank">Global Obesity Centre</a></h3>
+        </div>
+        <table style="width:500px; text-align: center;margin-left: auto; margin-right: auto">
+          <tr>
+            <td style="width: 400px;">
+              <h3 style="font-family: Times New Roman, Times, serif; font-size: 29px; color: #7CDEDC;">GLOBE Geelong<br></h3>
+              <p style="font-size: 16px; font-family: Times New Roman, Times, serif; color: #D8DC6A;">Deakin University<br>Waterfront Campus<br>
+              1 Gheringhap St<br>
+              Geelong VIC 3220</p>
+            </td>
+            <td style="width: 400px;">
+              <h3 style="font-family: Times New Roman, Times, serif; font-size: 29px; color: #7CDEDC";>GLOBE Burwood</h3>
+              <p style="font-size: 16px; font-family: Times New Roman, Times, serif; color: #D8DC6A;">Deakin University<br>Burwood Campus<br>
+              221 Burwood Highway<br>
+              Burwood Victoria 3125</p>
+            </td>
+          </tr>
+        </table>
+        <hr style="border-width: 3px">
+        <form action="mailto:jgarbell@deakin.edu.au" method="post">
+          <table style="width:500px; margin-left: auto; margin-right: auto;">
+            <tr><td colspan="2" style="padding-left: 5px"><h3 style="font-family: Times New Roman, Times, serif; font-size: 29px; color: #7CDEDC;">General Enquiries:</h3><p style="font-size: 16px; font-family: Times New Roman, Times, serif; color: #D8DC6A;">Please feel free to contact us with any enquiries that you may have regarding our work.</p></td></tr>
+            <tr>
+              <td style="padding-left: 5px;padding-right: 5px"><input class="required form-control" id="fname" name="fname" placeholder="First Name&nbsp;*" type="text"></td>
+              <td style="padding-left: 5px;padding-right: 5px"><input class="required form-control" id="lname" name="lname" placeholder="Last Name&nbsp;*" type="text"></td>
+            </tr>
+            <tr>
+              <td style="padding-left: 5px;padding-right: 5px"><input class="required form-control h5-phone" id="contactPhone" name="contactPhone" placeholder="Phone&nbsp;*" type="text"></td>
+              <td style="padding-left: 5px;padding-right: 5px"><input class="required form-control h5-email" id="contactEmail" name="contactEmail" placeholder="Email&nbsp;*" type="text"></td>
+            </tr>
+            <tr>
+              <td style="padding-left: 5px;padding-right: 5px" colspan="2"><textarea class="required form-control" id="comment" name="comment" placeholder="Type your message here&nbsp;*" rows="6"></textarea></td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align:right"><input type="reset" value="Reset"><input type="submit" value="Send"></td>
+            </tr>
+          </table>
+        </form>
       </div>
-      <div class="form-group">
-         <label class="sr-only" for="lname">Last Name *</label>
-         <input class="required form-control" id="lname" name="lname" placeholder="Last Name&nbsp;*" type="text">
-      </div>
-      <div class="form-group">
-         <label class="sr-only" for="contactEmail">Email *</label>
-         <input class="required form-control h5-email" id="contactEmail" name="contactEmail" placeholder="Email&nbsp;*" type="text">
-      </div>
-      <div class="form-group">
-         <label class="sr-only" for="contactPhone">Phone *</label>
-         <input class="required form-control h5-phone" id="contactPhone" name="contactPhone" placeholder="Phone&nbsp;*" type="text">
-      </div>
-      <div class="form-group">
-         <label class="sr-only" for="comment">Type your message here</label>
-         <textarea class="required form-control" id="comment" name="comment" placeholder="Type your message here&nbsp;*" rows="6"></textarea>
-      </div>
-      <button class="button btn btn-accent" type="submit">Submit</button>  
-   </form>
-</div>
-<div class="col-md-4 contact-info">
-<div class="phone" style="color:#7CDEDC">
-   <h2>Call</h2>
-   <a href="tel:+4046872730" style="color:white">0300000000</a>
-</div>
-<div class="email" style="color:#7CDEDC">
-   <h2>Email</h2>
-   <a href="mailto:info@decidedekalb.com" style="color:white">kathryn@deakin.edu.au</a>
-</div>
-<div class="location" >
-   <h2 style="color:#7CDEDC">Visit</h2>
-   <p style="color:white">Global Obesity Center </br>
-      Deakin University </br>
-      Burwood </br>
-      VIC 3125
-      <br>
-     
-   </p>
+    </div>
   </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-   
-<?php include ("footer.php");?>
-
+  <?php include ("footer.php");?>
 </body>
 </php>
