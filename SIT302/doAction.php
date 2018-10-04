@@ -135,22 +135,15 @@ function login(){
 	$results=mysqli_fetch_array($stmt);
     
     if($results["username"]){
-
-		if($username=="admin"){
-			setcookie("username", $username, time()+3600);
-			session_start();
-			header("Location: index.php");
-        }elseif ($results["confirmed"]==0){
+		if ($results["confirmed"]==0){
 			echo 4;
 		}else {
 			setcookie("username", $username, time()+3600);
-			session_start();
 			header("Location: index.php");
 		}	
-        
     }else{
        echo 2;
-       
+       header("Location: login.php");
     }
     
 }
