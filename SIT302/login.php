@@ -62,7 +62,7 @@ require "config.php";
 				<h2 style="text-align:center; color:#7CDEDC">Login to your Account</h2>
 				<div class="col-md-12 form">
 					<div class="col-md-6">
-						<label style="color:#D8DC6A;">Username*</label>
+						<label style="color:#D8DC6A; padding-top: 15px;">Username*</label>
 					</div>
 					<div class="col-md-6">
 						<input type="text" name="username" id="1" placeholder=" Username" onblur="get(this.value)" class="required form-control h5-phone" required tabindex="1">
@@ -70,7 +70,7 @@ require "config.php";
 				</div>
 				<div class="col-md-12 form">
 					<div class="col-md-6">
-						<label style="color:#D8DC6A;">Password*</label>
+						<label style="color:#D8DC6A; padding-top: 15px;">Password*</label>
 					</div>
 					<div class="col-md-6">
 						<input type="password" name="password" class="required form-control h5-phone" placeholder=" Password" id="123" onblur="show(this.value)"  required tabindex="2">
