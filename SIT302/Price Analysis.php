@@ -72,16 +72,16 @@
 
   #legendContainer{
     position:absolute;
-    top:340px;
-    left:20px;
+    top:330px;
+    left:10px;
     overflow: auto;
-    height:490px;
-    width:330px;
+    height:430px;
+    width:260px;
   }
 
   #legend{
-    width:330px;
-    height:480px;
+    width:250px;
+    height:420px;
   }
 
   .legend {
@@ -357,7 +357,10 @@
   });
 
   function updateGraph(data) {
-    
+
+    d3.selectAll("circle").remove();
+    d3.selectAll("rect").remove();
+    d3.selectAll("text").remove();
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.collectionDate; }));
@@ -443,7 +446,8 @@
 
     svg.selectAll(".axis").remove();
 
-    svg.selectAll("dot")  
+    svg.selectAll("dot")
+        .remove("dot")  
         .data(data)     
         .enter().append("circle")               
         .attr("r", 5)   
