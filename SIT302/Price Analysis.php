@@ -282,7 +282,7 @@
 
     var sql="SELECT b.foodName, a.collectionDate, a.price FROM main AS a, foodDetails AS b WHERE a.foodID  IN (SELECT foodID FROM foodDetails WHERE foodName IN ('"+selectProduct+"')) AND a.foodID = b.foodID AND a.collectionDate BETWEEN '"+start.value+"' AND '"+end.value+"'";
     getJSON(sql);
-    window.location.href="price_analysis.php#jump";
+    window.location.href="Price Analysis.php#jump";
   });
   var foodName = <?php echo json_encode($foodName) ?>;
 	$("#search_input").on("keyup",function(){
