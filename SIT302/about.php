@@ -28,7 +28,19 @@
 		health, as has been the case with tobacco and alcohol. But actions to rebalance the price of foods towards healthier options are currently 
 		limited by a lack of understanding of the relative price and affordability of healthy and unhealthy foods and diets in Australia. Our aim 
 		is to rigorously and systematically advance the evidence required for the uptake and successful implementation of effective and equitable
-		healthy food pricing policies.</p>
+		healthy food pricing policies.
+		<br/>
+		<br/>
+		Our unit is one of the largest research groups dedicated to obesity prevention research in Australia.
+		<br/>
+		<br/>
+		In the past decade we have expanded to include researchers across multiple disciplines, including nutrition and dietetics, epidemiology, political science and health economics. We have research teams working across the world to help advance the science of obesity prevention.
+		<br/>
+		<br/>
+		The GLOBE is led by Professor Steven Allender, Professor Boyd Swinburn, Professor Marj Moodie, Professor Colin Bell and Professor Anna Peeters. The team consists of academic researchers and students along with a broad range of external partners.
+		<br/>
+		<br/>
+		GLOBE represents a large team that is committed to identifying, promoting and implementing obesity prevention and wellness strategies as a global, national and regional partner.</p>
 		<br>
 		<img src="images/cphr-deakin" style="background: white; padding: 5px;width: 300px"/>
 	</div>
