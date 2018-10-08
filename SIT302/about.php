@@ -21,8 +21,8 @@
 		<h3 style="font-family: Times New Roman, Times, serif; font-size: 32px; color: #7CDEDC;"><u>About Us</u></h3>
 		<h2 style="font-family: Times New Roman,Times,serif; font-size: 24px; font-weight: bold; line-height: 24px;	color: #D8DC6A;
 ">We aim to provide healthy diet on an affordable price to everyone. </h2>
-		<p style="color:#A9B3CE; padding: 0px 18px;">What we eat and how much we eat influences our risk for disease and death.<br></p>
-		<p style="color:#A9B3CE; padding: 0px 18px; text-align: justify;"> Poor diet is a leading cause of disease burden in Australia and 
+		<p style="color:#ffffff; padding: 0px 18px;">What we eat and how much we eat influences our risk for disease and death.<br></p>
+		<p style="color:#ffffff; padding: 0px 18px; text-align: justify;"> Poor diet is a leading cause of disease burden in Australia and 
 		globally. The price of foods and beverages is a critical driver of food choice, particularly among individuals with limited food budgets. 
 		Changing the price ratio between healthy and unhealthy foods is likely to be a critical leverage point for the improvement of population 
 		health, as has been the case with tobacco and alcohol. But actions to rebalance the price of foods towards healthier options are currently 
