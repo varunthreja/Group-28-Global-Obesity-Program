@@ -17,8 +17,9 @@
 		<div class="container" style="width: 960px">
       <div style="margin-left: auto; margin-right: auto;width:550px;">
         <div style="text-align: center;">
-          <h3 style="font-family: Times New Roman, Times, serif; font-size: 29px; color: #7CDEDC;">Twitter: <a href="https://twitter.com/GLOBE_obesity" target="_blank">@GLOBE_obesity</a><br></h3>
-          <h3 style="font-family: Times New Roman, Times, serif; font-size: 29px; color: #7CDEDC;">Website: <a href="https://www.globalobesity.com.au" target="_blank">Global Obesity Centre</a></h3>
+          <h3 style="font-family: Times New Roman, Times, serif; font-size: 32px; color: #7CDEDC;"><u>Contact Us</u></h3>
+          <h3 style="font-family: Times New Roman, Times, serif; font-size: 24px; color: #7CDEDC;">Twitter: <a href="https://twitter.com/GLOBE_obesity" target="_blank">@GLOBE_obesity</a><br></h3>
+          <h3 style="font-family: Times New Roman, Times, serif; font-size: 24px; color: #7CDEDC;">Website: <a href="https://www.globalobesity.com.au" target="_blank">Global Obesity Centre</a></h3>
         </div>
         <table style="width:500px; text-align: center;margin-left: auto; margin-right: auto">
           <tr>
